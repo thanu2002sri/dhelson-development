@@ -36,6 +36,6 @@ a:hover{
     <h1>We&rsquo;ll be back soon!</h1>    
     <div>
         <p>Sorry for the inconvenience but we&rsquo;re still building our Dhelson Express!</p>
-        <p>&mdash; The Dhelson Developer Team.</p>
+        <p>&mdash; The Dhelson Developer Team!</p>
     </div>
 </article>
