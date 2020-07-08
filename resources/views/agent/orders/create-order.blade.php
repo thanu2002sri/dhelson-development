@@ -229,7 +229,7 @@
                                     <hr>
                                     <div class="form-group">
                                 
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3 form-field-margin">
                                             <label class="control-label" for="distr-first-name">Consignee Name</label>
                                             <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Consignee Name" >
                                             @error('consigner_name')
@@ -238,7 +238,7 @@
                                                 </span>
                                             @enderror  
                                         </div>
-                                        <div class="col-sm-4 form-field-margin">
+                                        <div class="col-sm-3 form-field-margin">
                                             <label class="control-label" for="distr-first-name">Consignee Email</label>
                                             <div class="input-group">
                                                     <span class="input-group-addon"><i class="fas fa-envelope"></i></span>
@@ -252,7 +252,7 @@
                                             @enderror
                                         </div>
     
-                                        <div class="col-sm-4 form-field-margin">
+                                        <div class="col-sm-3 form-field-margin">
                                             <label class="control-label">Consignee Phone</label>
                                             <div class="input-group">
                                                     <span class="input-group-addon"><i class="fas fa-phone-alt"></i></span>
@@ -263,6 +263,16 @@
                                                     </span>
                                                     @enderror
                                             </div>
+
+                                        </div>
+                                        <div class="col-sm-3 form-field-margin">
+                                            <label class="control-label" for="distr-first-name">Consignee ID (Any Government ID)</label>
+                                            <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Consignee ID" >
+                                            @error('consigner_name')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror  
                                         </div>
                                          
                                     </div>
@@ -274,7 +284,7 @@
                                         
                                         <div class="form-group">
                                             
-                                            <div class="col-sm-3 form-field-margin">
+                                            <div class="col-sm-4 form-field-margin">
                                                 <label class="control-label" for="distr-first-name">Shipment Name</label>
                                                 <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Shipment Name" >
                                                 @error('consigner_name')
@@ -284,7 +294,58 @@
                                                 @enderror  
                                             </div>
 
-                                            <div class="col-sm-3 form-field-margin">
+                                            <div class="col-sm-4 form-field-margin">
+                                                <label class="control-label">Shipment Photo ( Front )</label>
+                                                <div class="input-group image-preview">
+                                                    <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                                                    <span class="input-group-btn">
+                                                        <!-- image-preview-clear button -->
+                                                        <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                                            <span class="glyphicon glyphicon-remove"></span> Clear
+                                                        </button>
+                                                        <!-- image-preview-input -->
+                                                        <div class="btn btn-default image-preview-input">
+                                                            <span class="glyphicon glyphicon-folder-open"></span>
+                                                            <span class="image-preview-input-title">Upload Photo</span>
+                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="consigner_aadhar"/> <!-- rename it -->
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                                @error('consigner_photo')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-sm-4 form-field-margin">
+                                                <label class="control-label">Shipment Photo ( Back )</label>
+                                                <div class="input-group image-preview">
+                                                    <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                                                    <span class="input-group-btn">
+                                                        <!-- image-preview-clear button -->
+                                                        <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                                            <span class="glyphicon glyphicon-remove"></span> Clear
+                                                        </button>
+                                                        <!-- image-preview-input -->
+                                                        <div class="btn btn-default image-preview-input">
+                                                            <span class="glyphicon glyphicon-folder-open"></span>
+                                                            <span class="image-preview-input-title">Upload Photo</span>
+                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="consigner_aadhar"/> <!-- rename it -->
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                                @error('consigner_photo')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <div class="col-sm-4 form-field-margin">
                                                 <label class="control-label">Shipment Photo</label>
                                                 <div class="input-group image-preview">
                                                     <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
@@ -308,9 +369,15 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="col-sm-3 form-field-margin">
-                                                <label class="control-label">Shipment Quantity</label>
-                                                <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Shipment Quantity" >
+                                            <div class="col-sm-4 form-field-margin">
+                                                <label class="control-label">Invoice Date</label>
+                                                <select id="distr-security-question" name="security_question" style="width: 100%;" value="{{ old('security_question') }}" autocomplete="security_question" autofocus class="select-select2 @error('security_question') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Unit Price" required>
+                                                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    <option value="3">Upto - 3 Months</option>
+                                                    <option value="3.1">3 - 6 Months</option>
+                                                    <option value="6.1">6 - 12 Months</option>
+                                                    <option value="12.1">Above - 12 Months</option>
+                                                </select>
                                                 @error('consigner_photo')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -318,22 +385,60 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="col-sm-3 form-field-margin">
-                                                <label class="control-label">Shipment Weight</label>
-                                                <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Shipment Weight" >
+                                            <div class="col-sm-4 form-field-margin">
+                                                <label class="control-label">Insured Amount</label>
+                                                <input readonly type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Insured Amount" >
                                                 @error('consigner_photo')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>
-                                        
+
                                         </div>
 
                                         <div class="form-group">
-                                            <div class="col-sm-3 form-field-margin">
+
+                                            <div class="col-sm-4 form-field-margin">
+                                                <label class="control-label">Shipment Quantity</label>
+                                                <select id="distr-security-question" name="security_question" style="width: 100%;" value="{{ old('security_question') }}" autocomplete="security_question" autofocus class="select-select2 @error('security_question') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Quantity" required>
+
+                                                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                </select>
+                                                @error('consigner_photo')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-sm-4 form-field-margin">
+                                                <label class="control-label">Shipment Weight</label>
+                                                <select id="distr-security-question" name="security_question" style="width: 100%;" value="{{ old('security_question') }}" autocomplete="security_question" autofocus class="select-select2 @error('security_question') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Weight" required>
+
+                                                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    <option value="3">Upto - 3 Kg</option>
+                                                    <option value="6">3 - 6 Kg</option>
+                                                    <option value="6.1">Above - 6 Kg</option>
+                                                </select>
+                                                @error('consigner_photo')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-sm-4 form-field-margin">
                                                 <label class="control-label">Unit Price ( Invoice Price )</label>
-                                                <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Shipment Price" >
+                                                <select id="distr-security-question" name="security_question" style="width: 100%;" value="{{ old('security_question') }}" autocomplete="security_question" autofocus class="select-select2 @error('security_question') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Unit Price" required>
+                                                    <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    <option value="100000">Upto - 1,00,000</option>
+                                                    <option value="200000">2,00,000</option>
+                                                    <option value="400000">4,00,000</option>
+                                                    <option value="400001">Above - 4,00,000</option>
+                                                </select>
                                                 @error('consigner_photo')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -341,45 +446,13 @@
                                                 @enderror
                                             </div>
 
-                                            
-                                            <div class="col-sm-3 form-field-margin">
-                                                <label class="control-label">Invoice Date</label>
-                                                <input type="text" value="" id="from_date" name="from_date" class="form-control input-datepicker" data-date-format="dd-mm-yyyy" placeholder="Select Date" readonly>                      
-                                                {{-- <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Consigner Name" > --}}
-                                                @error('consigner_photo')
-                                                    <span class="text-danger" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-sm-3 form-field-margin">
-                                                <label class="control-label">Amount</label>
-                                                <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Shipment Amount" >
-                                                @error('consigner_photo')
-                                                    <span class="text-danger" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-sm-3 form-field-margin">
-                                                <label class="control-label">Insured Amount</label>
-                                                <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Insured Amount" >
-                                                @error('consigner_photo')
-                                                    <span class="text-danger" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                                
                                         </div>
 
                                         <div class="form-group">
                                                 
                                             <div class="col-sm-3 form-field-margin">
                                                 <label class="control-label" for="distr-first-name">Transit Amount</label>
-                                                <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Transit Amount" >
+                                                <input readonly type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Transit Amount" >
                                                 @error('consigner_name')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -389,7 +462,7 @@
 
                                         <div class="col-sm-3 form-field-margin">
                                             <label class="control-label">Transit Tax</label>
-                                            <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Transit Tax" >
+                                            <input readonly type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Transit Tax" >
                                             @error('consigner_photo')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -399,7 +472,7 @@
 
                                             <div class="col-sm-3 form-field-margin">
                                                 <label class="control-label">Transit Total Amount</label>
-                                                <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Transit Total Amount" >
+                                                <input readonly type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Transit Total Amount" >
                                                 @error('consigner_photo')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
