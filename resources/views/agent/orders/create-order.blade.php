@@ -284,7 +284,7 @@
                                         
                                         <div class="form-group">
                                             
-                                            <div class="col-sm-4 form-field-margin">
+                                            <div class="col-sm-3 form-field-margin">
                                                 <label class="control-label" for="distr-first-name">Shipment Name</label>
                                                 <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Shipment Name" >
                                                 @error('consigner_name')
@@ -294,7 +294,7 @@
                                                 @enderror  
                                             </div>
 
-                                            <div class="col-sm-4 form-field-margin">
+                                            <div class="col-sm-3 form-field-margin">
                                                 <label class="control-label">Shipment Photo ( Front )</label>
                                                 <div class="input-group image-preview">
                                                     <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
@@ -318,8 +318,32 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="col-sm-4 form-field-margin">
+                                            <div class="col-sm-3 form-field-margin">
                                                 <label class="control-label">Shipment Photo ( Back )</label>
+                                                <div class="input-group image-preview">
+                                                    <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
+                                                    <span class="input-group-btn">
+                                                        <!-- image-preview-clear button -->
+                                                        <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                                            <span class="glyphicon glyphicon-remove"></span> Clear
+                                                        </button>
+                                                        <!-- image-preview-input -->
+                                                        <div class="btn btn-default image-preview-input">
+                                                            <span class="glyphicon glyphicon-folder-open"></span>
+                                                            <span class="image-preview-input-title">Upload Photo</span>
+                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="consigner_aadhar"/> <!-- rename it -->
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                                @error('consigner_photo')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-sm-3 form-field-margin">
+                                                <label class="control-label">Shipment Photo</label>
                                                 <div class="input-group image-preview">
                                                     <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
                                                     <span class="input-group-btn">
@@ -346,7 +370,7 @@
                                         <div class="form-group">
 
                                             <div class="col-sm-4 form-field-margin">
-                                                <label class="control-label">Shipment Photo</label>
+                                                <label class="control-label">Invoice Photo</label>
                                                 <div class="input-group image-preview">
                                                     <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
                                                     <span class="input-group-btn">
@@ -634,10 +658,11 @@
                             </table>
                         </div>
                     </div>
-
+                    
+                    <div id="canvasDiv"></div>
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-8">
-                            <div id="canvasDiv"></div>
+                            
                             <br>
                             
                             <label class="control-label">Consigner Signature</label>
@@ -921,8 +946,8 @@ async defer></script>
 
         var drawing = false;
         var mousePos = {
-            x: 0,
-            y: 0
+            x: 300,
+            y: 300
         };
         var lastPos = mousePos;
 
@@ -971,9 +996,8 @@ async defer></script>
         var defaultPrevent = function(e) {
             e.preventDefault();
         }
-        elem.addEventListener("touchstart", defaultPrevent);
+        elem.addEventListener("touchstart", defaultPrevent, false);
         elem.addEventListener("touchmove", defaultPrevent);
-
 
         function redraw() {
             //
