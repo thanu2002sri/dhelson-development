@@ -6,11 +6,7 @@
 <link rel="stylesheet" href="{{ asset('assets/css/site.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css') }}">
     <style>
-        #canvasDiv{
-            position: relative;
-            border: 2px dashed grey;
-            height:100px;
-        }
+       
         .text-center
         {
             font-weight: 600;
@@ -229,35 +225,22 @@
                                     <hr>
                                     <div class="form-group">
                                 
-                                        <div class="col-sm-3 form-field-margin">
+                                        <div class="col-sm-4 form-field-margin">
                                             <label class="control-label" for="distr-first-name">Consignee Name</label>
-                                            <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Consignee Name" >
-                                            @error('consigner_name')
+                                            <input type="text" required name="consignee_name" value="{{ old('consignee_name') }}" autocomplete="consignee_name" autofocus class="form-control form-field-margin @error('consignee_name') is-invalid @enderror" placeholder="Enter Consignee Name" >
+                                            @error('consignee_name')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror  
                                         </div>
-                                        <div class="col-sm-3 form-field-margin">
-                                            <label class="control-label" for="distr-first-name">Consignee Email</label>
-                                            <div class="input-group">
-                                                    <span class="input-group-addon"><i class="fas fa-envelope"></i></span>
-                                                    
-                                                    <input required type="email" name="consigner_email" value="{{ old('consigner_email') }}" autocomplete="consigner_email" autofocus class="form-control @error('consigner_email') is-invalid @enderror" placeholder="Enter Consignee Email" >
-                                            </div>
-                                            @error('consigner_email')
-                                                <span class="text-danger" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
     
-                                        <div class="col-sm-3 form-field-margin">
+                                        <div class="col-sm-4 form-field-margin">
                                             <label class="control-label">Consignee Phone</label>
                                             <div class="input-group">
                                                     <span class="input-group-addon"><i class="fas fa-phone-alt"></i></span>
-                                                    <input required type="text" name="consigner_phone" value="{{ old('consigner_phone') }}" autocomplete="consigner_phone" autofocus class="form-control @error('consigner_phone') is-invalid @enderror" placeholder="Enter Consignee Phone Number" >
-                                                    @error('consigner_phone')
+                                                    <input required type="text" name="consignee_phone" value="{{ old('consignee_phone') }}" autocomplete="consignee_phone" autofocus class="form-control @error('consignee_phone') is-invalid @enderror" placeholder="Enter Consignee Phone Number" >
+                                                    @error('consignee_phone')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -265,10 +248,10 @@
                                             </div>
 
                                         </div>
-                                        <div class="col-sm-3 form-field-margin">
+                                        <div class="col-sm-4 form-field-margin">
                                             <label class="control-label" for="distr-first-name">Consignee ID (Any Government ID)</label>
-                                            <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Consignee ID" >
-                                            @error('consigner_name')
+                                            <input type="text" required name="consignee_id" value="{{ old('consignee_id') }}" autocomplete="consignee_id" autofocus class="form-control form-field-margin @error('consignee_id') is-invalid @enderror" placeholder="Enter Consignee ID" >
+                                            @error('consignee_id')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -276,6 +259,95 @@
                                         </div>
                                          
                                     </div>
+                                    
+                                    <div class="form-group">
+                                
+                                        <div class="col-sm-12 form-field-margin">
+                                            <label class="control-label">Get Address</label>
+                                            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                                            <div id="map"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                
+                                        <div class="col-sm-12 form-field-margin">
+                                            <label class="control-label">Address</label>
+                                            <textarea id="address" required autofocus value="{{ old('address') }}" class="form-control @error('address') is-invalid @enderror" placeholder="Enter Incharge Address"  name="address" rows="4"></textarea>
+                                            @error('address')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                            
+                                        <div class="col-sm-4 form-field-margin">
+                                            <label class="control-label">Pincode</label>
+                                                <input id="pincode" required minlength="6" maxlength="6" pattern="[0-9]*" type="text" name="pincode" value="{{ old('pincode') }}" autocomplete="pincode" autofocus class="form-control @error('pincode') is-invalid @enderror" placeholder="Enter Pincode" >
+                                                @error('pincode')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                        </div>
+                                        <div class="col-sm-4 form-field-margin">
+                                            <label class="control-label">City</label>
+                                            <input id="city" required type="text" name="city" value="{{ old('city') }}" autocomplete="city" autofocus class="form-control @error('city') is-invalid @enderror" placeholder="Enter City" >
+                                            @error('city')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                    </div>
+                                    
+                                    <div class="col-sm-4 form-field-margin">
+                                        <label class="control-label">State</label>
+                                            <input id="state" required type="text" name="state" value="{{ old('state') }}" autocomplete="state" autofocus class="form-control @error('state') is-invalid @enderror" placeholder="Enter State" >
+                                            @error('state')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                    </div>
+            
+                                    
+                                </div>
+            
+                                <div class="form-group">
+
+                                    <div class="col-sm-4 form-field-margin">
+                                        <label class="control-label">Country</label>
+                                        <input id="country" required type="text" name="country" value="{{ old('country') }}" autocomplete="country" autofocus class="form-control @error('country') is-invalid @enderror" placeholder="Enter Country" >
+                                        @error('country')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                        
+                                    <div class="col-sm-4 form-field-margin">
+                                        <label class="control-label">Latitude</label>
+                                            <input id="latitude" required minlength="6" maxlength="6" pattern="[0-9]*" type="text" name="pincode" value="{{ old('pincode') }}" autocomplete="pincode" autofocus class="form-control @error('pincode') is-invalid @enderror" placeholder="Enter Latitude" >
+                                            @error('pincode')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                    </div>
+                                    <div class="col-sm-4 form-field-margin">
+                                        <label class="control-label">Longtitude</label>
+                                        <input id="longtitude" required type="text" name="city" value="{{ old('city') }}" autocomplete="city" autofocus class="form-control @error('city') is-invalid @enderror" placeholder="Enter Longtitude" >
+                                        @error('city')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                            </div>
+
                                     <h3 class="text-center">Shipment Details</h3>
                                     <hr>
                                     <div class="card-body after-add-more">
@@ -286,8 +358,8 @@
                                             
                                             <div class="col-sm-3 form-field-margin">
                                                 <label class="control-label" for="distr-first-name">Shipment Name</label>
-                                                <input type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Shipment Name" >
-                                                @error('consigner_name')
+                                                <input type="text" required name="shipment_name" value="{{ old('shipment_name') }}" autocomplete="shipment_name" autofocus class="form-control form-field-margin @error('shipment_name') is-invalid @enderror" placeholder="Enter Shipment Name" >
+                                                @error('shipment_name')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -307,11 +379,11 @@
                                                         <div class="btn btn-default image-preview-input">
                                                             <span class="glyphicon glyphicon-folder-open"></span>
                                                             <span class="image-preview-input-title">Upload Photo</span>
-                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="consigner_aadhar"/> <!-- rename it -->
+                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="shipment_front"/> <!-- rename it -->
                                                         </div>
                                                     </span>
                                                 </div>
-                                                @error('consigner_photo')
+                                                @error('shipment_front')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -331,11 +403,11 @@
                                                         <div class="btn btn-default image-preview-input">
                                                             <span class="glyphicon glyphicon-folder-open"></span>
                                                             <span class="image-preview-input-title">Upload Photo</span>
-                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="consigner_aadhar"/> <!-- rename it -->
+                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="shipment_back"/> <!-- rename it -->
                                                         </div>
                                                     </span>
                                                 </div>
-                                                @error('consigner_photo')
+                                                @error('shipment_back')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -343,7 +415,7 @@
                                             </div>
 
                                             <div class="col-sm-3 form-field-margin">
-                                                <label class="control-label">Shipment Photo</label>
+                                                <label class="control-label">Shipment Photo With Consigner</label>
                                                 <div class="input-group image-preview">
                                                     <input type="text" class="form-control image-preview-filename" disabled="disabled"> <!-- don't give a name === doesn't send on POST/GET -->
                                                     <span class="input-group-btn">
@@ -355,11 +427,11 @@
                                                         <div class="btn btn-default image-preview-input">
                                                             <span class="glyphicon glyphicon-folder-open"></span>
                                                             <span class="image-preview-input-title">Upload Photo</span>
-                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="consigner_aadhar"/> <!-- rename it -->
+                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="shipment_img"/> <!-- rename it -->
                                                         </div>
                                                     </span>
                                                 </div>
-                                                @error('consigner_photo')
+                                                @error('shipment_img')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -503,13 +575,23 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                    
+
                                             <div class="col-sm-3 form-field-margin">
+                                                <label class="control-label">Select Destination Agency</label>
+                                                    <input id="state" required type="text" name="state" value="{{ old('state') }}" autocomplete="state" autofocus class="form-control @error('state') is-invalid @enderror" placeholder="Select Destination Agency" >
+                                                    @error('state')
+                                                        <span class="text-danger" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                            </div>
+                                    
+                                            {{-- <div class="col-sm-3 form-field-margin">
                                                 <div style="margin: 3rem 6.5rem;" >
                                                     <button class="form-field-margin btn btn-primary waves-effect waves-light add-more pull-right" type="button">Add More &nbsp;<i class="fas fa-plus"></i></button>
                                                 </div>
                                             
-                                            </div>
+                                            </div> --}}
                                         
                                     </div>
                                 </div>
@@ -529,104 +611,9 @@
                                             @enderror
                                 </div>
                             </div>
-                            
-                            <div class="form-group">
-                                
-                                <div class="col-sm-12 form-field-margin">
-                                    <label class="control-label">Get Address</label>
-                                    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-                                    <div id="map"></div>
-                                </div>
-                            </div>
 
-                            <div class="form-group">
-                                
-                            <div class="col-sm-12 form-field-margin">
-                                <label class="control-label">Address</label>
-                                <textarea id="address" required autofocus value="{{ old('address') }}" class="form-control @error('address') is-invalid @enderror" placeholder="Enter Incharge Address"  name="address" rows="4"></textarea>
-                                @error('address')
-                                    <span class="text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
                         
-                        <div class="form-group">
-                            
-                            <div class="col-sm-3 form-field-margin">
-                                <label class="control-label">Pincode</label>
-                                    <input id="pincode" required minlength="6" maxlength="6" pattern="[0-9]*" type="text" name="pincode" value="{{ old('pincode') }}" autocomplete="pincode" autofocus class="form-control @error('pincode') is-invalid @enderror" placeholder="Enter Pincode" >
-                                    @error('pincode')
-                                        <span class="text-danger" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                            </div>
-                            <div class="col-sm-3 form-field-margin">
-                                <label class="control-label">City</label>
-                                <input id="city" required type="text" name="city" value="{{ old('city') }}" autocomplete="city" autofocus class="form-control @error('city') is-invalid @enderror" placeholder="Enter City" >
-                                @error('city')
-                                    <span class="text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                        </div>
                         
-                        <div class="col-sm-3 form-field-margin">
-                            <label class="control-label">State</label>
-                                <input id="state" required type="text" name="state" value="{{ old('state') }}" autocomplete="state" autofocus class="form-control @error('state') is-invalid @enderror" placeholder="Enter State" >
-                                @error('state')
-                                    <span class="text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                        </div>
-
-                        <div class="col-sm-3 form-field-margin">
-                            <label class="control-label">Country</label>
-                            <input id="country" required type="text" name="country" value="{{ old('country') }}" autocomplete="country" autofocus class="form-control @error('country') is-invalid @enderror" placeholder="Enter Country" >
-                            @error('country')
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                            
-                        <div class="col-sm-4 form-field-margin">
-                            <label class="control-label">Latitude</label>
-                                <input id="latitude" required minlength="6" maxlength="6" pattern="[0-9]*" type="text" name="pincode" value="{{ old('pincode') }}" autocomplete="pincode" autofocus class="form-control @error('pincode') is-invalid @enderror" placeholder="Enter Latitude" >
-                                @error('pincode')
-                                    <span class="text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                        </div>
-                        <div class="col-sm-4 form-field-margin">
-                            <label class="control-label">Longtitude</label>
-                            <input id="longtitude" required type="text" name="city" value="{{ old('city') }}" autocomplete="city" autofocus class="form-control @error('city') is-invalid @enderror" placeholder="Enter Longtitude" >
-                            @error('city')
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                    </div>
-                    
-                    <div class="col-sm-4 form-field-margin">
-                        <label class="control-label">Select Destination Agency</label>
-                            <input id="state" required type="text" name="state" value="{{ old('state') }}" autocomplete="state" autofocus class="form-control @error('state') is-invalid @enderror" placeholder="Select Destination Agency" >
-                            @error('state')
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                    </div>
-
-                    
-                </div>
 
                     <h3 class="text-center">Payment Details</h3>
                     <hr>
@@ -659,14 +646,14 @@
                         </div>
                     </div>
                     
-                    <div id="canvasDiv"></div>
+                    
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-8">
-                            
+                            <canvas id="signature" height="100" style="border: 2px dashed grey;width:-webkit-fill-available;"></canvas>
                             <br>
                             
                             <label class="control-label">Consigner Signature</label>
-                            <button type="button" class="btn btn-success pull-right" id="reset-btn">Clear</button>
+                            <button type="button" class="btn btn-success pull-right" id="clear-signature">Clear</button>
                         </div>
                         
                         {{-- <button type="button" class="btn btn-success" id="btn-save">Save</button> --}}
@@ -694,7 +681,9 @@
     <script type="text/javascript" src="{{ asset('assets/js/jquery.richtext.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&libraries=places&callback=initAutocomplete"
 async defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
+    
 
     <script>
         $('#from_date').datepicker({});
@@ -878,7 +867,7 @@ async defer></script>
     </script>
 
 <script>
-    $(document).ready(() => {
+   /*  $(document).ready(() => {
         var canvasDiv = document.getElementById('canvasDiv');
         var canvas = document.createElement('canvas');
         canvas.setAttribute('id', 'canvas');
@@ -935,14 +924,6 @@ async defer></script>
             clickY = [];
             clickDrag = [];
         });
-
-        /* $(document).on('click', '#btn-save', function() {
-            var mycanvas = document.getElementById('canvas');
-            var img = mycanvas.toDataURL("image/png");
-            anchor = $("#signature");
-            anchor.val(img);
-            $("#signatureform").submit();
-        }); */
 
         var drawing = false;
         var mousePos = {
@@ -1015,7 +996,17 @@ async defer></script>
             }
         }
     })
-
+ */
+ jQuery(document).ready(function($){
+    
+    var canvas = document.getElementById("signature");
+    var signaturePad = new SignaturePad(canvas);
+    
+    $('#clear-signature').on('click', function(){
+        signaturePad.clear();
+    });
+    
+});
 </script>
 @endsection
 
