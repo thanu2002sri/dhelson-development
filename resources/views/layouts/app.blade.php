@@ -10,13 +10,17 @@
 
         <meta name="description" content="Dhelson Express">
         <meta name="author" content="">
-        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        {{-- <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"> --}}
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon_io/favicon-32x32.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon_io/favicon-16x16.png') }}">
-        <link rel="manifest" href="/site.webmanifest">
+       {{--  <link rel="manifest" href="/site.webmanifest"> --}}
         <!-- END Icons -->
 
         <!-- Stylesheets -->

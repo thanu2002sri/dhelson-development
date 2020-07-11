@@ -98,6 +98,9 @@ Route::group(['middleware' => 'admin'], function()
     // Settings Routing
     Route::get('/admin/edit-profile', 'AdminController@editProfile');
     Route::post('/admin/reset-password', 'AdminController@resetPassword')->name('admin-reset-password');
+
+    Route::get('/admin/other-settings', 'AdminController@otherSettings');
+    Route::post('/admin/othersettings', 'AdminController@otherSettingsUpdate')->name('set.othersettings');
     
 });
 

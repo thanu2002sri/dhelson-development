@@ -133,7 +133,7 @@
                                 <a href="{{ url('/admin/#') }}"><i class="fas fa-user-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Edit Profile</span></a>
                             </li>
                             <li>
-                                <a href="{{ url('/admin/#') }}"><i class="fa fa-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Other</span></a>
+                                <a href="{{ url('/admin/other-settings') }}"><i class="fa fa-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Other</span></a>
                             </li>
                             
                         </ul>

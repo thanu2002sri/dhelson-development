@@ -722,5 +722,56 @@ class AdminController extends Controller
         return $request->all();
     } 
     
+    public function otherSettings(Request $request)
+    {
+        $data['settings'] =  DB::table('settings')->where('id','1')->first();
+        $data['title'] = "Other Settings";
+        return view('admin.settings.otherSettings', $data);
+    }
+
+    public function otherSettingsUpdate(Request $request)
+    {
+        $data = array();
+
+        $upto_3_months = 0;
+        $upto_3_6_months = 0;
+        $upto_6_12_months = 0;
+        $above_12_months = 0;
+
+        $upto_3_months = $request->upto_3_months;
+        $upto_3_6_months = $request->upto_3_6_months;
+        $upto_6_12_months = $request->upto_6_12_months;
+        $above_12_months = $request->above_12_months;
+    
+        $validator = Validator::make($request->all(), [
+            'upto_3_months' => 'required|numeric|min:0',
+            'upto_3_6_months' => 'required|numeric|min:0',
+            'upto_6_12_months' => 'required|numeric|min:0',
+            'above_12_months' => 'required|numeric|min:0'            
+        ]);
+
+        $data = array(
+            'upto_3_months' => $upto_3_months,
+            'upto_3_6_months' => $upto_3_6_months,
+            'upto_6_12_months' => $upto_6_12_months,
+            'above_12_months' => $above_12_months
+        );
+
+        if ($validator->fails()) {
+            
+            return redirect('/admin/other-settings')->with('error', $validator->errors()->first());
+        }
+        
+        if ($validator->passes()) {
+
+            $update_commission =DB::table('settings')
+                                ->where('id', 1)
+                                ->update($data);
+
+            
+            return redirect('/admin/other-settings')->with('success', 'Settings Updated Successfully!');
+        }
+        return redirect('/admin/other-settings')->with('alert', 'Not available in this version');
+    }
 
 }
