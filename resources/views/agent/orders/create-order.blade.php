@@ -454,7 +454,7 @@
                                                         <div class="btn btn-default image-preview-input">
                                                             <span class="glyphicon glyphicon-folder-open"></span>
                                                             <span class="image-preview-input-title">Upload Photo</span>
-                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="consigner_aadhar"/> <!-- rename it -->
+                                                            <input type="file" accept="image/png, image/jpeg, image/gif" name="invoice_img"/> <!-- rename it -->
                                                         </div>
                                                     </span>
                                                 </div>
@@ -467,14 +467,14 @@
 
                                             <div class="col-sm-4 form-field-margin">
                                                 <label class="control-label">Invoice Date</label>
-                                                <select id="distr-security-question" name="security_question" style="width: 100%;" value="{{ old('security_question') }}" autocomplete="security_question" autofocus class="select-select2 @error('security_question') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Unit Price" required>
+                                                <select invoice-date="invoice-date" name="invoice_date" style="width: 100%;" value="{{ old('invoice_date') }}" autocomplete="invoice_date" autofocus class="select-select2 @error('invoice_date') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Date" required>
                                                     <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                     <option value="3">Upto - 3 Months</option>
                                                     <option value="3.1">3 - 6 Months</option>
                                                     <option value="6.1">6 - 12 Months</option>
                                                     <option value="12.1">Above - 12 Months</option>
                                                 </select>
-                                                @error('consigner_photo')
+                                                @error('invoice_date')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -482,9 +482,9 @@
                                             </div>
 
                                             <div class="col-sm-4 form-field-margin">
-                                                <label class="control-label">Insured Amount</label>
-                                                <input readonly type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Insured Amount" >
-                                                @error('consigner_photo')
+                                                <label class="control-label">Insured Pecentage</label>
+                                                <input readonly type="text" id="insured_percentage" required name="insured_percentage" value="{{ old('insured_percentage') }}" autocomplete="insured_percentage" autofocus class="form-control form-field-margin @error('insured_percentage') is-invalid @enderror" placeholder="Enter Insured Amount" >
+                                                @error('insured_percentage')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -497,13 +497,13 @@
 
                                             <div class="col-sm-4 form-field-margin">
                                                 <label class="control-label">Shipment Quantity</label>
-                                                <select id="distr-security-question" name="security_question" style="width: 100%;" value="{{ old('security_question') }}" autocomplete="security_question" autofocus class="select-select2 @error('security_question') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Quantity" required>
+                                                <select shipment-quantity="shipment-quantity" id="shipment_quantity" name="shipment_quantity" style="width: 100%;" value="{{ old('shipment_quantity') }}" autocomplete="shipment_quantity" autofocus class="select-select2 @error('shipment_quantity') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Quantity" required>
 
                                                     <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                 </select>
-                                                @error('consigner_photo')
+                                                @error('shipment_quantity')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -512,14 +512,14 @@
 
                                             <div class="col-sm-4 form-field-margin">
                                                 <label class="control-label">Shipment Weight</label>
-                                                <select id="distr-security-question" name="security_question" style="width: 100%;" value="{{ old('security_question') }}" autocomplete="security_question" autofocus class="select-select2 @error('security_question') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Weight" required>
+                                                <select shipment-weight="shipment-weight" id="shipment_weight" name="shipment_weight" style="width: 100%;" value="{{ old('shipment_weight') }}" autocomplete="shipment_weight" autofocus class="select-select2 @error('shipment_weight') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Weight" required>
 
                                                     <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                    <option value="3">Upto - 3 Kg</option>
-                                                    <option value="6">3 - 6 Kg</option>
-                                                    <option value="6.1">Above - 6 Kg</option>
+                                                    {{-- <option value="3">Upto - 3 Kg</option>
+                                                    <option value="3.1">3 - 6 Kg</option>
+                                                    <option value="6.1">Above - 6 Kg</option> --}}
                                                 </select>
-                                                @error('consigner_photo')
+                                                @error('shipment_weight')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -528,14 +528,14 @@
 
                                             <div class="col-sm-4 form-field-margin">
                                                 <label class="control-label">Unit Price ( Invoice Price )</label>
-                                                <select id="distr-security-question" name="security_question" style="width: 100%;" value="{{ old('security_question') }}" autocomplete="security_question" autofocus class="select-select2 @error('security_question') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Unit Price" required>
+                                                <select unit-price="unit-price" id="unit-price" name="unit_price" style="width: 100%;" value="{{ old('unit_price') }}" autocomplete="unit_price" autofocus class="select-select2 @error('unit_price') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Unit Price" required>
                                                     <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                                    <option value="100000">Upto - 1,00,000</option>
+                                                    {{-- <option value="100000">Upto - 1,00,000</option>
                                                     <option value="200000">2,00,000</option>
                                                     <option value="400000">4,00,000</option>
-                                                    <option value="400001">Above - 4,00,000</option>
+                                                    <option value="400001">Above - 4,00,000</option> --}}
                                                 </select>
-                                                @error('consigner_photo')
+                                                @error('unit_price')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -548,8 +548,8 @@
                                                 
                                             <div class="col-sm-3 form-field-margin">
                                                 <label class="control-label" for="distr-first-name">Transit Amount</label>
-                                                <input readonly type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Transit Amount" >
-                                                @error('consigner_name')
+                                                <input transit-amount="transit-amount" id="transit_amount" readonly type="text" required name="transit_amount" value="{{ old('transit_amount') }}" autocomplete="transit_amount" autofocus class="form-control form-field-margin @error('transit_amount') is-invalid @enderror" placeholder="Enter Transit Amount" >
+                                                @error('transit_amount')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -558,8 +558,8 @@
 
                                         <div class="col-sm-3 form-field-margin">
                                             <label class="control-label">Transit Tax</label>
-                                            <input readonly type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Transit Tax" >
-                                            @error('consigner_photo')
+                                            <input readonly type="text" id="transit_tax" required name="transit_tax" value="{{ old('transit_tax') }}" autocomplete="transit_tax" autofocus class="form-control form-field-margin @error('transit_tax') is-invalid @enderror" placeholder="Enter Transit Tax" >
+                                            @error('transit_tax')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -568,8 +568,8 @@
 
                                             <div class="col-sm-3 form-field-margin">
                                                 <label class="control-label">Transit Total Amount</label>
-                                                <input readonly type="text" required name="consigner_name" value="{{ old('consigner_name') }}" autocomplete="consigner_name" autofocus class="form-control form-field-margin @error('consigner_name') is-invalid @enderror" placeholder="Enter Transit Total Amount" >
-                                                @error('consigner_photo')
+                                                <input readonly type="text" id="transit_total_amount" required name="transit_total_amount" value="{{ old('transit_total_amount') }}" autocomplete="transit_total_amount" autofocus class="form-control form-field-margin @error('transit_total_amount') is-invalid @enderror" placeholder="Enter Transit Total Amount" >
+                                                @error('transit_total_amount')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -578,8 +578,14 @@
 
                                             <div class="col-sm-3 form-field-margin">
                                                 <label class="control-label">Select Destination Agency</label>
-                                                    <input id="state" required type="text" name="state" value="{{ old('state') }}" autocomplete="state" autofocus class="form-control @error('state') is-invalid @enderror" placeholder="Select Destination Agency" >
-                                                    @error('state')
+                                                    <select id="distr-security-question" name="destination_agent" style="width: 100%;" value="{{ old('destination_agent') }}" autocomplete="destination_agent" autofocus class="select-select2 @error('destination_agent') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Unit Price" required>
+                                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                        <option value="100000">Upto - 1,00,000</option>
+                                                        <option value="200000">2,00,000</option>
+                                                        <option value="400000">4,00,000</option>
+                                                        <option value="400001">Above - 4,00,000</option>
+                                                    </select>
+                                                    @error('destination_agent')
                                                         <span class="text-danger" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -603,8 +609,8 @@
                                 
                                 <div class="col-sm-12 form-field-margin">
                                     <label class="control-label">Shipment Description</label>
-                                        <textarea id="content" required autofocus value="{{ old('address') }}" class="form-control @error('address') is-invalid @enderror" placeholder="Enter Address"  name="address" rows="4"></textarea>
-                                            @error('consigner_phone')
+                                        <textarea id="content" required autofocus value="{{ old('shipment_descritpion') }}" class="form-control @error('shipment_descritpion') is-invalid @enderror" placeholder="Enter Shipment Description"  name="shipment_descritpion" rows="4"></textarea>
+                                            @error('shipment_descritpion')
                                             <span class="text-danger" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -867,136 +873,7 @@ async defer></script>
     </script>
 
 <script>
-   /*  $(document).ready(() => {
-        var canvasDiv = document.getElementById('canvasDiv');
-        var canvas = document.createElement('canvas');
-        canvas.setAttribute('id', 'canvas');
-        canvasDiv.appendChild(canvas);
-        $("#canvas").attr('height', $("#canvasDiv").outerHeight());
-        $("#canvas").attr('width', $("#canvasDiv").width());
-        if (typeof G_vmlCanvasManager != 'undefined') {
-            canvas = G_vmlCanvasManager.initElement(canvas);
-        }
-        
-        context = canvas.getContext("2d");
-        $('#canvas').mousedown(function(e) {
-            var offset = $(this).offset()
-            var mouseX = e.pageX - this.offsetLeft;
-            var mouseY = e.pageY - this.offsetTop;
 
-            paint = true;
-            addClick(e.pageX - offset.left, e.pageY - offset.top);
-            redraw();
-        });
-
-        $('#canvas').mousemove(function(e) {
-            if (paint) {
-                var offset = $(this).offset()
-                //addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-                addClick(e.pageX - offset.left, e.pageY - offset.top, true);
-                console.log(e.pageX, offset.left, e.pageY, offset.top);
-                redraw();
-            }
-        });
-
-        $('#canvas').mouseup(function(e) {
-            paint = false;
-        });
-
-        $('#canvas').mouseleave(function(e) {
-            paint = false;
-        });
-
-        var clickX = new Array();
-        var clickY = new Array();
-        var clickDrag = new Array();
-        var paint;
-
-        function addClick(x, y, dragging) {
-            clickX.push(x);
-            clickY.push(y);
-            clickDrag.push(dragging);
-        }
-
-        $("#reset-btn").click(function() {
-            context.clearRect(0, 0, window.innerWidth, window.innerWidth);
-            clickX = [];
-            clickY = [];
-            clickDrag = [];
-        });
-
-        var drawing = false;
-        var mousePos = {
-            x: 300,
-            y: 300
-        };
-        var lastPos = mousePos;
-
-        canvas.addEventListener("touchstart", function(e) {
-            mousePos = getTouchPos(canvas, e);
-            var touch = e.touches[0];
-            var mouseEvent = new MouseEvent("mousedown", {
-                clientX: touch.clientX,
-                clientY: touch.clientY
-            });
-            canvas.dispatchEvent(mouseEvent);
-        }, false);
-
-
-        canvas.addEventListener("touchend", function(e) {
-            var mouseEvent = new MouseEvent("mouseup", {});
-            canvas.dispatchEvent(mouseEvent);
-        }, false);
-
-
-        canvas.addEventListener("touchmove", function(e) {
-
-            var touch = e.touches[0];
-            var offset = $('#canvas').offset();
-            var mouseEvent = new MouseEvent("mousemove", {
-                clientX: touch.clientX,
-                clientY: touch.clientY
-            });
-            canvas.dispatchEvent(mouseEvent);
-        }, false);
-
-
-
-        // Get the position of a touch relative to the canvas
-        function getTouchPos(canvasDiv, touchEvent) {
-            var rect = canvasDiv.getBoundingClientRect();
-            return {
-                x: touchEvent.touches[0].clientX - rect.left,
-                y: touchEvent.touches[0].clientY - rect.top
-            };
-        }
-
-
-        var elem = document.getElementById("canvas");
-
-        var defaultPrevent = function(e) {
-            e.preventDefault();
-        }
-        elem.addEventListener("touchstart", defaultPrevent, false);
-        elem.addEventListener("touchmove", defaultPrevent);
-
-        function redraw() {
-            //
-            lastPos = mousePos;
-            for (var i = 0; i < clickX.length; i++) {
-                context.beginPath();
-                if (clickDrag[i] && i) {
-                    context.moveTo(clickX[i - 1], clickY[i - 1]);
-                } else {
-                    context.moveTo(clickX[i] - 1, clickY[i]);
-                }
-                context.lineTo(clickX[i], clickY[i]);
-                context.closePath();
-                context.stroke();
-            }
-        }
-    })
- */
  jQuery(document).ready(function($){
     
     var canvas = document.getElementById("signature");
@@ -1007,6 +884,114 @@ async defer></script>
     });
     
 });
+
 </script>
+
+<script>
+    var invocePercentage = 0;
+    $('body').on('change', 'select[invoice-date*="invoice-date"]', function() {
+        if($(this).val() !="" && $(this).val() <= 3)
+        {
+            invocePercentage = '{{ $settings->upto_3_months }}';
+            $('#insured_percentage').val(invocePercentage);
+        }
+        else if($(this).val() !="" && (($(this).val()) > 3 && $(this).val() <= 6))
+        {
+            invocePercentage = '{{ $settings->upto_3_6_months }}';
+            $('#insured_percentage').val(invocePercentage);
+        }
+        else if($(this).val() !="" && ($(this).val() > 6 && $(this).val() <= 12))
+        {
+            invocePercentage = '{{ $settings->upto_6_12_months }}';
+            $('#insured_percentage').val(invocePercentage);
+        }
+        else if($(this).val() !="" && $(this).val() > 12)
+        {
+            invocePercentage = '{{ $settings->above_12_months }}';
+            $('#insured_percentage').val(invocePercentage);
+        }
+        
+    });
+
+    $('body').on('change', 'select[shipment-quantity*="shipment-quantity"]', function() {
+
+        $('#shipment_weight').html('');
+        $('#unit-price').html('');
+        $('#transit_amount').val('');
+        $('#transit_tax').val('');
+        $('#transit_total_amount').val('');
+        if($(this).val() !="" && $(this).val() == 1)
+        {
+            $('#shipment_weight').html('<option>Select Weight</option><option value="3">Upto - 3 Kg</option><option value="3.1">3 - 6 Kg</option><option value="6.1">Above - 6 Kg</option>');                                     
+        }
+        else if($(this).val() !="" && $(this).val() == 2)
+        {
+            $('#shipment_weight').html('<option>Select Weight</option><option value="6.1">Above - 6 Kg</option>');
+        }
+
+    });
+
+    $('body').on('change', 'select[shipment-weight*="shipment-weight"]', function() {
+        $('#unit-price').html('');
+        $('#transit_amount').val('');
+        $('#transit_tax').val('');
+        $('#transit_total_amount').val('');
+        if($(this).val() !="" && $(this).val() <= 3 && ($('#shipment_quantity').val() == 1))
+        {
+            $('#unit-price').html('<option value="100000">Upto - 1,00,000</option>');
+            $('#transit_amount').val('1200');
+            transitAmountCalculate('1200');
+
+        }
+        else if($(this).val() !="" && (($(this).val()) > 3 && $(this).val() <= 6)  && ($('#shipment_quantity').val() == 1))
+        {
+            $('#unit-price').html('<option value="100000">Upto - 1,00,000</option>');
+            $('#transit_amount').val('1500');
+            transitAmountCalculate('1500');
+        }
+        else if($(this).val() !="" && $(this).val() > 6 && ($('#shipment_quantity').val() == 1))
+        {
+            $('#unit-price').html('<option value="200000">2,00,000</option>');
+            $('#transit_amount').val('1800');
+            transitAmountCalculate('1800');
+        }
+        else if($(this).val() !="" && $(this).val() > 6 && ($('#shipment_quantity').val() == 2))
+        {
+            $('#unit-price').html('<option>Select Unit Price</option><option value="200000">2,00,000</option><option value="400000">4,00,000</option>');
+        }
+
+    });
+
+    $('body').on('change', 'select[unit-price*="unit-price"]', function() {
+        $('#transit_amount').val('');
+        $('#transit_tax').val('');
+        $('#transit_total_amount').val('');
+        if($(this).val() !="" && $(this).val() == '200000' && ($('#shipment_quantity').val() == 2))
+        {
+            $('#transit_amount').val('2000');
+            transitAmountCalculate('2000');
+
+        }
+        else if($(this).val() !="" && $(this).val() == '400000' && ($('#shipment_quantity').val() == 2))
+        {
+            $('#transit_amount').val('4000');
+            transitAmountCalculate('4000');
+        }
+    });
+    
+
+    function transitAmountCalculate(transitPrice)
+    {
+        var totalTransitTax = ((transitPrice * 18) / 100);
+        $('#transit_tax').val(totalTransitTax);
+        $('#transit_total_amount').val((parseInt(totalTransitTax) + parseInt(transitPrice)));
+        
+        
+    }
+    
+
+</script>
+
+
 @endsection
 

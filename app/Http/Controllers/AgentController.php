@@ -332,6 +332,7 @@ class AgentController extends Controller
     public function addOrder()
     {
         $data['title'] = 'Create Order';
+        $data['settings'] =  DB::table('settings')->where('id','1')->first();
         /* $data['roles'] = Role::where('role', 'customercare')->where('status', '0')->get(); */
         return view('agent.orders.create-order', $data);
     }

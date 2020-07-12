@@ -35,7 +35,7 @@ class CreateOrdersTable extends Migration
             $table->string('shipment_img')->nullable();
             $table->string('invoice_img')->nullable();
             $table->string('invoice_date')->length(10)->nullable();
-            $table->float('insured_amount')->default(0.00);
+            $table->float('insured_percentage')->default(0.00);
             $table->string('shipment_quantity')->length(5);
             $table->string('shipment_weight')->length(5);
             $table->float('unit_price')->default(0.00);
