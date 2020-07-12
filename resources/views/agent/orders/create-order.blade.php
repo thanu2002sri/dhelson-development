@@ -634,18 +634,18 @@
                                     <tr>
                                         <th class="text-center">Transit Total Amount</th>
                                         <input type="hidden" class="totalAmt" name="total_amount" value="0">
-                                        <th class="text-center"><i class="fas fa-rupee-sign"></i> <span class="totalAmt">0.00</span></th>
+                                        <th class="text-center"><i class="fas fa-rupee-sign"></i> <span class="transit_amount">0.00</span></th>
                                     </tr>
 
                                     <tr>
                                         <th style="border-bottom: 1px solid red !important;" class="text-center">Transit Tax : 18%</th>
                                         <input type="hidden" class="serviceTax" name="total_tax" value="0">
-                                        <th style="border-bottom: 1px solid red !important;" class="text-center"><i class="fas fa-rupee-sign"></i> <span class="serviceTax">0.00</span></th>
+                                        <th style="border-bottom: 1px solid red !important;" class="text-center"><i class="fas fa-rupee-sign"></i> <span class="transit_tax">0.00</span></th>
                                     </tr>
                                     <tr>
                                         <th style="border: 1px solid red !important;" class="text-center">Transit Grand Total</th>
                                         <input type="hidden" class="grandTotal" name="grand_total" value="0">
-                                        <th style="border: 1px solid red !important;" class="text-center"><i class="fas fa-rupee-sign"></i> <span class="grandTotal">0.00</span></th>
+                                        <th style="border: 1px solid red !important;" class="text-center"><i class="fas fa-rupee-sign"></i> <span class="transit_total_amount">0.00</span></th>
                                     </tr>
                                 </tbody>
                             </table>
@@ -920,6 +920,10 @@ async defer></script>
         $('#transit_amount').val('');
         $('#transit_tax').val('');
         $('#transit_total_amount').val('');
+        $('.transit_amount').text('0.00');
+        $('.transit_tax').text('0.00');
+        $('.transit_total_amount').text('0.00');
+
         if($(this).val() !="" && $(this).val() == 1)
         {
             $('#shipment_weight').html('<option>Select Weight</option><option value="3">Upto - 3 Kg</option><option value="3.1">3 - 6 Kg</option><option value="6.1">Above - 6 Kg</option>');                                     
@@ -936,6 +940,10 @@ async defer></script>
         $('#transit_amount').val('');
         $('#transit_tax').val('');
         $('#transit_total_amount').val('');
+        $('.transit_amount').text('0.00');
+        $('.transit_tax').text('0.00');
+        $('.transit_total_amount').text('0.00');
+
         if($(this).val() !="" && $(this).val() <= 3 && ($('#shipment_quantity').val() == 1))
         {
             $('#unit-price').html('<option value="100000">Upto - 1,00,000</option>');
@@ -966,6 +974,10 @@ async defer></script>
         $('#transit_amount').val('');
         $('#transit_tax').val('');
         $('#transit_total_amount').val('');
+        $('.transit_amount').text('0.00');
+        $('.transit_tax').text('0.00');
+        $('.transit_total_amount').text('0.00');
+
         if($(this).val() !="" && $(this).val() == '200000' && ($('#shipment_quantity').val() == 2))
         {
             $('#transit_amount').val('2000');
@@ -985,8 +997,10 @@ async defer></script>
         var totalTransitTax = ((transitPrice * 18) / 100);
         $('#transit_tax').val(totalTransitTax);
         $('#transit_total_amount').val((parseInt(totalTransitTax) + parseInt(transitPrice)));
-        
-        
+
+        $('.transit_amount').text(transitPrice);
+        $('.transit_tax').text(totalTransitTax);
+        $('.transit_total_amount').text((parseInt(totalTransitTax) + parseInt(transitPrice)));
     }
     
 
