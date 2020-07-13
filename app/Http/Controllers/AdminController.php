@@ -774,4 +774,58 @@ class AdminController extends Controller
         return redirect('/admin/other-settings')->with('alert', 'Not available in this version');
     }
 
+    public function transitSettingsUpdate(Request $request)
+    {
+        $data = array();
+
+        $transit_tax = 0;
+        $transit_priceOne = 0;
+        $transit_priceTwo = 0;
+        $transit_priceThree = 0;
+        $transit_priceFour = 0;
+        $transit_priceFive = 0;
+
+        $transit_tax = $request->transit_tax;
+        $transit_priceOne = $request->transit_priceOne;
+        $transit_priceTwo = $request->transit_priceTwo;
+        $transit_priceThree = $request->transit_priceThree;
+        $transit_priceFour = $request->transit_priceFour;
+        $transit_priceFive = $request->transit_priceFive;
+    
+        $validator = Validator::make($request->all(), [
+            'transit_tax' => 'required|numeric|min:0',
+            'transit_priceOne' => 'required|numeric|min:0',
+            'transit_priceTwo' => 'required|numeric|min:0',
+            'transit_priceThree' => 'required|numeric|min:0',
+            'transit_priceFour' => 'required|numeric|min:0',
+            'transit_priceFive' => 'required|numeric|min:0'             
+        ]);
+
+        $data = array(
+            'transit_tax' => $transit_tax,
+            'transit_priceOne' => $transit_priceOne,
+            'transit_priceTwo' => $transit_priceTwo,
+            'transit_priceThree' => $transit_priceThree,
+            'transit_priceFour' => $transit_priceFour,
+            'transit_priceFive' => $transit_priceFive
+        );
+
+        if ($validator->fails()) {
+            
+            return redirect('/admin/other-settings')->with('error', $validator->errors()->first());
+        }
+        
+        if ($validator->passes()) {
+
+            $update_commission =DB::table('settings')
+                                ->where('id', 1)
+                                ->update($data);
+
+            
+            return redirect('/admin/other-settings')->with('success', 'Settings Updated Successfully!');
+        }
+        return redirect('/admin/other-settings')->with('alert', 'Not available in this version');
+    }
+    
+
 }

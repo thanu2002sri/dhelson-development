@@ -100,7 +100,8 @@ Route::group(['middleware' => 'admin'], function()
     Route::post('/admin/reset-password', 'AdminController@resetPassword')->name('admin-reset-password');
 
     Route::get('/admin/other-settings', 'AdminController@otherSettings');
-    Route::post('/admin/othersettings', 'AdminController@otherSettingsUpdate')->name('set.othersettings');
+    Route::post('/admin/insured-settings', 'AdminController@otherSettingsUpdate')->name('insured.settings');
+    Route::post('/admin/transit-settings', 'AdminController@transitSettingsUpdate')->name('transit.settings');
     
 });
 

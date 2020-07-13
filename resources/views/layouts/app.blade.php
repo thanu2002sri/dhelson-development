@@ -44,9 +44,9 @@
         <!-- Modernizr (browser feature detection library) -->
         <script src="{{ URL::asset('assets/js/vendor/modernizr-3.3.1.min.js') }}"></script>
         <script src="https://kit.fontawesome.com/79291a13ed.js" crossorigin="anonymous"></script>
-        <link href="{{ URL::asset('assets/css/toastr.min.css') }}" rel="stylesheet" type="text/css" />
+        {{-- <link href="{{ URL::asset('assets/css/toastr.min.css') }}" rel="stylesheet" type="text/css" /> --}}
      
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
         <style>
             .sidebar-title
             {
@@ -415,9 +415,9 @@
     <script type="text/javascript" src="{{ asset('assets/js/pages/readyDashboard.js') }}"></script>
     <!-- Tables -->
     <script type="text/javascript" src="{{ asset('assets/js/pages/uiTables.js') }}"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
-    <script src="{{ asset('assets/js/toastr.min.js') }}" type="text/javascript"></script>
+    {{-- <script src="{{ asset('assets/js/toastr.min.js') }}" type="text/javascript"></script> --}}
 
     <script src="{{ asset('assets/js/formsWizard.js') }}" type="text/javascript"></script>
  
@@ -448,7 +448,7 @@
         });
 
         @if(Session::has('success'))
-            toastr["success"]("{{ Session::get('success') }}", "Success",
+            /* toastr["success"]("{{ Session::get('success') }}", "Success",
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
@@ -463,11 +463,23 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut",
                 }
-            );
+            ); */
+
+
+            swal({
+                title: "Success!",
+                text:  "{{ Session::get('success') }}",
+                icon: "success",
+                type: "success",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            window.setTimeout(function(){ } ,2000);
+                //location.reload();
         @endif
 
         @if(Session::has('error'))
-            toastr["error"]("{{ Session::get('error') }}", "oops!",
+            /* toastr["error"]("{{ Session::get('error') }}", "oops!",
                 toastr.options = {
                     "closeButton": true,
                     "debug": false,
@@ -482,7 +494,17 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
                 }
-            );
+            ); */
+
+            swal({
+                title: "Error!",
+                text:  "{{ Session::get('error') }}",
+                icon: "error",
+                type: "error",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            window.setTimeout(function(){ } ,2000);
         @endif
     </script>
 </body>

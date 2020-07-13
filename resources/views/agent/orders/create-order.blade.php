@@ -638,7 +638,7 @@
                                     </tr>
 
                                     <tr>
-                                        <th style="border-bottom: 1px solid red !important;" class="text-center">Transit Tax : 18%</th>
+                                        <th style="border-bottom: 1px solid red !important;" class="text-center">Transit Tax : {{ $settings->transit_tax }}%</th>
                                         <input type="hidden" class="serviceTax" name="total_tax" value="0">
                                         <th style="border-bottom: 1px solid red !important;" class="text-center"><i class="fas fa-rupee-sign"></i> <span class="transit_tax">0.00</span></th>
                                     </tr>
@@ -947,21 +947,21 @@ async defer></script>
         if($(this).val() !="" && $(this).val() <= 3 && ($('#shipment_quantity').val() == 1))
         {
             $('#unit-price').html('<option value="100000">Upto - 1,00,000</option>');
-            $('#transit_amount').val('1200');
-            transitAmountCalculate('1200');
+            $('#transit_amount').val('{{ $settings->transit_priceOne }}');
+            transitAmountCalculate('{{ $settings->transit_priceOne }}');
 
         }
         else if($(this).val() !="" && (($(this).val()) > 3 && $(this).val() <= 6)  && ($('#shipment_quantity').val() == 1))
         {
             $('#unit-price').html('<option value="100000">Upto - 1,00,000</option>');
-            $('#transit_amount').val('1500');
-            transitAmountCalculate('1500');
+            $('#transit_amount').val('{{ $settings->transit_priceTwo }}');
+            transitAmountCalculate('{{ $settings->transit_priceTwo }}');
         }
         else if($(this).val() !="" && $(this).val() > 6 && ($('#shipment_quantity').val() == 1))
         {
             $('#unit-price').html('<option value="200000">2,00,000</option>');
-            $('#transit_amount').val('1800');
-            transitAmountCalculate('1800');
+            $('#transit_amount').val('{{ $settings->transit_priceThree }}');
+            transitAmountCalculate('{{ $settings->transit_priceThree }}');
         }
         else if($(this).val() !="" && $(this).val() > 6 && ($('#shipment_quantity').val() == 2))
         {
@@ -980,21 +980,21 @@ async defer></script>
 
         if($(this).val() !="" && $(this).val() == '200000' && ($('#shipment_quantity').val() == 2))
         {
-            $('#transit_amount').val('2000');
-            transitAmountCalculate('2000');
+            $('#transit_amount').val('{{ $settings->transit_priceFour }}');
+            transitAmountCalculate('{{ $settings->transit_priceFour }}');
 
         }
         else if($(this).val() !="" && $(this).val() == '400000' && ($('#shipment_quantity').val() == 2))
         {
-            $('#transit_amount').val('4000');
-            transitAmountCalculate('4000');
+            $('#transit_amount').val('{{ $settings->transit_priceFive }}'); 
+            transitAmountCalculate('{{ $settings->transit_priceFive }}');
         }
     });
     
 
     function transitAmountCalculate(transitPrice)
     {
-        var totalTransitTax = ((transitPrice * 18) / 100);
+        var totalTransitTax = ((transitPrice * '{{ $settings->transit_tax }}') / 100);
         $('#transit_tax').val(totalTransitTax);
         $('#transit_total_amount').val((parseInt(totalTransitTax) + parseInt(transitPrice)));
 

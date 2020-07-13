@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon_io/favicon-32x32.png') }}">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon_io/favicon-16x16.png') }}">
-        <link rel="manifest" href="/site.webmanifest">
+        {{-- <link rel="manifest" href="/site.webmanifest"> --}}
 
         <script src="https://kit.fontawesome.com/79291a13ed.js" crossorigin="anonymous"></script>
 
@@ -41,7 +41,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link href="{{ URL::asset('assets/css/toastr.min.css') }}" rel="stylesheet" type="text/css" />
+        {{-- <link href="{{ URL::asset('assets/css/toastr.min.css') }}" rel="stylesheet" type="text/css" /> --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
         <!-- Styles -->
         <style>
             .full-height {
@@ -244,9 +245,10 @@
         <script src="{{ asset('assets/js/pages/readyLogin.js') }}"></script>
         <script src="{{ asset('assets/js/toastr.min.js') }}" type="text/javascript"></script>
         <script>$(function(){ ReadyLogin.init(); });</script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
         <script>
             @if(Session::has('error'))
-                toastr["error"]("{{ Session::get('error') }}", "Oops!",
+                /* toastr["error"]("{{ Session::get('error') }}", "Oops!",
                     toastr.options = {
                         "closeButton": true,
                         "debug": false,
@@ -261,7 +263,16 @@
                         "showMethod": "fadeIn",
                         "hideMethod": "fadeOut"
                     }
-                );
+                ); */
+                swal({
+                    title: "Error!",
+                    text:  "{{ Session::get('error') }}",
+                    icon: "error",
+                    type: "error",
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+                window.setTimeout(function(){ } ,2000);
             @endif
         </script>
     </body>
