@@ -112,7 +112,7 @@
                         Bhagyanagar, Kanuru, Vijayawada-520007.<br>
                         Phone No: <b><span style="font-size:16px;">8885181818</span></b><br>
                         Mail ID: <b><span style="font-size:16px;">info@dhelsonexpress.com</span></b><br>
-                        Link: www.dhelsonexpress.com.com
+                        Link: www.dhelsonexpress.com
                     </address>
                 </div>
                 <div class="col-6 text-right">
