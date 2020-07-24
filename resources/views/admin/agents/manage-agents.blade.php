@@ -66,8 +66,9 @@
                                             <td><span class="label label-success">ACTIVE</span></td>
                                         @endif
                                         <td class="text-center">
-                                                <a href="{{ route('edit.agent', array('id' => $agent->id)) }}" data-toggle="modal" title="" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;" data-original-title="Edit User"><i class="fa fa-pencil"></i></a>
-                                                <a href="#remove-agent-{{ $agent->id }}" data-toggle="modal" title="" class="btn btn-effect-ripple btn-xs btn-danger" style="overflow: hidden; position: relative;" data-original-title="Delete User"><i class="fa fa-times"></i></a>
+                                                <a href="{{ route('edit.agent', array('id' => $agent->id)) }}" data-toggle="modal" title="Edit" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;" data-original-title="Edit User"><i class="fa fa-pencil"></i></a>
+                                                <a href="#remove-agent-{{ $agent->id }}" data-toggle="modal" title="Delete" class="btn btn-effect-ripple btn-xs btn-danger" style="overflow: hidden; position: relative;" data-original-title="Delete User"><i class="fa fa-times"></i></a>
+                                                
                                         </td>
                                     </tr>
                                     <div id="remove-agent-{{ $agent->id }}" data-id= '{{ $agent->id }}' class="modal" tabindex="-1" role="dialog" aria-hidden="true">

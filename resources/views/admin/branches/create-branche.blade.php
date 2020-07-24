@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('styles')
+{{-- <link rel="stylesheet" href="{{ asset('assets/css/site.css') }}"> --}}
+<link rel="stylesheet" href="{{ asset('assets/css/richtext.min.css') }}">
     <style>
         /* Always set the map height explicitly to define the size of the div
         * element that contains the map. */
@@ -248,6 +250,50 @@
                                     @enderror
                                 </div>
                         </div>
+
+                        <div class="form-group">
+                            <label style=" margin-top: 12px; " class="col-md-2 control-label" for="example-datepicker">Amount / Tax</label>
+                            <div class="col-sm-3" style=" margin-top: 12px; ">
+                                    <input  type="number" name="amount" value="{{ old('amount') }}" autocomplete="amount" autofocus class="form-control @error('amount') is-invalid @enderror" placeholder="Enter Amount" required>
+                                    @error('amount')
+                                        <span class="text-danger" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                            </div>
+                            <div class="col-sm-3" style=" margin-top: 12px; ">
+                            
+                                <input type="number" name="tax" value="{{ old('tax') }}" autocomplete="tax" autofocus class="form-control @error('tax') is-invalid @enderror" placeholder="Enter Tax" required>
+                                @error('tax')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-sm-4" style=" margin-top: 12px; ">
+                            
+                                <input type="number" name="total_amount" value="{{ old('total_amount') }}" autocomplete="total_amount" autofocus class="form-control @error('total_amount') is-invalid @enderror" placeholder="Enter Total Amount" required>
+                                @error('total_amount')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                    </div>
+
+                        <div class="form-group" style=" margin-top: 12px; ">
+                                
+                            <div class="col-sm-12 form-field-margin">
+                                <label class="control-label">Description</label>
+                                    <textarea id="content" required autofocus value="{{ old('descritpion') }}" class="form-control @error('descritpion') is-invalid @enderror" placeholder="Enter Description"  name="descritpion" rows="4"></textarea>
+                                        @error('descritpion')
+                                        <span class="text-danger" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                            </div>
+                        </div>
                                    
                             <div class="form-group form-actions">
                                     <div class="col-sm-7 col-sm-offset-5">
@@ -267,6 +313,12 @@
 @section('scripts')
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&libraries=places&callback=initAutocomplete"
 async defer></script>
+<script type="text/javascript" src="{{ asset('assets/js/jquery.richtext.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('#content').richText();
+    });
+</script>
     <script>
         function initAutocomplete() {
 

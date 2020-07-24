@@ -827,5 +827,20 @@ class AdminController extends Controller
         return redirect('/admin/other-settings')->with('alert', 'Not available in this version');
     }
     
+    public function branchInvoice($id)
+    {
+        $branch = Branch::find($id);
+        
+        if($branch){
+            $data['title'] = "Branch Invoice";
+            $data['branch'] = $branch; 
+            $data['agent'] = User::where('branch', $branch->branch_id)->first(); 
+
+            return view('admin.branch-invoice.print-invoice', $data);
+        }
+        else{
+            return redirect('/admin/manage-branches')->with('error', 'Invalid Branche!');
+        }
+    }
 
 }

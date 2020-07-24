@@ -95,6 +95,8 @@ Route::group(['middleware' => 'admin'], function()
     
     /*  @@@@@@@@@@  Support Routing @@@@@@@@@@ */
 
+    Route::get('/admin/{id}/branch-invoice', 'AdminController@branchInvoice')->name('branch.invoice');
+
     // Settings Routing
     Route::get('/admin/edit-profile', 'AdminController@editProfile');
     Route::post('/admin/reset-password', 'AdminController@resetPassword')->name('admin-reset-password');

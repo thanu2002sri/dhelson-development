@@ -20,7 +20,7 @@ class BranchController extends Controller
     public function index()
     {
         $data['title'] = 'Add Branch';
-        $data['agents'] = User::select('r.name as role_name', 'users.*')->join('roles as r', 'r.id', '=', 'users.role')->where('r.role', 'agent')->whereNull('users.branch')->get();
+        $data['agents'] = User::select('r.name as role_name', 'users.*')->join('roles as r', 'r.id', '=', 'users.role')->where('r.role', 'agent')->where('users.branch', '=', '')->get();
         return view('admin.branches.create-branche', $data);
     }
 
@@ -35,6 +35,9 @@ class BranchController extends Controller
             'email' => 'required|unique:branches,email|email:filter',
             'phone' => 'required|numeric|unique:branches,phone|digits_between:10,12',
             'address' => 'required',
+            'amount' => 'required',
+            'tax' => 'required',
+            'total_amount' => 'required',
             'pincode' => 'required|numeric|digits_between:6,8',
             'city' => 'required',
             'state' => 'required',
@@ -67,6 +70,10 @@ class BranchController extends Controller
         $newBranch->phone = $request->phone;
         $newBranch->address = $request->address;
         $newBranch->pincode = $request->pincode;
+        $newBranch->amount = $request->amount;
+        $newBranch->tax = $request->tax;
+        $newBranch->total_amount = $request->total_amount;
+        $newBranch->descritpion = $request->descritpion;
         $newBranch->city = $request->city;
         $newBranch->state = $request->state;
         $newBranch->country = $request->country;
