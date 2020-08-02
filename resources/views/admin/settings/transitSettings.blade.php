@@ -189,21 +189,121 @@
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                     <h3 class="modal-title" style="text-align:center;"><strong>Edit Category</strong></h3>
-                                                </div>
+                                                    </div>
                                                 <div class="modal-body text-center">
-                                                <label for="fname"></label>
-                                                  <input type="text" id="fname" name="fname" placeholder="enter category" style="margin-left:20px; padding-left:20px; text-align: start; padding-left:1px">
+                                                <div class="form-group">
+                                 <div class="form-group">
+                                    <label style=" margin-top: 12px; text-align: right;" class="col-md-3 form-field-margin control-label" for="example-select2">Category</label>
+                                    <div class="col-sm-3" style=" margin-top: 12px;" >
+                                         <select  id="distr-security-question" name="category" value="category" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 300px;" data-placeholder="Select Category" required>
+                                                <option value="">Gold</option>
+                                                <option value="">Silver</option>
+                                                <option value="">Platinum</option>
+                                            </select>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                     </div>
+                                </div>
+                                <div class="form-group">
+                                   <label style=" margin-top: 12px; text-align: right;" class="col-md-3 form-field-margin control-label" for="example-select2">Subcategory</label>
+                                  <div class="col-sm-3" style=" margin-top: 12px; ">
+                                         <select id="distr-security-question" name="subcategory" value="subcategory" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 300px;" data-placeholder="Select SubCategory" required>
+                                                <option value="">Select subcategory</option>
+                                        </select>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                <label style=" margin-top: 12px; text-align: right;" class="col-md-3 form-field-margin control-label" for="example-select2">Quality</label>
+                                   <div class="col-sm-3" style=" margin-top: 12px; ">
+                                         <select id="distr-security-question" name="quantity" value="quantity" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 300px;" data-placeholder="Select Quantity" required>
+                                                <option value="">Select Quantity</option>
+                                         </select>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                   </div>
+                                </div>
+                                <div class="form-group">
+                                <label style=" margin-top: 12px; text-align: right;" class="col-md-3 form-field-margin control-label" for="example-select2">Weight</label>
+                                   <div class="col-sm-3" style=" margin-top: 12px; width: 400px;">
+                                                <input type="number" name="weight" value="weight" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" style="width:300px; text-align: center;" placeholder="Weight" required>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                            <label style=" margin-top: 12px; text-align: right;" class="col-md-3 form-field-margin control-label" for="example-select2">Price</label>
+                                <div class="col-sm-3" style=" margin-top: 12px; width: 330px;">
+                                                <input type="number" name="price" value="number" style="text-align: center" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Price" required>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            <label style=" margin-top: 12px; text-align: right;" class="col-md-3 form-field-margin control-label" for="example-select2">Distance</label>
+                                <div class="col-sm-3" style=" margin-top: 12px; width: 330px;">
+                                                <input type="number" name="distance" value="number" style="text-align: center"  autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Distance" required>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        </div>
+                            </div>
+                            <div class="form-group">
+                            <label style=" margin-top: 12px; text-align: right;" class="col-md-3 form-field-margin control-label" for="example-select2">Transit Amount</label>
+                                 <div class="col-sm-3" style=" margin-top: 12px; width: 330px;">
+                                                <input type="number" name="transitamount" value="number" style="text-align: center"  autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Transit Amount" required>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        </div>
+                            </div>
+                            <div class="form-group">
+                            <label style=" margin-top: 12px; text-align: right;" class="col-md-3 form-field-margin control-label" for="example-select2">Transit Tax</label>
+                                <div class="col-sm-3" style=" margin-top: 12px; width: 330px;">
+                                                <input type="number" name="transittax" value="number" style="text-align: center"  autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Transit Tax" required>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        </div>
+                                </div>
+                </div>
+                </div>
+                                <div class="modal-footer">
+                                             <div class="colo-md-4">
+                                                <div class="col-sm-2" style=" margin-top: 12px; margin-left: 230px" form-field-margin control-label">
+                                                     <button type="submit" class="btn btn-effect-ripple btn-primary">Submit</button required>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <div class="colo-md-4 col-md-offset-5">
-                                                        <button type="reset" class="btn btn-effect-ripple btn-danger" style="overflow: hidden; position: relative; height:30px; margin-right:240px">Submit</button>
+                                            </div>
+                                </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                        
+                          
+                    
                                </tbody>
                         </table>
                     </div>
