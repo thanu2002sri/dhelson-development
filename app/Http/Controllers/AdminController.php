@@ -826,6 +826,28 @@ class AdminController extends Controller
         }
         return redirect('/admin/other-settings')->with('alert', 'Not available in this version');
     }
+
+    public function createCategories(Request $request)
+    {
+
+    }
+
+    public function manageSubCategories()
+    {
+        $data['title'] = "Subcategory";
+        return view('admin.settings.subCategories', $data);
+    }
+
+    public function createSubCategories(Request $request)
+    {
+
+    }
+
+    public function transitSettings()
+    {
+        $data['title'] = "Transit Settings";
+        return view('admin.settings.transitSettings', $data);
+    }
     
     public function branchInvoice($id)
     {

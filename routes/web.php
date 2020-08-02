@@ -104,6 +104,16 @@ Route::group(['middleware' => 'admin'], function()
     Route::get('/admin/other-settings', 'AdminController@otherSettings');
     Route::post('/admin/insured-settings', 'AdminController@otherSettingsUpdate')->name('insured.settings');
     Route::post('/admin/transit-settings', 'AdminController@transitSettingsUpdate')->name('transit.settings');
+
+
+    Route::get('/admin/categories', 'CategoriesController@index'); 
+    Route::post('/admin/create-category', 'CategoriesController@store')->name('create.category');
+
+    Route::get('/admin/sub-categories', 'AdminController@manageSubCategories'); 
+    Route::post('/admin/add-sub-categories', 'AdminController@createSubCategories')->name('create.sub.categories');
+
+    Route::get('/admin/transit-settings', 'AdminController@transitSettings'); 
+    Route::post('/admin/{id}/update-transit-settings', 'AdminController@updateTransitSettings');
     
 });
 
