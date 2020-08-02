@@ -38,7 +38,7 @@ div#example_wrapper {
                     <form action="{{ route('create.category') }}" method="post" class="form-horizontal form-bordered">
                     <div class="form-group">
                         <div class="col-sm-3 col-sm-offset-2">
-                                <label style="margin-top: 10px;text-align: right;" class="control-label" for="distr-first-name">Category Name</label>
+                                <label style="margin-top: 10px;text-align: right;" class="control-label" for="distr-first-name">Category Names</label>
                         </div>
                         <div class="col-sm-3">
                             
