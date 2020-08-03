@@ -871,4 +871,34 @@ class AdminController extends Controller
         }
     }
 
+    public function transitRequest()
+    {
+        $data['title'] = "Transit Request";
+        return view('admin.transit-request', $data);
+    }
+
+    public function inTransit()
+    {
+        $data['title'] = "In Transit";
+        return view('admin.in-transit', $data);
+    }
+
+    public function destinationDelivere()
+    {
+        $data['title'] = "Destination Delivere";
+        return view('admin.destination-delivere', $data);
+    }
+
+    public function delivereComplete()
+    {
+        $data['title'] = "Delivere Complete";
+        return view('admin.delivere-complete', $data);
+    }
+
+    public function pendingOrders()
+    {
+        $data['title'] = "Pending Orders";
+        return view('admin.pending-orders', $data);
+    }
+
 }
