@@ -117,9 +117,9 @@
             <br>
             <div class="background-white">
             <div class="row">
-                <div class="col-sm-12">
+                {{-- <div class="col-sm-12">
                     <div class="col-sm-8">
-                        <h3 class="text-right">Live Vehicle Tracking <span></span>...........<i class="fas fa-truck text-light-op" style="color:yellowgreen !important;" aria-hidden="true"></i></h3>
+                        
                     </div>
                     <div class="col-sm-4">
                         <h3 style="font-size:15px;" class="pull-right">Today:&nbsp;<span style="color:red !important;text-transform: uppercase;"> {{ date('dM/Y h:i:s') }}</span></h3>
@@ -127,18 +127,26 @@
                     
                 </div>
                 <hr>
-                <br>
+                <br> --}}
                 <div class="col-sm-6">
+                    <br>
+                    <h3 class="text-center">Live Vehicle Tracking <span></span>...........<i class="fas fa-truck text-light-op" style="color:yellowgreen !important;" aria-hidden="true"></i></h3>
+                    <hr>
                     <div class="border-white">
                         <div id="map"></div>
                     </div>
                 </div>
-                <div class="col-sm-6 ">
-                <ol class="progtrckr" data-progtrckr-steps="3">
-                    <li class="progtrckr-done"><span class="span">Tooltip text</span></li><!--
-                --><li class="progtrckr-done"><span class="span">Tooltip text</span></li><!--
-                --><li class="progtrckr-done"><span class="span">Tooltip text</span></li>
-                </ol>
+                <div class="col-sm-6" style="border-left: 2px solid #e4e4e491;">
+                    <br>
+                    <h3 class="text-center">Live Location Trackin <span></span>...........<i class="fa fa-map-marker text-light-op" style="color:yellowgreen !important;" aria-hidden="true"></i></h3>
+                    <hr>
+                    <div class="border-white">
+                        <ol class="progtrckr" data-progtrckr-steps="3">
+                        <li class="progtrckr-done"><span class="span">Tooltip text</span></li><!--
+                        --><li class="progtrckr-done"><span class="span">Tooltip text</span></li><!--
+                        --><li class="progtrckr-done"><span class="span">Tooltip text</span></li>
+                        </ol>
+                    </div>
                 </div>
             </div>
             </div>
@@ -251,5 +259,4 @@ async defer></script>
 
 
 @endsection
-
 

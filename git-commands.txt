@@ -1,0 +1,27 @@
+Why we are useing github?
+Answer:- 
+	--> Keeps track of code history.
+	--> Takes snapshots of your files.
+	--> You decide when to commit.
+	--> Visit snapshot anytime.
+
+
+Step-1: git init (Initialize local git repository)
+Step-2: git add . (Add all file | folders to git)
+Step-3: git status (Check status of working track)
+Step-4: git config --global user.email "admin@admin.com"
+Step-5: git config --global user.name "Admin"
+Step-6: git commit  (Commit changes)
+Step-7: git push (Push to remote repository)
+Step-8: git pull (Pull from remote repository)
+Step-9: git clone (Clone a remote repository)
+Step-10: git branch branch-name (Make a new branch)
+Step-11: git checkout branch-name (Change to branch)
+Step-12: git merge branch-name (Merge with branch inside master)
+
+
+
+
+
+Press capital ZZ (shift zz) - save & exit
+Press capital ZQ (shift zq) - exit without saving.

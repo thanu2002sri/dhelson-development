@@ -38,7 +38,10 @@
                         </a>
                         <ul>
                             <li>
+<<<<<<< HEAD
                     
+=======
+>>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                                 <a href="{{ url('/admin/add-branch') }}"><i class="fas fa-plus sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Create Branch</span></a>
                             </li>
                             <li>
@@ -131,6 +134,7 @@
                         </a>
                         <ul>
                             <li>
+<<<<<<< HEAD
                     
                                 <a href="{{ url('/admin/categories') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Category</span></a>
                             </li>
@@ -147,6 +151,18 @@
                             
                             <li>
                                 <a href="{{ url('/admin/') }}"><i class="fas fa-user-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Edit Profile</span></a>
+=======
+                                <a href="{{ url('/admin/categories') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Category</span></a>
+                            </li>
+                            <li>
+                                 <a href="{{ url('/admin/sub-categories') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Subcategory</span></a>
+                            </li>
+                            <li>
+                                 <a href="{{ url('/admin/transit-settings') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Transit Settings</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/admin/#') }}"><i class="fas fa-user-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Edit Profile</span></a>
+>>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                             </li>
                             <li>
                                 <a href="{{ url('/admin/other-settings') }}"><i class="fa fa-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Other</span></a>

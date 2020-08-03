@@ -95,6 +95,8 @@ Route::group(['middleware' => 'admin'], function()
     
     /*  @@@@@@@@@@  Support Routing @@@@@@@@@@ */
 
+    Route::get('/admin/{id}/branch-invoice', 'AdminController@branchInvoice')->name('branch.invoice');
+
     // Settings Routing
     Route::get('/admin/edit-profile', 'AdminController@editProfile');
     Route::post('/admin/reset-password', 'AdminController@resetPassword')->name('admin-reset-password');
@@ -103,14 +105,21 @@ Route::group(['middleware' => 'admin'], function()
     Route::post('/admin/insured-settings', 'AdminController@otherSettingsUpdate')->name('insured.settings');
     Route::post('/admin/transit-settings', 'AdminController@transitSettingsUpdate')->name('transit.settings');
 
-    Route::get('/admin/categories', 'AdminController@categories'); 
-    Route::post('/admin/add-categories', 'AdminController@createCategories')->name('create.categories');
+
+    Route::get('/admin/categories', 'CategoriesController@index'); 
+    Route::post('/admin/create-category', 'CategoriesController@store')->name('create.category');
 
     Route::get('/admin/sub-categories', 'AdminController@manageSubCategories'); 
     Route::post('/admin/add-sub-categories', 'AdminController@createSubCategories')->name('create.sub.categories');
 
     Route::get('/admin/transit-settings', 'AdminController@transitSettings'); 
     Route::post('/admin/{id}/update-transit-settings', 'AdminController@updateTransitSettings');
+
+    Route::get('/admin/transit-request', 'AdminController@transitRequest');
+    Route::get('/admin/in-transit', 'AdminController@inTransit');
+    Route::get('/admin/destination-delivere', 'AdminController@destinationDelivere');
+    Route::get('/admin/delivere-complete', 'AdminController@delivereComplete');
+    Route::get('/admin/pending-orders', 'AdminController@pendingOrders');
     
 });
 

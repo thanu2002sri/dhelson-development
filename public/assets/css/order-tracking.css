@@ -2,8 +2,10 @@ ol.progtrckr {
     margin: 0;
     padding: 0;
     list-style-type: none;
-  transform: 90deg;
-  overflow-y: scroll;
+    transform: 90deg;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 280px;
 }
 
 ol.progtrckr li {
@@ -12,21 +14,54 @@ ol.progtrckr li {
     line-height: 3.5em;
 }
 
-ol.progtrckr[data-progtrckr-steps="2"] li { width: 100%;height:100px;  }
-ol.progtrckr[data-progtrckr-steps="3"] li { width: 100%; height:100px; }
-ol.progtrckr[data-progtrckr-steps="4"] li { width: 100%;height:100px;  }
-ol.progtrckr[data-progtrckr-steps="5"] li { width: 100%;height:100px; }
-ol.progtrckr[data-progtrckr-steps="6"] li { width: 100%; height:100px; }
-ol.progtrckr[data-progtrckr-steps="7"] li { width: 100%;height:100px;  }
-ol.progtrckr[data-progtrckr-steps="8"] li { width: 100%;height:100px;  }
-ol.progtrckr[data-progtrckr-steps="9"] li { width: 100%; height:100px; }
+ol.progtrckr[data-progtrckr-steps="2"] li {
+    width: 100%;
+    height: 100px;
+}
+
+ol.progtrckr[data-progtrckr-steps="3"] li {
+    width: 100%;
+    height: 100px;
+}
+
+ol.progtrckr[data-progtrckr-steps="4"] li {
+    width: 100%;
+    height: 100px;
+}
+
+ol.progtrckr[data-progtrckr-steps="5"] li {
+    width: 100%;
+    height: 100px;
+}
+
+ol.progtrckr[data-progtrckr-steps="6"] li {
+    width: 100%;
+    height: 100px;
+}
+
+ol.progtrckr[data-progtrckr-steps="7"] li {
+    width: 100%;
+    height: 100px;
+}
+
+ol.progtrckr[data-progtrckr-steps="8"] li {
+    width: 100%;
+    height: 100px;
+}
+
+ol.progtrckr[data-progtrckr-steps="9"] li {
+    width: 100%;
+    height: 100px;
+}
 
 ol.progtrckr li.progtrckr-done {
     color: black;
     border-left: 4px solid yellowgreen;
+    margin-left: 2rem;
 }
+
 ol.progtrckr li.progtrckr-todo {
-    color: silver; 
+    color: silver;
     border-left: 4px solid silver;
 }
 
@@ -39,8 +74,9 @@ ol.progtrckr li:before {
     float: left;
     right: 50%;
     line-height: 1em;
-    text-align:center;
+    text-align: center;
 }
+
 ol.progtrckr li.progtrckr-done:before {
     content: "\2713";
     color: white;
@@ -64,19 +100,18 @@ ol.progtrckr li.progtrckr-todo:before {
     color: #fff;
     text-align: center;
     padding: 7px 23px;
-    
     /* Position the tooltip */
     top: -5px;
-  }
-.span::after {
+}
+
+ol.progtrckr li.progtrckr-done:after {
     content: "";
     position: absolute;
-    top: 8%;
+    top: 29.2%;
     right: 100%;
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
     border-color: transparent #00adef transparent transparent;
-    left: 6.5%;
+    left: 13.3%;
 }
-
