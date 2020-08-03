@@ -114,7 +114,8 @@ Route::group(['middleware' => 'admin'], function()
 
     Route::get('/admin/transit-settings', 'AdminController@transitSettings'); 
     Route::post('/admin/{id}/update-transit-settings', 'AdminController@updateTransitSettings');
-    
+
+    Route::get('/admin/ransit-settings', 'AdminController@transitSettings'); 
 });
 
 Route::group(['middleware' => 'agent'], function()
