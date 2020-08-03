@@ -482,7 +482,11 @@
                                             </div>
 
                                             <div class="col-sm-4 form-field-margin">
+<<<<<<< HEAD
+                                                <label class="control-label">Insured Percentage</label>
+=======
                                                 <label class="control-label">Insured Pecentage</label>
+>>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                                                 <input readonly type="text" id="insured_percentage" required name="insured_percentage" value="{{ old('insured_percentage') }}" autocomplete="insured_percentage" autofocus class="form-control form-field-margin @error('insured_percentage') is-invalid @enderror" placeholder="Enter Insured Amount" >
                                                 @error('insured_percentage')
                                                     <span class="text-danger" role="alert">
@@ -492,10 +496,98 @@
                                             </div>
 
                                         </div>
+<<<<<<< HEAD
+                                        <div class="form-group">
+                                <div class="col-sm-3" style=" margin-top: 12px;" >
+                                <label class="control-label">Category</label>
+                                         <select  id="distr-security-question" name="category" value="category" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Category" required>
+                                                <option value="">Gold</option>
+                                                <option value="">Silver</option>
+                                                <option value="">Platinum</option>
+                                            </select>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                                <div class="col-sm-3" style=" margin-top: 12px; ">
+                                <label class="control-label">Subcategory</label>
+                                         <select id="distr-security-question" name="subcategory" value="subcategory" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%;" data-placeholder="Select SubCategory" required>
+                                                <option value="">Select subcategory</option>
+                                        </select>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                 </div>
+                                 <div class="col-sm-3" style=" margin-top: 12px; ">
+                                 <label class="control-label">Quantity</label>
+                                         <select id="distr-security-question" name="quantity" value="quantity" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Quantity" required>
+                                                <option value="">Select Quantity</option>
+                                         </select>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                                 <div class="col-sm-3" style=" margin-top: 12px; ">
+                                 <label class="control-label">Weight</label>
+                                                <input type="number" name="weight" value="weight" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Weight" required>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                            </div>
+                <div class="form-group">
+                                <div class="col-sm-3" style=" margin-top: 12px; ">
+                                <label class="control-label">Price</label>
+                                                <input type="number" name="price" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Price" required>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                                <div class="col-sm-3" style=" margin-top: 12px; ">
+                                <label class="control-label">Distance</label>
+                                                <input type="number" name="distance" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Distance" required>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        </div>
+                                 <div class="col-sm-3" style=" margin-top: 12px; ">
+                                 <label class="control-label">Transit Amount</label>
+                                                <input type="number" name="transitamount" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Transit Amount" required>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        </div>
+                                <div class="col-sm-3" style=" margin-top: 12px; ">
+                                <label class="control-label">Transit Tax</label>
+                                                <input type="number" name="transittax" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Transit Tax" required>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror                                 
+                               </div>
+                                     <div class="form-group">
+                                            <div class="col-sm-4" style=" margin-top: 12px;">
+=======
 
                                         <div class="form-group">
 
                                             <div class="col-sm-4 form-field-margin">
+>>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                                                 <label class="control-label">Shipment Quantity</label>
                                                 <select shipment-quantity="shipment-quantity" id="shipment_quantity" name="shipment_quantity" style="width: 100%;" value="{{ old('shipment_quantity') }}" autocomplete="shipment_quantity" autofocus class="select-select2 @error('shipment_quantity') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Quantity" required>
 
@@ -510,7 +602,11 @@
                                                 @enderror
                                             </div>
 
+<<<<<<< HEAD
+                                            <div class="col-sm-4" style=" margin-top: 12px;">
+=======
                                             <div class="col-sm-4 form-field-margin">
+>>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                                                 <label class="control-label">Shipment Weight</label>
                                                 <select shipment-weight="shipment-weight" id="shipment_weight" name="shipment_weight" style="width: 100%;" value="{{ old('shipment_weight') }}" autocomplete="shipment_weight" autofocus class="select-select2 @error('shipment_weight') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Weight" required>
 
@@ -526,7 +622,11 @@
                                                 @enderror
                                             </div>
 
+<<<<<<< HEAD
+                                            <div class="col-sm-4" style=" margin-top: 12px;">
+=======
                                             <div class="col-sm-4 form-field-margin">
+>>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                                                 <label class="control-label">Unit Price ( Invoice Price )</label>
                                                 <select unit-price="unit-price" id="unit-price" name="unit_price" style="width: 100%;" value="{{ old('unit_price') }}" autocomplete="unit_price" autofocus class="select-select2 @error('unit_price') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Unit Price" required>
                                                     <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->

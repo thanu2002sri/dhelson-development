@@ -20,11 +20,15 @@ class CreateBranchesTable extends Migration
             $table->string('name')->length(80)->nullable();
             $table->string('email')->length(100);
             $table->string('phone')->length(15);
+<<<<<<< HEAD
+            $table->string('address')->nullable();            
+=======
             $table->string('address')->nullable();    
             $table->text('descritpion')->nullable(); 
             $table->float('amount')->default(0.00); 
             $table->float('tax')->default(0.00); 
             $table->float('total_amount')->default(0.00); 
+>>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
             $table->string('pincode')->length(10)->nullable();
             $table->string('city')->length(30);
             $table->string('state')->length(30);

@@ -8,9 +8,13 @@
     border: 0 !important;
     border-top-width: 0 !important;
 }
+<<<<<<< HEAD
+
+=======
 div#example_wrapper {
     width: 100% !important;
 }
+>>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
 </style>
 @endsection 
 @section('content')
@@ -64,7 +68,10 @@ div#example_wrapper {
                                         @endif
                                         <td class="text-center">
                                                 <a href="{{ route('edit.branch', array('id' => $branche->id)) }}" data-toggle="modal" title="" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;" data-original-title="Edit User"><i class="fa fa-pencil"></i></a>
+<<<<<<< HEAD
+=======
                                                 <a href="{{ route('branch.invoice', array('id' => $branche->id)) }}" title="Invoice" class="btn btn-effect-ripple btn-xs btn-primary" style="overflow: hidden; position: relative;"><i class="fa fa-eye"></i></a>
+>>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                                                 <a href="#remove-branch-{{ $branche->id }}" data-toggle="modal" title="" class="btn btn-effect-ripple btn-xs btn-danger" style="overflow: hidden; position: relative;" data-original-title="Delete User"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>

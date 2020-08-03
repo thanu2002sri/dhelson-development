@@ -68,7 +68,6 @@ ol.progtrckr li.progtrckr-todo {
 ol.progtrckr li:after {
     content: "\00a0\00a0";
 }
-
 ol.progtrckr li:before {
     position: relative;
     left: -1.2em;
@@ -88,7 +87,6 @@ ol.progtrckr li.progtrckr-done:before {
     border: none;
     border-radius: 2.2em;
 }
-
 ol.progtrckr li.progtrckr-todo:before {
     content: "\039F";
     color: silver;
