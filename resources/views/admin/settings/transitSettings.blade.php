@@ -189,7 +189,6 @@
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                     <h3 class="modal-title" style="text-align:center;"><strong>Edit Category</strong></h3>
-<<<<<<< HEAD
                                                     </div>
                                                 <div class="modal-body text-center">
                                                 <div class="form-group">
@@ -298,28 +297,13 @@
                                                 </div>
                                             </div>
                                 </div>
-=======
-                                                </div>
-                                                <div class="modal-body text-center">
-                                                <label for="fname"></label>
-                                                  <input type="text" id="fname" name="fname" placeholder="enter category" style="margin-left:20px; padding-left:20px; text-align: start; padding-left:1px">
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <div class="colo-md-4 col-md-offset-5">
-                                                        <button type="reset" class="btn btn-effect-ripple btn-danger" style="overflow: hidden; position: relative; height:30px; margin-right:240px">Submit</button>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-<<<<<<< HEAD
                           
                     
-=======
-                                    
-                                        
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                                </tbody>
                         </table>
                     </div>
