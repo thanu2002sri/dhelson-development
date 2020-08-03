@@ -826,15 +826,12 @@ class AdminController extends Controller
         }
         return redirect('/admin/other-settings')->with('alert', 'Not available in this version');
     }
-<<<<<<< HEAD
     
     public function categories()
     {
         $data['title'] = "Categories";
         return view('admin.settings.categories', $data);
     }
-=======
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
 
     public function createCategories(Request $request)
     {
@@ -857,10 +854,6 @@ class AdminController extends Controller
         $data['title'] = "Transit Settings";
         return view('admin.settings.transitSettings', $data);
     }
-<<<<<<< HEAD
-
-    
-=======
     
     public function branchInvoice($id)
     {
@@ -877,6 +870,5 @@ class AdminController extends Controller
             return redirect('/admin/manage-branches')->with('error', 'Invalid Branche!');
         }
     }
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
 
 }
