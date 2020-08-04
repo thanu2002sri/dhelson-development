@@ -117,9 +117,13 @@ Route::group(['middleware' => 'admin'], function()
 
     Route::get('/admin/transit-request', 'AdminController@transitRequest');
     Route::get('/admin/in-transit', 'AdminController@inTransit');
-    Route::get('/admin/destination-delivere', 'AdminController@destinationDelivere');
-    Route::get('/admin/delivere-complete', 'AdminController@delivereComplete');
-    Route::get('/admin/pending-orders', 'AdminController@pendingOrders'); 
+    Route::get('/admin/destination-deliver', 'AdminController@destinationDeliver');
+    Route::get('/admin/deliver-complete', 'AdminController@deliverComplete');
+    Route::get('/admin/pending-orders', 'AdminController@pendingOrders');
+
+    Route::get('/admin/vehicle', 'AdminController@vehicle');
+    Route::get('/admin/vehicle-assign', 'AdminController@vehicleAssign'); 
+ 
 });
 
 Route::group(['middleware' => 'agent'], function()

@@ -883,16 +883,16 @@ class AdminController extends Controller
         return view('admin.in-transit', $data);
     }
 
-    public function destinationDelivere()
+    public function destinationDeliver()
     {
-        $data['title'] = "Destination Delivere";
-        return view('admin.destination-delivere', $data);
+        $data['title'] = "Destination Deliver";
+        return view('admin.destination-deliver', $data);
     }
 
-    public function delivereComplete()
+    public function deliverComplete()
     {
-        $data['title'] = "Delivere Complete";
-        return view('admin.delivere-complete', $data);
+        $data['title'] = "Deliver Complete";
+        return view('admin.deliver-complete', $data);
     }
 
     public function pendingOrders()
@@ -900,5 +900,19 @@ class AdminController extends Controller
         $data['title'] = "Pending Orders";
         return view('admin.pending-orders', $data);
     }
+
+
+    public function vehicle()
+    {
+        $data['title'] = "Vehicle";
+        return view('admin.settings.vehicle', $data);
+    }
+    public function vehicleAssign()
+    {
+        $data['title'] = "Vehicle Assign";
+        return view('admin.settings.vehicle-assign', $data);
+    }
+
+    
 
 }

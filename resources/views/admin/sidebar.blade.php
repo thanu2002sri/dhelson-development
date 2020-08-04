@@ -111,10 +111,10 @@
                                 <a href="{{ url('/admin/in-transit') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">In-Transit Orders</span></a>
                             </li>
                             <li>
-                                <a href="{{ url('/admin/destination-delivere') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Destination Deliver Orders</span></a>
+                                <a href="{{ url('/admin/destination-deliver') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Destination Deliver Orders</span></a>
                             </li>
                             <li>
-                                <a href="{{ url('/admin/delivere-complete') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Delivery Completed Orders</span></a>
+                                <a href="{{ url('/admin/deliver-complete') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Delivery Completed Orders</span></a>
                             </li>
                             <li>
                                 <a href="{{ url('/admin/pending-orders') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Pending Orders</span></a>
@@ -149,6 +149,12 @@
                             </li>
                             <li>
                                 <a href="{{ url('/admin/other-settings') }}"><i class="fa fa-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Other</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/admin/vehicle') }}"><i class="fa fa-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Vehicle</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/admin/vehicle-assign+') }}"><i class="fa fa-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Vehicle Assign</span></a>
                             </li>
                             
                         </ul>

@@ -256,7 +256,16 @@
 
                     <!-- Right Header Navigation -->
                     <ul class="nav navbar-nav-custom pull-right">
+                    <li class="hidden-xs animation-fadeInQuick">
+                        
+                            <a href="">
+                                <strong>
+                                <i class="fa fa-bell" aria-hidden="true"></i>
+                                </strong>
+                            </a>
+                        </li>
                         <li class="hidden-xs animation-fadeInQuick">
+                        
                             <a href="">
                                 <strong>
                                         @if (Auth::check()) 
