@@ -10,11 +10,7 @@
                     <a href="{{ url('admin/manage-branches') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-info">
-<<<<<<< HEAD
                                 <i class="fa fa-university text-light-op" style="padding-top: 12px"></i>
-=======
-                                <i class="fa fa-university text-light-op"></i>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                             </div>
                             <h2 class="widget-heading h3 text-danger">
                             <strong><span data-toggle="counter" data-to="{{ $branch_count }}"></span></strong>
@@ -27,11 +23,7 @@
                     <a href="{{ url('admin/manage-agents') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-default">
-<<<<<<< HEAD
                                 <i class="fas fa-users text-light-op" style="padding-top: 12px"></i>
-=======
-                                <i class="fas fa-users text-light-op"></i>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                             </div>
                             <h2 class="widget-heading h3 text-danger">
                                 <strong><span data-toggle="counter" data-to="{{ $agent_count }}"></span></strong>
@@ -44,11 +36,7 @@
                     <a href="{{ url('admin/manage-incharges') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-default">
-<<<<<<< HEAD
                                 <i class="fas fa-users text-light-op" style="padding-top: 12px"></i>
-=======
-                                <i class="fas fa-users text-light-op"></i>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                             </div>
                             <h2 class="widget-heading h3 text-danger">
                                 <strong><span data-toggle="counter" data-to="{{ $incharge_count }}"></span></strong>
@@ -61,11 +49,7 @@
                     <a href="{{ url('admin/manage-guards') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-default">
-<<<<<<< HEAD
                                 <i class="fas fa-users text-light-op" style="padding-top: 12px"></i>
-=======
-                                <i class="fas fa-users text-light-op"></i>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                             </div>
                             <h2 class="widget-heading h3 text-danger">
                                 <strong><span data-toggle="counter" data-to="{{ $guard_count }}"></span></strong>
@@ -78,11 +62,7 @@
                     <a href="{{ url('admin/manage-customercare') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-default">
-<<<<<<< HEAD
                                 <i class="fas fa-users text-light-op" style="padding-top: 12px"></i>
-=======
-                                <i class="fas fa-users text-light-op"></i>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                             </div>
                             <h2 class="widget-heading h3 text-danger">
                                 <strong><span data-toggle="counter" data-to="{{ $customercare_count }}"></span></strong>
@@ -95,11 +75,7 @@
                     <a href="{{ url('/admin/#') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-danger">
-<<<<<<< HEAD
                                 <i class="fa fa-shopping-cart text-light-op" style="padding-top: 12px"></i>
-=======
-                                <i class="fa fa-shopping-cart text-light-op"></i>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                             </div>
                             <h2 class="widget-heading h3 text-danger">
                             <strong><span data-toggle="counter" data-to="3"></span></strong>
@@ -112,11 +88,7 @@
                     <a href="{{ url('admin/#') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-success">
-<<<<<<< HEAD
                                 <i class="fa fa-shopping-cart text-light-op" style="padding-top: 12px"></i>
-=======
-                                <i class="fa fa-shopping-cart text-light-op"></i>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                             </div>
                             <h2 class="widget-heading h3 text-success">
                                 <strong><span data-toggle="counter" data-to="8"></span></strong>
@@ -129,11 +101,7 @@
                     <a href="{{ url('/admin/#') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-default">
-<<<<<<< HEAD
                                 <i class="fas fa-truck text-light-op" style="padding-top: 12px"></i>
-=======
-                                <i class="fas fa-truck text-light-op"></i>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                             </div>
                             <h2 class="widget-heading h3">
                                 <strong><span data-toggle="counter" data-to="5"></span></strong>
@@ -147,11 +115,7 @@
                     <a href="{{ url('admin/#') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-warning">
-<<<<<<< HEAD
                                 <i class="fas fa-truck text-light-op" style="padding-top: 12px"></i>
-=======
-                                <i class="fas fa-truck text-light-op"></i>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                             </div>
                             <h2 class="widget-heading h3 text-success">
                                 <strong><span data-toggle="counter" data-to="4"></span></strong>
@@ -165,11 +129,7 @@
                     <a href="{{ url('admin/#') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-success">
-<<<<<<< HEAD
                                 <i class="fas fa-truck text-light-op" style="padding-top: 12px"></i>
-=======
-                                <i class="fas fa-truck text-light-op"></i>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                             </div>
                             <h2 class="widget-heading h3 text-success">
                                 <strong><span data-toggle="counter" data-to="6"></span></strong>
@@ -178,21 +138,12 @@
                         </div>
                     </a>
                 </div>
-<<<<<<< HEAD
                
-=======
-
-                
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                 <!-- END Simple Stats Widgets -->
             </div>
             <!-- END First Row -->
         </div>
         <!-- Page content -->
-<<<<<<< HEAD
       
 @endsection
 -
-=======
-@endsection
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
