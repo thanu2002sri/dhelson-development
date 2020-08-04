@@ -166,6 +166,8 @@ Route::group(['middleware' => 'incharge'], function()
     // Settings Routing
     Route::get('/incharge/edit-profile', 'InchargeController@editProfile');
     Route::post('/incharge/reset-password', 'InchargeController@resetPassword')->name('incharge-reset-password');
+
+    Route::get('/incharge/vehicle-assign', 'AdminController@vehicleAssign'); 
     
 }); 
 

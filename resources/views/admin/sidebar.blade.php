@@ -154,7 +154,7 @@
                                 <a href="{{ url('/admin/vehicle') }}"><i class="fa fa-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Vehicle</span></a>
                             </li>
                             <li>
-                                <a href="{{ url('/admin/vehicle-assign+') }}"><i class="fa fa-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Vehicle Assign</span></a>
+                                <a href="{{ url('/admin/vehicle-assign') }}"><i class="fa fa-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Vehicle Assign</span></a>
                             </li>
                             
                         </ul>
