@@ -68,22 +68,26 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-3" style=" margin-top: 12px; ">
-                                                <input type="place" name="price" value="place" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="From Agency" required>
+                            <div class="col-sm-3" style=" margin-top: 12px; ">
+                                         <select id="distr-security-question" name="subcategory" value="subcategory" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%;" data-placeholder="From Agency" required>
+                                                <option value="">From Agency</option>
+                                        </select>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                 </div>
+                                 <div class="col-sm-3" style=" margin-top: 12px; ">
+                                         <select id="distr-security-question" name="quantity" value="quantity" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%;" data-placeholder="To Agency" required>
+                                                <option value="">To Agency</option>
+                                         </select>
                                         @error('name')
                                             <span class="text-danger" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                 </div>
-                                <div class="col-sm-3" style=" margin-top: 12px; ">
-                                                <input type="agency" name="distance" value="agency" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="To Agency" required>
-                                        @error('name')
-                                            <span class="text-danger" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        </div>
                                  <div class="col-sm-3" style=" margin-top: 12px; ">
                                                 <input type="number" name="transitamount" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Status" required>
                                         @error('name')
@@ -92,14 +96,17 @@
                                             </span>
                                         @enderror
                                         </div>
-                                <div class="col-sm-3" style=" margin-top: 12px; ">
-                                                <input type="guard" name="transittax" value="guard" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Date" required>
+                                        <div class="col-sm-3" style=" margin-top: 12px; ">
+                                         <select id="distr-security-question" name="quantity" value="quantity" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%;" data-placeholder="Security Guard" required>
+                                                <option value="">Security Guard</option>
+                                         </select>
                                         @error('name')
                                             <span class="text-danger" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        </div>
+                                </div>
+                                
                                         <div class="col-sm-2 col-sm-offset-6" style=" margin-top: 12px; margin-left:550px; form-field-margin control-label">
                                            <button type="submit" class="btn btn-effect-ripple btn-primary">Submit</button required>
                                        </div>
