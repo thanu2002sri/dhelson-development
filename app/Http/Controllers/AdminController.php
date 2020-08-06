@@ -912,6 +912,7 @@ class AdminController extends Controller
         $data['title'] = "Vehicle Assign";
         return view('admin.settings.vehicle-assign', $data);
     }
+    
 
     
 

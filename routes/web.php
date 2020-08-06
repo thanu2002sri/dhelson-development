@@ -195,6 +195,8 @@ Route::group(['middleware' => 'customercare'], function()
     Route::post('/customercare/update-user', 'CustomerCareController@updateUser')->name('update.user');
     Route::get('/customercare/{id}/delete-user', 'CustomerCareController@deleteUser')->name('delete.user');
     Route::get('/customercare/manage-users', 'CustomerCareController@manageUsers');
+    Route::get('/customercare/booking/new orders', 'customercareController@booking/new orders');
+    
     
     // Settings Routing
     Route::get('/customercare/edit-profile', 'CustomerCareController@editProfile');

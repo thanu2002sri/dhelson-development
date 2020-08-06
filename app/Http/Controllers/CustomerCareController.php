@@ -25,11 +25,7 @@ class CustomerCareController extends Controller
     }
 
     // Users Views
-    public function addUser()
-    {
-        $data['title'] = 'Add User';
-        return view('customercare.users.addUser', $data);
-    }
+   
     
     public function createUser(Request $request)
     {
@@ -332,4 +328,11 @@ class CustomerCareController extends Controller
         }
         return $request->all();
     }
+    public function addUser()
+    {
+        $data['title'] = "Booking / New Orders";
+        $data['settings'] = DB::table('settings')->first();
+        return view('customercare.orders.create-order', $data);
+    }
+    
 }
