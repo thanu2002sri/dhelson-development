@@ -49,7 +49,7 @@
                     <a href="{{ url('/customercare/#') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-danger">
-                                <i class="fa fa-shopping-cart text-light-op"></i>
+                                <i style="padding: 19px;" class="fa fa-shopping-cart text-light-op"></i>
                             </div>
                             <h2 class="widget-heading h3 text-danger">
                             <strong><span data-toggle="counter" data-to="3"></span></strong>
@@ -62,7 +62,7 @@
                     <a href="{{ url('customercare/#') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-success">
-                                <i class="fa fa-shopping-cart text-light-op"></i>
+                                <i style="padding: 19px;" class="fa fa-shopping-cart text-light-op"></i>
                             </div>
                             <h2 class="widget-heading h3 text-success">
                                 <strong><span data-toggle="counter" data-to="8"></span></strong>
@@ -75,7 +75,7 @@
                     <a href="{{ url('/customercare/#') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-default">
-                                <i class="fas fa-truck text-light-op"></i>
+                                <i style="padding: 19px;" class="fas fa-truck text-light-op"></i>
                             </div>
                             <h2 class="widget-heading h3">
                                 <strong><span data-toggle="counter" data-to="5"></span></strong>
@@ -89,7 +89,7 @@
                     <a href="{{ url('customercare/#') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-warning">
-                                <i class="fas fa-truck text-light-op"></i>
+                                <i style="padding: 19px;" class="fas fa-truck text-light-op"></i>
                             </div>
                             <h2 class="widget-heading h3 text-success">
                                 <strong><span data-toggle="counter" data-to="4"></span></strong>
@@ -103,7 +103,7 @@
                     <a href="{{ url('customercare/#') }}" class="widget">
                         <div class="widget-content widget-content-mini text-right clearfix">
                             <div class="widget-icon pull-left themed-background-success">
-                                <i class="fas fa-truck text-light-op"></i>
+                                <i style="padding: 19px;" class="fas fa-truck text-light-op"></i>
                             </div>
                             <h2 class="widget-heading h3 text-success">
                                 <strong><span data-toggle="counter" data-to="6"></span></strong>

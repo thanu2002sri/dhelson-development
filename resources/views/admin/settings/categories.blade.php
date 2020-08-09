@@ -8,7 +8,6 @@
     border: 0 !important;
     border-top-width: 0 !important;
 }
-<<<<<<< HEAD
 input[type=text]{
     height: 30px;
     width: 200px;
@@ -21,11 +20,6 @@ input[type=text]{
 }
 
 
-=======
-div#example_wrapper {
-    width: auto !important;
-}
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
 </style>
 @endsection 
 @section('content')
@@ -48,41 +42,10 @@ div#example_wrapper {
                 <div class="block-title text-center">
                     <h2>Dhelson Express {{ $title }}</h2>                   
                 </div>
-<<<<<<< HEAD
            
                 
                
                     <table id="example" class="table table-striped table-bordered table-vcenter display">
-=======
-                <div class="col-sm-12">
-                    
-                    <form action="{{ route('create.category') }}" method="post" class="form-horizontal form-bordered">
-                    <div class="form-group">
-                        <div class="col-sm-3 col-sm-offset-2">
-                                <label style="margin-top: 10px;text-align: right;" class="control-label" for="distr-first-name">Category Names</label>
-                        </div>
-                        <div class="col-sm-3">
-                            
-                            <input type="text" required name="name" value="{{ old('name') }}" autocomplete="name" autofocus class="form-control form-field-margin @error('name') is-invalid @enderror" placeholder="Enter Category Name" >
-                            @error('name')
-                                <span class="text-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror  
-                        </div>
-                        <div class="col-sm-2 form-field-margin control-label">
-                            <button type="submit" class="btn btn-effect-ripple btn-primary">Submit</button>
-                            </div>
-                    </div>
-                </form>
-                </div>
-                <hr style="border-bottom: 1px solid #dae0e8;">
-                    <br>
-                <div class="table-responsive">
-               
-
-                    <table id="example" class="table table-striped table-bordered table-vcenter display" style="width:100%">
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                             <thead>                              
                                 <tr role="row">
                                     <th class="text-center text-nowrap">S.No</th>
@@ -157,10 +120,6 @@ div#example_wrapper {
                                         
                             </tbody>
                         </table>
-<<<<<<< HEAD
-=======
-                </div>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                     </div>
         </div>
         <!-- END Edit Distributor -->
