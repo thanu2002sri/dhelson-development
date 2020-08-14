@@ -1,0 +1,63 @@
+#include <SoftwareSerial.h>
+SoftwareSerial myGsm(10,11);
+
+void setup()
+{
+ myGsm.begin(9600);  
+ Serial.begin(9600);  
+ delay(500);
+ 
+ myGsm.println("AT+CGATT=1");
+ delay(200);
+ printSerialData();
+ 
+ myGsm.println("AT+SAPBR=3,1,\"CONTYPE\",\"GPRS\"");//setting the SAPBR,connection type is GPRS
+ delay(1000);
+ printSerialData();
+ 
+ myGsm.println("AT+SAPBR=3,1,\"APN\",\"\"");//setting the APN,2nd parameter empty works for all networks 
+ delay(5000);
+ printSerialData();
+ 
+ myGsm.println();
+ myGsm.println("AT+SAPBR=2,1");
+ delay(10000);
+ printSerialData();
+ 
+ myGsm.println("AT+HTTPINIT"); //init the HTTP request
+ delay(2000); 
+ printSerialData();
+ 
+ myGsm.println("AT+HTTPPARA=\"URL\",\"development.dhelsonexpress.com/api/gps-tracking?latitude=16.58230&longtitude=86.22339\"");// setting the httppara, 
+ //the second parameter is the website from where you want to access data 
+ delay(1000);
+ printSerialData();
+ 
+ myGsm.println();
+ myGsm.println("AT+HTTPACTION=0");//submit the GET request 
+ delay(8000);//the delay is important if the return datas are very large, the time required longer.
+ printSerialData();
+ myGsm.println("AT+HTTPREAD=0,20");// read the data from the website you access
+ delay(3000);
+ printSerialData();
+ 
+ myGsm.println("");
+ delay(1000);
+ myGsm.println("AT+HTTPTERM");// terminate HTTP service
+ printSerialData();
+
+}
+
+void loop()
+{
+}
+
+
+void printSerialData()
+{
+ while(myGsm.available()!=0)
+ Serial.write(myGsm.read());
+}
+
+
+
