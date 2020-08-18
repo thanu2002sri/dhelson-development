@@ -6,7 +6,7 @@
     <style>
          /* Always set the map height explicitly to define the size of the div
         * element that contains the map. */
-        #map {
+        #map_canvas {
             height: 280px;     
            
         }
@@ -133,7 +133,8 @@
                     <h3 class="text-center">Live Vehicle Tracking <span></span>...........<i class="fas fa-truck text-light-op" style="color:yellowgreen !important;" aria-hidden="true"></i></h3>
                     <hr>
                     <div class="border-white">
-                        <div id="map"></div>
+                        {{-- <div id="map"></div> --}}
+                        <div id="map_canvas"></div>
                     </div>
                 </div>
                 <div class="col-sm-6" style="border-left: 2px solid #e4e4e491;">
@@ -157,105 +158,151 @@
 
 
 @section('scripts')
+{{-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&sensor=false"></script> --}}
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&sensor=true&libraries=geometry"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&libraries=places&callback=initAutocomplete"
-async defer></script>   
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&libraries=places&callback=initAutocomplete"
+async defer></script>    --}}
+{{-- 
+<script type="text/javascript">
+    var myCenter =  new google.maps.LatLng(11.279432, 76.239785);
+    var marker;
+    var map;
+    var mapProp;
 
-    <script>
+    function initialize()
+    {
+        mapProp = {
+          center:myCenter,
+          zoom:15,
+          mapTypeId:google.maps.MapTypeId.ROADMAP
+          };
+        setInterval('mark()',5000);
+    }
 
-        function initAutocomplete() {
+    function mark()
+    {
+        map=new google.maps.Map(document.getElementById("map"),mapProp);
+        var file = "{{ asset('co-ordinates/2020-08-16.txt') }}";
+        $.get(file, function(txt) { 
+            var lines = txt.split("\n");
+            for (var i=0;i<lines.length;i++){
+                console.log(lines[i]);
+                var words=lines[i].split(",");
+                if ((words[0]!="")&&(words[1]!=""))
+                {
+                    marker=new google.maps.Marker({
+                          position:new google.maps.LatLng(words[0],words[1]),
+                          //map: map
+                    });
+                    marker.setMap(map);
+                    map.setCenter(new google.maps.LatLng(words[0],words[1]));
+                    document.getElementById('sat').innerHTML=words[3];
+                    document.getElementById('speed').innerHTML=words[4];
+                    document.getElementById('course').innerHTML=words[5];
+                }
+            }
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        });
+
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    
+</script> --}}
+
+<script>
+    var map, marker;
+var startPos = [16.525144, 80.611482];
+var speed = 20; // km/h
+
+var delay = 100;
+    function animateMarker(marker, coords, km_h)
+    {
+        var target = 0;
+        var km_h = km_h || 20;
+        coords.push([startPos[0], startPos[1]]);
+        
+        function goToPoint()
+        {
+            var lat = marker.position.lat();
+            var lng = marker.position.lng();
+            var step = (km_h * 1000 * delay) / 3600000; // in meters
             
-            var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 20.593683, lng: 78.962883},
-            zoom: 5,
-            mapTypeId: 'roadmap'
-            });
-
-            var input = document.getElementById('pac-input');
-            var searchBox = new google.maps.places.SearchBox(input);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-            map.addListener('bounds_changed', function() {
-            searchBox.setBounds(map.getBounds());
-            });
-            var country = state = city = area = address = pincode = street = "";
-            var markers = [];
-
-            searchBox.addListener('places_changed', function() {
-            var places = searchBox.getPlaces();
-
-            if (places.length == 0) {
-            return;
+            var dest = new google.maps.LatLng(
+            coords[target][0], coords[target][1]);                                 
+            
+            var distance =
+            google.maps.geometry.spherical.computeDistanceBetween(
+            dest, marker.position); // in meters
+            
+            var numStep = distance / step;
+            var i = 0;
+            var deltaLat = (coords[target][0] - lat) / numStep;
+            var deltaLng = (coords[target][1] - lng) / numStep;
+            
+            function moveMarker()
+            {
+                lat += deltaLat;
+                lng += deltaLng;
+                i += step;
+                
+                if (i < distance)
+                {
+                    marker.setPosition(new google.maps.LatLng(lat, lng));
+                    setTimeout(moveMarker, delay);
+                }
+                else
+                {   marker.setPosition(dest);
+                    target++;
+                    if (target == coords.length){ target = 0; }
+                    
+                    setTimeout(goToPoint, delay);
+                }
             }
-
-            markers.forEach(function(marker) {
-            marker.setMap(null);
-            });
-            markers = [];
-
-            var bounds = new google.maps.LatLngBounds();
-            places.forEach(function(place) {
-                var arrAddress = place;
-                //console.log(arrAddress.address_components);
-                arrAddress.address_components.forEach(function(address_component) {
-                    if (address_component.types[0] == "sublocality_level_2" && address_component.types[2] == "political" ) {
-                        street = address_component.long_name;
-                    }
-                    if (address_component.types[0] == "sublocality_level_1" && address_component.types[2] == "political" ) {
-                        area = address_component.long_name;
-                    }
-                    if (address_component.types[0] == "locality") {
-                    city = address_component.long_name;
-                    }
-                    if (address_component.types[0] == "administrative_area_level_1") {
-                    state = address_component.long_name;
-                    }
-                    if (address_component.types[0] == "country") {
-                    country = address_component.long_name;
-                    }
-                    if (address_component.types[0] == "postal_code") {
-                        pincode = address_component.long_name;
-                    }
-            });
-            $('#pincode').val(pincode);
-            $('#city').val(city);
-            $('#state').val(state);
-            $('#country').val(country);
-            $('#latitude').val(place.geometry.location.lat());
-            $('#longtitude').val(place.geometry.location.lng());
-            address = street+', '+area+', '+city+' - '+pincode+', '+state+', '+country;
-            $('#address').val(address);
-            /*  console.log(street+','+area+','+city+','+pincode+','+state+','+country);
-            console.log( "Latitude - "+ place.geometry.location.lat()+','+"Longitude - " + place.geometry.location.lng()); */
-            var icon = {
-                url: place.icon,
-                size: new google.maps.Size(71, 71),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(17, 34),
-                scaledSize: new google.maps.Size(25, 25)
-            };  
-
-            markers.push(new google.maps.Marker({
-                map: map,
-                icon: icon,
-                title: place.name,
-                position: place.geometry.location
-            }));
-
-            if (place.geometry.viewport) {
-                bounds.union(place.geometry.viewport);
-            } else {
-                bounds.extend(place.geometry.location);
-            }
-            });
-                map.fitBounds(bounds);
-            });
+            moveMarker();
         }
+        goToPoint();
+    }
 
-        /* =========================== Dynamic Add More =========================== */
-
-    </script>
-
-
+function initialize()
+{
+    var myOptions = {
+        zoom: 15,
+        center: new google.maps.LatLng(16.525144, 80.611482),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    
+    marker = new google.maps.Marker({
+        position: new google.maps.LatLng(startPos[0], startPos[1]),
+        map: map,
+        strokeColor: "#FF0000",
+        strokeOpacity: 1,
+        strokeWeight: 2
+    });
+    
+    google.maps.event.addListenerOnce(map, 'idle', function()
+    {
+        animateMarker(marker, [
+            // The coordinates of each point you want the marker to go to.
+            // You don't need to specify the starting position again.
+            [16.525144, 80.611482],
+            [16.525684, 80.611392],
+            [16.526373, 80.611247],
+            [16.527252, 80.611140],
+            [16.528044, 80.611172],
+            [16.529160, 80.611548],
+            [16.530081, 80.612090],
+            [16.530821, 80.612734],
+            [16.531654, 80.613228],
+            [16.531901, 80.614044]
+        ], speed);
+    });
+}
+initialize();
+</script>
 
 
 @endsection

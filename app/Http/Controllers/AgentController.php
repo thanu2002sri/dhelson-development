@@ -20,6 +20,9 @@ class AgentController extends Controller
 
     public function index()
     {
+        // $file = File::files('2020-08-16.txt');
+        // print_r($file);
+        // exit;
         $data['title'] = 'Agent Dashboard';
         return view('agent.home', $data);
     }
