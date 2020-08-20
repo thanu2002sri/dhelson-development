@@ -38,7 +38,7 @@
                         </a>
                         <ul>
                             <li>
-                                <a href="{{ url('/customercare/#') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Booking / New Orders</span></a>
+                                <a href="{{ url('/customercare/add-user') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Booking / New Orders</span></a>
                             </li>
                             <li>
                                 <a href="{{ url('/customercare/#') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Transit Request Orders</span></a>

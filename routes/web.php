@@ -117,9 +117,13 @@ Route::group(['middleware' => 'admin'], function()
 
     Route::get('/admin/transit-request', 'AdminController@transitRequest');
     Route::get('/admin/in-transit', 'AdminController@inTransit');
-    Route::get('/admin/destination-delivere', 'AdminController@destinationDelivere');
-    Route::get('/admin/delivere-complete', 'AdminController@delivereComplete');
-    Route::get('/admin/pending-orders', 'AdminController@pendingOrders'); 
+    Route::get('/admin/destination-deliver', 'AdminController@destinationDeliver');
+    Route::get('/admin/deliver-complete', 'AdminController@deliverComplete');
+    Route::get('/admin/pending-orders', 'AdminController@pendingOrders');
+
+    Route::get('/admin/vehicle', 'AdminController@vehicle');
+    Route::get('/admin/vehicle-assign', 'AdminController@vehicleAssign'); 
+ 
 });
 
 Route::group(['middleware' => 'agent'], function()
@@ -162,6 +166,8 @@ Route::group(['middleware' => 'incharge'], function()
     // Settings Routing
     Route::get('/incharge/edit-profile', 'InchargeController@editProfile');
     Route::post('/incharge/reset-password', 'InchargeController@resetPassword')->name('incharge-reset-password');
+
+    Route::get('/incharge/vehicle-assign', 'AdminController@vehicleAssign'); 
     
 }); 
 
@@ -189,6 +195,8 @@ Route::group(['middleware' => 'customercare'], function()
     Route::post('/customercare/update-user', 'CustomerCareController@updateUser')->name('update.user');
     Route::get('/customercare/{id}/delete-user', 'CustomerCareController@deleteUser')->name('delete.user');
     Route::get('/customercare/manage-users', 'CustomerCareController@manageUsers');
+    Route::get('/customercare/booking/new orders', 'customercareController@booking/new orders');
+    
     
     // Settings Routing
     Route::get('/customercare/edit-profile', 'CustomerCareController@editProfile');
