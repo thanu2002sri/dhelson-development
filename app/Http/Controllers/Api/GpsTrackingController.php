@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 use App\GpsTracking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
+use Illuminate\Support\Facades\Input;
 
 class GpsTrackingController extends Controller
 {
@@ -72,26 +74,23 @@ class GpsTrackingController extends Controller
 
     public function gpsTracking(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'latitude' => 'required',
-            'logtitude' => 'required'
+            'longtitude' => 'required'
         ]);
-        if(!empty($request->latitude) && !empty($request->logtitude))
-        {
-            $data = $request->latitude.','.$request->logtitude;
-            putLogData('gpsData', date('d-m-Y').'.txt',$data);
-            return response()->json([
-                'success' =>'TRUE',
-                'message' => 'Gps Tracking Updated Successfully!'
-            ], 200);
-        }
-        else
-        {
+        if ($validator->fails()) {
             return response()->json([
                 'success' =>'FALSE',
-                'message' => 'Coordinates not updated!'
-            ], 200);
+                'message' => $validator->errors()->first()
+            ], 401);
         }
+        $data = $request->latitude.",".$request->longtitude;
+        putLogData('gpsData', date('d-m-Y').'.txt',$data);
+        return response()->json([
+            'success' =>'TRUE',
+            'message' => 'Gps Tracking Updated Successfully!'
+        ], 200);
+
         
         
         // $newGpsTracking = new GpsTracking;

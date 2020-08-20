@@ -59,10 +59,10 @@ if (! function_exists('putLogData')) {
     {
         $output = "%message%\n";
         $formatter = new LineFormatter($output);
-        $streamHandler = new StreamHandler(asset("co-ordinates")."/".$file."");
+        $streamHandler = new StreamHandler(public_path()."/co-ordinates/".$file."");
         $streamHandler->setFormatter($formatter);
         $logger = new Logger($channel);
         $logger->pushHandler($streamHandler);
-        $logger->info(json_encode($data));
+        $logger->info($data);
     }
 }
