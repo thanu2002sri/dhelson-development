@@ -253,8 +253,6 @@
                                     @enderror
                                 </div>
                         </div>
-<<<<<<< HEAD
-=======
 
                         <div class="form-group">
                             <label style=" margin-top: 12px; " class="col-md-2 control-label" for="example-datepicker">Amount / Tax</label>
@@ -299,7 +297,6 @@
                                         @enderror
                             </div>
                         </div>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
                                    
                             <div class="form-group form-actions">
                                     <div class="col-sm-7 col-sm-offset-5">
@@ -319,15 +316,12 @@
 @section('scripts')
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&libraries=places&callback=initAutocomplete"
 async defer></script>
-<<<<<<< HEAD
-=======
 <script type="text/javascript" src="{{ asset('assets/js/jquery.richtext.js') }}"></script>
 <script>
     $(document).ready(function() {
         $('#content').richText();
     });
 </script>
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
     <script>
         function initAutocomplete() {
 

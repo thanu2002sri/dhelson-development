@@ -26,7 +26,7 @@
                 <form action="{{ route('add.branch') }}" method="post" class="form-horizontal form-bordered" enctype="multipart/form-data">
                         @csrf
                             <div class="form-group">
-                                <div class="col-sm-3" style=" margin-top: 12px;" >
+                                <div class="col-sm-3 col-sm-offset-2" style=" margin-top: 12px;" >
                                          <select  id="distr-security-question" name="category" value="category" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Category" required>
                                                 <option value="">Gold</option>
                                                 <option value="">Silver</option>
@@ -58,17 +58,9 @@
                                             </span>
                                         @enderror
                                 </div>
-                                 <div class="col-sm-3" style=" margin-top: 12px; ">
-                                                <input type="number" name="weight" value="weight" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Weight" required>
-                                        @error('name')
-                                            <span class="text-danger" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                </div>
                             </div>
                 <div class="form-group">
-                                <div class="col-sm-3" style=" margin-top: 12px; ">
+                                <div class="col-sm-3 col-sm-offset-2" style=" margin-top: 12px; ">
                                                 <input type="number" name="price" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Price" required>
                                         @error('name')
                                             <span class="text-danger" role="alert">
@@ -77,13 +69,13 @@
                                         @enderror
                                 </div>
                                 <div class="col-sm-3" style=" margin-top: 12px; ">
-                                                <input type="number" name="distance" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Distance" required>
+                                                <input type="number" name="distance" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Weight" required>
                                         @error('name')
                                             <span class="text-danger" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        </div>
+                                </div>
                                  <div class="col-sm-3" style=" margin-top: 12px; ">
                                                 <input type="number" name="transitamount" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Transit Amount" required>
                                         @error('name')
@@ -91,19 +83,38 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        </div>
-                                <div class="col-sm-3" style=" margin-top: 12px; ">
-                                                <input type="number" name="transittax" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Transit Tax" required>
+                                 </div>
+                </div>
+                 <div class="form-group">
+                                <div class="col-sm-4" style=" margin-top: 12px; ">
+                                                <input type="number" name="price" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="From Agency" required>
                                         @error('name')
                                             <span class="text-danger" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        </div>
-                                        <div class="col-sm-2 col-sm-offset-6" style=" margin-top: 12px; margin-left:550px; form-field-margin control-label">
+                                </div>
+                                <div class="col-sm-4" style=" margin-top: 12px; ">
+                                                <input type="number" name="distance" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="To Agency" required>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                                 <div class="col-sm-4" style=" margin-top: 12px; ">
+                                                <input type="number" name="transitamount" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Distance" required>
+                                        @error('name')
+                                            <span class="text-danger" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                                        <div class="col-sm-3 col-sm-offset-7" style=" margin-top: 12px; margin-left:550px; form-field-margin control-label">
                                            <button type="submit" class="btn btn-effect-ripple btn-primary">Submit</button required>
                                        </div>
                                     
+                               </div>
                                </div>
         
                                <div>
