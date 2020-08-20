@@ -139,7 +139,7 @@
                 </div>
                 <div class="col-sm-6" style="border-left: 2px solid #e4e4e491;">
                     <br>
-                    <h3 class="text-center">Live Location Trackin <span></span>...........<i class="fa fa-map-marker text-light-op" style="color:yellowgreen !important;" aria-hidden="true"></i></h3>
+                    <h3 class="text-center">Live Location Tracking <span></span>...........<i class="fa fa-map-marker text-light-op" style="color:yellowgreen !important;" aria-hidden="true"></i></h3>
                     <hr>
                     <div class="border-white">
                         <ol class="progtrckr" data-progtrckr-steps="3">
