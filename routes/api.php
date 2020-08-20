@@ -15,5 +15,7 @@ Route::middleware('auth:api')->post('/user', function (Request $request) {
 });
 
 Route::post('/gps-tracking', 'Api\GpsTrackingController@gpsTracking'); 
+Route::get('/gps-tracking-device', 'Api\GpsTrackingController@gpsTrackingDevice'); 
+
 
 Route::get('/gps', 'Api\GpsTrackingController@gps'); 

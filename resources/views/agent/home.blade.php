@@ -254,6 +254,17 @@ var delay = 100;
         goToPoint();
     }
 
+function startingPoints()
+{
+    var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
+    $.get(file, function(txt) { 
+        var line = txt.split("\n");
+        var word = line[1].split(",");
+        //console.log(word[0]+','+word[1]);
+        return ""+word[0]+", "+word[1]+"";
+    });
+}
+
 function initialize()
 {
     var myOptions = {
@@ -296,7 +307,7 @@ initialize();
 function latiAndLong()
 {
     data = [];
-    var file = "{{ asset('co-ordinates/2020-08-16.txt') }}";
+    var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
     $.get(file, function(txt) { 
         var lines = txt.split("\n");
         for (var i=0;i<lines.length;i++){

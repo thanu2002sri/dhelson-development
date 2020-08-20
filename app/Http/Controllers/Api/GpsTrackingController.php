@@ -104,4 +104,24 @@ class GpsTrackingController extends Controller
         // $newGpsTracking->save();
         
     }
+
+    public function gpsTrackingDevice(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'latitude' => 'required',
+            'longtitude' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'success' =>'FALSE',
+                'message' => $validator->errors()->first()
+            ], 401);
+        }
+        $data = $request->latitude.",".$request->longtitude;
+        putLogData('gpsData', date('d-m-Y').'.txt',$data);
+        return response()->json([
+            'success' =>'TRUE',
+            'message' => 'Gps Tracking Updated Successfully!'
+        ], 200); 
+    }
 }
