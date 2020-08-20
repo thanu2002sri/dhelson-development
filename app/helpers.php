@@ -42,7 +42,6 @@ if (! function_exists('sendMail')) {
             }
             $message->from($from_mail, $from_name);
         });  
-
     }
 }
 
@@ -52,5 +51,18 @@ if (! function_exists('getUerRole'))
     {
         $role_info = Role::find($user_role);
         return $role_info;
+    }
+}
+
+if (! function_exists('putLogData')) {
+    function putLogData($channel, $file, $data)
+    {
+        $output = "%message%\n";
+        $formatter = new LineFormatter($output);
+        $streamHandler = new StreamHandler(asset("co-ordinates")."/".$file."");
+        $streamHandler->setFormatter($formatter);
+        $logger = new Logger($channel);
+        $logger->pushHandler($streamHandler);
+        $logger->info(json_encode($data));
     }
 }

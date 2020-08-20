@@ -73,26 +73,36 @@ class GpsTrackingController extends Controller
     public function gpsTracking(Request $request)
     {
         $this->validate($request, [
-            'user_id' => 'required',
-            'pincode' => 'required|numeric|digits_between:6,8',
-            'city' => 'required',
-            'state' => 'required',
-            'country' => 'required',
-            'lattitude' => 'required',
+            'latitude' => 'required',
             'logtitude' => 'required'
         ]);
-        $newGpsTracking = new GpsTracking;
-        $newGpsTracking->user_id = $request->user_id;
-        $newGpsTracking->pincode = $request->pincode;
-        $newGpsTracking->city = $request->city;
-        $newGpsTracking->state = $request->state;
-        $newGpsTracking->country = $request->country;
-        $newGpsTracking->lattitude = $request->lattitude;
-        $newGpsTracking->logtitude = $request->logtitude;
-        $newGpsTracking->save();
-        return response()->json([
-            'success' =>'TRUE',
-            'message' => 'Gps Tracking Updated Successfully!'
-        ], 200);
+        if(!empty($request->latitude) && !empty($request->logtitude))
+        {
+            $data = $request->latitude.','.$request->logtitude;
+            putLogData('gpsData', date('d-m-Y').'.txt',$data);
+            return response()->json([
+                'success' =>'TRUE',
+                'message' => 'Gps Tracking Updated Successfully!'
+            ], 200);
+        }
+        else
+        {
+            return response()->json([
+                'success' =>'FALSE',
+                'message' => 'Coordinates not updated!'
+            ], 200);
+        }
+        
+        
+        // $newGpsTracking = new GpsTracking;
+        // $newGpsTracking->user_id = $request->user_id;
+        // $newGpsTracking->pincode = $request->pincode;
+        // $newGpsTracking->city = $request->city;
+        // $newGpsTracking->state = $request->state;
+        // $newGpsTracking->country = $request->country;
+        // $newGpsTracking->lattitude = $request->lattitude;
+        // $newGpsTracking->logtitude = $request->logtitude;
+        // $newGpsTracking->save();
+        
     }
 }

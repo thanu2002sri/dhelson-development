@@ -215,13 +215,13 @@ async defer></script>    --}}
 <script>
     var map, marker;
 var startPos = [16.525144, 80.611482];
-var speed = 20; // km/h
+var speed = 50; // km/h
 
 var delay = 100;
     function animateMarker(marker, coords, km_h)
     {
         var target = 0;
-        var km_h = km_h || 20;
+        var km_h = km_h || 50;
         coords.push([startPos[0], startPos[1]]);
         
         function goToPoint()
@@ -285,23 +285,45 @@ function initialize()
     
     google.maps.event.addListenerOnce(map, 'idle', function()
     {
-        animateMarker(marker, [
-            // The coordinates of each point you want the marker to go to.
-            // You don't need to specify the starting position again.
-            [16.525144, 80.611482],
-            [16.525684, 80.611392],
-            [16.526373, 80.611247],
-            [16.527252, 80.611140],
-            [16.528044, 80.611172],
-            [16.529160, 80.611548],
-            [16.530081, 80.612090],
-            [16.530821, 80.612734],
-            [16.531654, 80.613228],
-            [16.531901, 80.614044]
-        ], speed);
+        // animateMarker(marker, [
+        //     // The coordinates of each point you want the marker to go to.
+        //     // You don't need to specify the starting position again.
+        //     [16.525144, 80.611482],
+        //     [16.525684, 80.611392],
+        //     [16.526373, 80.611247],
+        //     [16.527252, 80.611140],
+        //     [16.528044, 80.611172],
+        //     [16.529160, 80.611548],
+        //     [16.530081, 80.612090],
+        //     [16.530821, 80.612734],
+        //     [16.531654, 80.613228],
+        //     [16.531901, 80.614044]
+        // ], speed);
+        animateMarker(marker, latiAndLong(), speed);
+        
     });
 }
 initialize();
+//console.log(latiAndLong());
+function latiAndLong()
+{
+    data = [];
+    var file = "{{ asset('co-ordinates/2020-08-16.txt') }}";
+    $.get(file, function(txt) { 
+        var lines = txt.split("\n");
+        for (var i=0;i<lines.length;i++){
+            //console.log(lines[i]);
+            var words=lines[i].split(",");
+            if ((words[0]!="")&&(words[1]!=""))
+            {
+                //console.log(words[0]+','+words[1]);
+                data[i] = [words[0],words[1]];
+            }                            
+        }
+        return data;
+    });
+    return data;
+}
 </script>
 
 
