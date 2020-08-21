@@ -310,19 +310,18 @@ function initialize()
             // [16.530821, 80.612734],
             // [16.531654, 80.613228],
             // [16.531901, 80.614044]
-            // <?php
-            //     $data = '';
-            //     foreach($gps_data as $item)
-            //     {
-            //         if(!empty($data))
-            //         {
-            //             $data .= ',';
-            //         }
-            //         $data .= '['.$item->latitude.','.$item->longtitude.']';
-            //     }
-            //     echo $data;
-            // ?>
-            startPos
+            <?php
+                $data = '';
+                foreach($gps_data as $item)
+                {
+                    if(!empty($data))
+                    {
+                        $data .= ',';
+                    }
+                    $data .= '['.$item->latitude.','.$item->longtitude.']';
+                }
+                echo $data;
+            ?>
         ], speed);
         //animateMarker(marker, latiAndLong(), speed);
         
