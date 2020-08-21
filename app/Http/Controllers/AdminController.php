@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Su3pport\Facades\Hash;
 use Auth;
 use App\User;
 use App\Role;
@@ -827,32 +827,10 @@ class AdminController extends Controller
         return redirect('/admin/other-settings')->with('alert', 'Not available in this version');
     }
     
-    public function categories()
-    {
-        $data['title'] = "Categories";
-        return view('admin.settings.categories', $data);
-    }
-
-    public function createCategories(Request $request)
-    {
-
-    }
-
-    public function manageSubCategories()
-    {
-        $data['title'] = "Subcategory";
-        return view('admin.settings.subCategories', $data);
-    }
-
-    public function createSubCategories(Request $request)
-    {
-
-    }
 
     public function transitSettings()
     {
         $data['title'] = "Transit Settings";
-        
         return view('admin.settings.transitSettings', $data);
     }
     
@@ -894,12 +872,6 @@ class AdminController extends Controller
     {
         $data['title'] = "Deliver Complete";
         return view('admin.deliver-complete', $data);
-    }
-
-    public function pendingOrders()
-    {
-        $data['title'] = "Pending Orders";
-        return view('admin.pending-orders', $data);
     }
 
     public function vehicle()
