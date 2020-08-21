@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 use Illuminate\Support\Facades\Input;
+use File;
 
 class GpsTrackingController extends Controller
 {
@@ -66,10 +67,14 @@ class GpsTrackingController extends Controller
 
     public function gps()
     {
-        return response()->json([
-            'success' =>'TRUE',
-            'data' => ['security_guard' => '7', 'booking_latitude' => '16.506174', 'booking_longtitude' => '80.648018', 'destination_latitude' => '17.700180', 'destination_longtitude' => '83.287659', 'status' => '0']
-        ], 200);
+        $filePath = public_path("co-ordinates/".date('d-m-Y').".txt");
+        if(File::exists($filePath)){
+            $file = File::get($filePath);
+            return $file;
+        } else 
+        {  
+            return "Data not exists!";   
+        }
     }
 
     public function gpsTracking(Request $request)
