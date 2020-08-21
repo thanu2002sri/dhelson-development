@@ -67,14 +67,15 @@ class GpsTrackingController extends Controller
 
     public function gps()
     {
-        $filePath = public_path("co-ordinates/".date('d-m-Y').".txt");
-        if(File::exists($filePath)){
-            $file = File::get($filePath);
-            return $file;
-        } else 
-        {  
-            return "Data not exists!";   
-        }
+        // $filePath = public_path("co-ordinates/".date('d-m-Y').".txt");
+        // if(File::exists($filePath)){
+        //     $file = File::get($filePath);
+        //     return $file;
+        // } else 
+        // {  
+        //     return "Data not exists!";   
+        // }
+        return GpsTracking::all();
     }
 
     public function gpsTracking(Request $request)
