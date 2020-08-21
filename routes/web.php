@@ -130,6 +130,7 @@ Route::group(['middleware' => 'admin'], function()
     Route::get('/admin/{id}/delete-sub-category', 'SubcategoriesController@destroy')->name('delete.sub.category');
 
     Route::get('/admin/transit-settings', 'AdminController@transitSettings'); 
+    Route::post('/admin/get-subcategories', 'SubcategoriesController@show')->name('admin.get.subcategories');; 
     Route::post('/admin/{id}/update-transit-settings', 'AdminController@updateTransitSettings');
 
     Route::get('/admin/transit-request', 'AdminController@transitRequest');

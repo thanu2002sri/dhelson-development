@@ -206,6 +206,32 @@ var startPos = [16.525144, 80.611482];
 var speed = 50; // km/h
 
 var delay = 100;
+data = {};
+var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
+$.get(file, function(txt) { 
+    var lines = txt.split("\n");
+    //console.log(lines.length-5);
+    var count = 0;
+    for (var i=(lines.length-1);i<lines.length;i++){
+        //console.log(lines[i]);
+        var words=lines[i].split(",");
+        if ((words[0]!="")&&(words[1]!=""))
+        {
+            data[count] = words[0];
+            //$('#data').val(words[0]+','+words[1]);
+            //console.log(data);
+            //data[count] = words;
+            // data['long'] = words[1];
+            return data;
+        }   
+        count++;                         
+    }
+    return data;
+});
+
+console.log(data[0]);
+
+
     function animateMarker(marker, coords, km_h)
     {
         var target = 0;
@@ -254,19 +280,9 @@ var delay = 100;
         goToPoint();
     }
 
-function startingPoints()
-{
-    var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
-    $.get(file, function(txt) { 
-        var line = txt.split("\n");
-        var word = line[1].split(",");
-        //console.log(word[0]+','+word[1]);
-        return ""+word[0]+", "+word[1]+"";
-    });
-}
-
 function initialize()
 {
+    //console.log(startPins().values());
     var myOptions = {
         zoom: 15,
         center: new google.maps.LatLng(16.525144, 80.611482),
@@ -303,21 +319,25 @@ function initialize()
     });
 }
 initialize();
-//console.log(latiAndLong());
+
+
 function latiAndLong()
 {
     data = [];
     var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
     $.get(file, function(txt) { 
         var lines = txt.split("\n");
-        for (var i=0;i<lines.length;i++){
+        //console.log(lines.length-5);
+        var count = 0;
+        for (var i=(lines.length-3);i<lines.length;i++){
             //console.log(lines[i]);
             var words=lines[i].split(",");
             if ((words[0]!="")&&(words[1]!=""))
             {
                 //console.log(words[0]+','+words[1]);
-                data[i] = [words[0],words[1]];
-            }                            
+                data[count] = [words[0],words[1]];
+            }   
+            count++;                         
         }
         return data;
     });

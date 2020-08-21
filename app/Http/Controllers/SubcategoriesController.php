@@ -64,7 +64,7 @@ class SubcategoriesController extends Controller
      */
     public function show(Subcategories $subcategories)
     {
-        //
+        print_r($category);
     }
 
     /**
