@@ -22,7 +22,7 @@ class SubcategoriesController extends Controller
     {
         $data['title'] = "Subategories";
         $data['categories'] = Categories::all();
-        $data['subcategories'] = Subcategories::select('c.name as category', 'subcategories.name', 'subcategories.id')->join('categories as c', 'c.id', '=', 'subcategories.category')->where('subcategories.status', '0')->get();
+        $data['subcategories'] = Subcategories::select('c.name as category', 'subcategories.name', 'subcategories.id', 'subcategories.status')->join('categories as c', 'c.id', '=', 'subcategories.category')->get();
         return view('admin.settings.subCategories', $data);
     }
 
@@ -87,19 +87,30 @@ class SubcategoriesController extends Controller
      */
     public function update(Request $request, Subcategories $subcategories)
     {
-        $this->validate($request, [
-            'updated_name' => 'required|unique:categories,name'
-        ]);
-        $category = Subcategories::find($request->id);
-        if(!empty($category))
+        $subcategory = Subcategories::find($request->id);
+        if(!empty($request->updated_name) && $request->updated_name==$subcategory->name)
         {
-            $category->name = $request->updated_name; 
-            $category->save();
-            return redirect('/admin/categories')->with('success', 'Subcategory Successfully Updated!');
+            $subcategory->name = $request->updated_name;
+            $subcategory->category = $request->updated_category;  
+            
         }
         else
         {
-            return redirect('/admin/categories')->with('error', 'Something went wrongt ry again!');
+            $this->validate($request, [
+                'updated_name' => 'required|unique:subcategories,name',
+            ]);
+            $subcategory->name = $request->updated_name; 
+            $subcategory->category = $request->updated_category;  
+        }
+        if(!empty($subcategory))
+        {
+            $subcategory->status = $request->status; 
+            $subcategory->save();
+            return redirect('/admin/sub-categories')->with('success', 'Subcategory Successfully Updated!');
+        }
+        else
+        {
+            return redirect('/admin/sub-categories')->with('error', 'Something went wrongt ry again!');
         }
     }
 
@@ -111,15 +122,15 @@ class SubcategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = Subcategories::find($id);
-        if(!empty($category))
+        $subcategory = Subcategories::find($id);
+        if(!empty($subcategory))
         {
-            $category->delete();
-            return redirect('/admin/categories')->with('success', 'Subcategory Successfully Deleted!');
+            $subcategory->delete();
+            return redirect('/admin/sub-categories')->with('success', 'Subcategory Successfully Deleted!');
         }
         else
         {
-            return redirect('/admin/categories')->with('error', 'Something went wrongt ry again!');
+            return redirect('/admin/sub-categories')->with('error', 'Something went wrongt ry again!');
         }
     }
 }

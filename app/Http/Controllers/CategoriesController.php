@@ -5,7 +5,7 @@ use Auth;
 use App\Categories;
 use Illuminate\Http\Request;
 use Validator;
-
+use App\Subcategories;
 class CategoriesController extends Controller
 {
     public function __construct()
@@ -115,9 +115,15 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
+        $subcategory = '';
         $category = Categories::find($id);
         if(!empty($category))
         {
+            $subcategory = Subcategories::where('category', $category->id)->first();
+            if(!empty($subcategory))
+            {
+                return redirect('/admin/categories')->with('error', 'This Category already exist in Subcategory! \r\n Please first delete in Subcategory! !');
+            }
             $category->delete();
             return redirect('/admin/categories')->with('success', 'Category Successfully Deleted!');
         }
