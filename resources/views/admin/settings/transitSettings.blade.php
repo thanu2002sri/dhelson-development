@@ -119,13 +119,11 @@
                                             </span>
                                         @enderror
                                 </div>
-                                        <div class="col-sm-3 col-sm-offset-4" style=" margin-top: 12px; form-field-margin control-label">
+                                        <div class="col-sm-3" style=" margin-top: 12px; margin-left:90px; form-field-margin control-label">
                                            <button type="submit" class="btn btn-effect-ripple btn-primary">Submit</button required>
                                        </div>
                                     
                                </div>
-                               </div>
-        
                                <div>
                                    <div class="table-responsive">
                                    <table id="example" class="table table-striped table-bordered table-vcenter display">
@@ -139,9 +137,7 @@
                                     <th class="text-center text-nowrap">Price</th>
                                     <th class="text-center text-nowrap">Distance</th>
                                     <th class="text-center text-nowrap">Transit Amount</th>
-                                    <th class="text-center text-nowrap">Transit Tax</th>
                                     <th class="text-center text-nowrap">Status</th>
-                                    
                                     <th class="text-center sorting_disabled" style="width: 73px;" rowspan="1" colspan="1" aria-label=""><i class="fa fa-flash"></i>
                                 </tr>
                                </thead>
@@ -158,7 +154,6 @@
                                         <td>25000</td>
                                         <td>50</td>
                                         <td>567</td>
-                                        <td>235</td>
                                         <td>Active</td>
                                         <td class="text-center">
                                                 <a href="#edit-customercare-1" data-toggle="modal" title="" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;" data-original-title="Edit User"><i class="fa fa-pencil"></i></a>
@@ -174,7 +169,6 @@
                                         <td>25000</td>
                                         <td>50</td>
                                         <td>567</td>
-                                        <td>235</td>
                                         <td>Active</td>
                                         
                                         <td class="text-center">
@@ -333,6 +327,9 @@
             </div>
                                
                 </form>
+                               </div>
+        
+                               
             
            
 
