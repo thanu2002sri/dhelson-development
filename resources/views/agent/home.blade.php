@@ -203,7 +203,7 @@ async defer></script>    --}}
 
 <script>
     var map, marker;
-var startPos = [ <?php echo $start_pins->latitude.','.$start_pins->longtitude; ?> ];
+var startPos = [<?php echo $start_pins->latitude.','.$start_pins->longtitude; ?>];
 var speed = 50; // km/h
 
 var delay = 100;
@@ -322,15 +322,15 @@ function initialize()
             //     }
             //     echo $data;
             // ?>
-            <?php echo '['.$start_pins->latitude.','.$start_pins->longtitude.']'; ?>
+            startPos
         ], speed);
         //animateMarker(marker, latiAndLong(), speed);
         
     });
 }
+<?php if(!empty($start_pins->latitude) && !empty($start_pins->longtitude)){?>
 initialize();
-
-
+<?php }?>
 // function latiAndLong()
 // {
 //     data = [];
