@@ -11,10 +11,10 @@ use App\User;
 
 class OrderController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(getUerRole(Auth::user()->role)->role);
-    }
 
-    
+    public function index()
+    {
+        $data['title'] = "Pending Orders";
+        return view('admin.orders.pending-orders', $data);
+    }
 }

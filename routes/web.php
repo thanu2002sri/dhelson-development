@@ -101,6 +101,14 @@ Route::group(['middleware' => 'admin'], function()
 
     /*  @@@@@@@@@@  Branch Invoice Routing @@@@@@@@@@ */
 
+    /*  @@@@@@@@@@  Orders Routing @@@@@@@@@@ */
+
+    Route::get('/admin/pending-orders', 'OrderController@index');
+
+    /*  @@@@@@@@@@  Orders Routing @@@@@@@@@@ */
+
+    
+
     /*  @@@@@@@@@@  Settings Routing @@@@@@@@@@ */
 
     Route::get('/admin/edit-profile', 'AdminController@editProfile');
@@ -116,8 +124,10 @@ Route::group(['middleware' => 'admin'], function()
     Route::post('/admin/update-category', 'CategoriesController@update')->name('update.category');
     Route::get('/admin/{id}/delete-category', 'CategoriesController@destroy')->name('delete.category');
 
-    Route::get('/admin/sub-categories', 'AdminController@manageSubCategories'); 
-    Route::post('/admin/add-sub-categories', 'AdminController@createSubCategories')->name('create.sub.categories');
+    Route::get('/admin/sub-categories', 'SubcategoriesController@index'); 
+    Route::post('/admin/create-sub-category', 'SubcategoriesController@store')->name('create.sub.category');
+    Route::post('/admin/update-sub-category', 'SubcategoriesController@update')->name('update.sub.category');
+    Route::get('/admin/{id}/delete-sub-category', 'SubcategoriesController@destroy')->name('delete.sub.category');
 
     Route::get('/admin/transit-settings', 'AdminController@transitSettings'); 
     Route::post('/admin/{id}/update-transit-settings', 'AdminController@updateTransitSettings');
@@ -126,7 +136,7 @@ Route::group(['middleware' => 'admin'], function()
     Route::get('/admin/in-transit', 'AdminController@inTransit');
     Route::get('/admin/destination-deliver', 'AdminController@destinationDeliver');
     Route::get('/admin/deliver-complete', 'AdminController@deliverComplete');
-    Route::get('/admin/pending-orders', 'AdminController@pendingOrders');
+    
 
     Route::get('/admin/vehicle', 'AdminController@vehicle');
     Route::get('/admin/vehicle-assign', 'AdminController@vehicleAssign'); 
