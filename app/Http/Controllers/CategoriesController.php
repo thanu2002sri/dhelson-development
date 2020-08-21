@@ -1,13 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Categories;
 use Illuminate\Http\Request;
 use Validator;
 
 class CategoriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +20,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $data['title'] = "Categories";
+        $data['categories'] = Categories::where('status', '0')->get();
         return view('admin.settings.categories', $data);
     }
 
@@ -38,10 +43,10 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:users,name'
+            'name' => 'required|unique:categories,name'
         ]);
         $newCategory = new Categories;
-        $newCategory->country = $request->name; 
+        $newCategory->name = $request->name; 
         $newCategory->save();
         return redirect('/admin/categories')->with('success', 'Category Successfully Created!');
     }
@@ -77,7 +82,20 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, Categories $categories)
     {
-        //
+        $this->validate($request, [
+            'updated_name' => 'required|unique:categories,name'
+        ]);
+        $category = Categories::find($request->id);
+        if(!empty($category))
+        {
+            $category->name = $request->updated_name; 
+            $category->save();
+            return redirect('/admin/categories')->with('success', 'Category Successfully Updated!');
+        }
+        else
+        {
+            return redirect('/admin/categories')->with('error', 'Something went wrongt ry again!');
+        }
     }
 
     /**
@@ -86,8 +104,17 @@ class CategoriesController extends Controller
      * @param  \App\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categories $categories)
+    public function destroy($id)
     {
-        //
+        $category = Categories::find($id);
+        if(!empty($category))
+        {
+            $category->delete();
+            return redirect('/admin/categories')->with('success', 'Category Successfully Deleted!');
+        }
+        else
+        {
+            return redirect('/admin/categories')->with('error', 'Something went wrongt ry again!');
+        }
     }
 }

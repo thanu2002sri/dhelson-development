@@ -95,9 +95,14 @@ Route::group(['middleware' => 'admin'], function()
     
     /*  @@@@@@@@@@  Support Routing @@@@@@@@@@ */
 
+    /*  @@@@@@@@@@  Branch Invoice Routing @@@@@@@@@@ */
+
     Route::get('/admin/{id}/branch-invoice', 'AdminController@branchInvoice')->name('branch.invoice');
 
-    // Settings Routing
+    /*  @@@@@@@@@@  Branch Invoice Routing @@@@@@@@@@ */
+
+    /*  @@@@@@@@@@  Settings Routing @@@@@@@@@@ */
+
     Route::get('/admin/edit-profile', 'AdminController@editProfile');
     Route::post('/admin/reset-password', 'AdminController@resetPassword')->name('admin-reset-password');
 
@@ -108,6 +113,8 @@ Route::group(['middleware' => 'admin'], function()
 
     Route::get('/admin/categories', 'CategoriesController@index'); 
     Route::post('/admin/create-category', 'CategoriesController@store')->name('create.category');
+    Route::post('/admin/update-category', 'CategoriesController@update')->name('update.category');
+    Route::get('/admin/{id}/delete-category', 'CategoriesController@destroy')->name('delete.category');
 
     Route::get('/admin/sub-categories', 'AdminController@manageSubCategories'); 
     Route::post('/admin/add-sub-categories', 'AdminController@createSubCategories')->name('create.sub.categories');
@@ -123,6 +130,8 @@ Route::group(['middleware' => 'admin'], function()
 
     Route::get('/admin/vehicle', 'AdminController@vehicle');
     Route::get('/admin/vehicle-assign', 'AdminController@vehicleAssign'); 
+
+    /*  @@@@@@@@@@  Settings Routing @@@@@@@@@@ */
  
 });
 

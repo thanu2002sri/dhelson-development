@@ -852,6 +852,7 @@ class AdminController extends Controller
     public function transitSettings()
     {
         $data['title'] = "Transit Settings";
+        
         return view('admin.settings.transitSettings', $data);
     }
     
@@ -901,19 +902,15 @@ class AdminController extends Controller
         return view('admin.pending-orders', $data);
     }
 
-
     public function vehicle()
     {
         $data['title'] = "Vehicle";
         return view('admin.settings.vehicle', $data);
     }
+
     public function vehicleAssign()
     {
         $data['title'] = "Vehicle Assign";
         return view('admin.settings.vehicle-assign', $data);
     }
-    
-
-    
-
 }

@@ -1,16 +1,15 @@
 @extends('layouts.app')
 @section('styles')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-    <link rel="stylesheet" typel="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <style>
-        .dataTables_wrapper>div {
+         .dataTables_wrapper>div {
             background-color: #ffffff !important;
             border: 0 !important;
             border-top-width: 0 !important;
         }
 
-        div#example_wrapper {
-            width: auto !important;
+       div#example_wrapper {
+            width: 100% !important;
         }
 
     </style>
@@ -36,15 +35,14 @@
                 <h2>Dhelson Express {{ $title }}</h2>
             </div>
             <div class="col-sm-12">
-
                 <form action="{{ route('create.category') }}" method="post" class="form-horizontal form-bordered">
+                    <br>
+                    @csrf
                     <div class="form-group">
-                        <div class="col-sm-3 col-sm-offset-2">
-                            <label style="margin-top: 10px;text-align: right;" class="control-label"
-                                for="distr-first-name">Category Names</label>
+                        <div class="col-sm-2 col-sm-offset-3" style="margin-top: 10px;text-align: center;">
+                            <label class="control-label" for="distr-first-name">Category Names</label>
                         </div>
-                        <div class="col-sm-3">
-
+                        <div class="col-sm-3" style="margin-top: 10px;">
                             <input type="text" required name="name" value="{{ old('name') }}" autocomplete="name" autofocus
                                 class="form-control form-field-margin @error('name') is-invalid @enderror"
                                 placeholder="Enter Category Name">
@@ -54,111 +52,99 @@
                             </span>
                             @enderror
                         </div>
-                        <div class="col-sm-2 form-field-margin control-label">
-                            <button type="submit" class="btn btn-effect-ripple btn-primary">Submit</button>
+                        <div class="col-sm-2 form-field-margin control-label"  style="margin-top: 3px;">
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </form>
             </div>
             <hr style="border-bottom: 1px solid #dae0e8;">
             <br>
-            <div class="table-responsive">
-
-
+            <div class="">
+               
                 <table id="example" class="table table-striped table-bordered table-vcenter display" style="width:100%">
                     <thead>
                         <tr role="row">
                             <th class="text-center text-nowrap">S.No</th>
                             <th class="text-center text-nowrap">Category name</th>
                             <th class="text-center text-nowrap">Status</th>
-                            <th class="text-center sorting_disabled" style="width: 73px;" rowspan="1" colspan="1"
-                                aria-label=""><i class="fa fa-flash"></i>
+                            <th class="text-center sorting_disabled" style="width: 73px;" rowspan="1" colspan="1" aria-label=""><i class="fa fa-flash"></i>
                         </tr>
                     </thead>
-
-
                     <tbody>
-
+                        
+                        @foreach ($categories as $key => $category)
                         <tr>
-                            <td>1</td>
-                            <td>Gold</td>
-                            <td>Active</td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $category->name }}</td>
+                            @if ($category->name!=0)
+                                <td>Deactive</td>
+                            @else
+                                <td>Active</td>
+                            @endif
+                            
                             <td class="text-center">
-                                <a href="#edit-customercare-1" data-toggle="modal" title=""
-                                    class="btn btn-effect-ripple btn-xs btn-success"
-                                    style="overflow: hidden; position: relative;" data-original-title="Edit User"><i
-                                        class="fa fa-pencil"></i></a>
-                                <a href="#remove-customercare-1" data-toggle="modal" title=""
-                                    class="btn btn-effect-ripple btn-xs btn-danger"
-                                    style="overflow: hidden; position: relative;" data-original-title="Delete User"><i
-                                        class="fa fa-times"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Gold</td>
-                            <td>Active</td>
-                            <td class="text-center">
-                                <a href="#edit-customercare-1" data-toggle="modal" title=""
-                                    class="btn btn-effect-ripple btn-xs btn-success"
-                                    style="overflow: hidden; position: relative;" data-original-title="Edit User"><i
-                                        class="fa fa-pencil"></i></a>
-                                <a href="#remove-customercare-1" data-toggle="modal" title=""
-                                    class="btn btn-effect-ripple btn-xs btn-danger"
-                                    style="overflow: hidden; position: relative;" data-original-title="Delete User"><i
-                                        class="fa fa-times"></i></a>
+                                <a href="#edit-category-1" data-toggle="modal" title="Edit" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;" data-original-title="Edit Category">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="#remove-category-{{ $loop->iteration }}" data-toggle="modal" title="Delete" class="btn btn-effect-ripple btn-xs btn-danger" style="overflow: hidden; position: relative;" data-original-title="Delete Category">
+                                    <i class="fa fa-times"></i>
+                                </a>
                             </td>
                         </tr>
 
-                        <div id="remove-customercare-1" data-id='1' class="modal" tabindex="-1" role="dialog"
-                            aria-hidden="true">
+                        <div id="remove-category-{{ $loop->iteration }}" data-id='{{ $category->id }}' class="modal" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog modal-md">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">&times;</button>
-                                        <h3 class="modal-title"><strong>Delete Support</strong></h3>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h3 class="modal-title text-center"><strong>Delete Category</strong></h3>
                                     </div>
                                     <div class="modal-body text-center">
-                                        Are you sure you want to delete the Support?
+                                        Are you sure you want to delete the <b style="color: red;">{{ $category->name }}</b> Category?
                                     </div>
                                     <div class="modal-footer">
                                         <div class="colo-md-4 col-md-offset-5">
-                                            <a href="{{ route('delete.customercare', ['id' => 1]) }}"
-                                                class="btn btn-effect-ripple btn-primary pull-left">YES</a>
-                                            <button type="button" class="btn btn-effect-ripple btn-danger pull-left"
-                                                data-dismiss="modal">NO</button>
+                                            <a href="{{ route('delete.category', array('id' => $category->id )) }}" class="btn btn-effect-ripple btn-primary pull-left">YES</a>
+                                            <button type="button" class="btn btn-effect-ripple btn-danger pull-left" data-dismiss="modal">NO</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div id="edit-customercare-1" data-id='1' class="modal" tabindex="-1" role="dialog"
-                            aria-hidden="true">
+                        
+                        <div id="edit-category-{{ $loop->iteration }}" data-id='1' class="modal" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog modal-md">
                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">&times;</button>
-                                        <h3 class="modal-title"><strong>Edit Category</strong></h3>
-                                    </div>
-                                    <div class="modal-body text-center">
-                                        <label for="fname"></label>
-                                        <input type="text" id="fname" name="fname" placeholder="enter category"
-                                            style="margin-left:20px; padding-left:20px; text-align: start; padding-left:1px">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <div class="colo-md-4 col-md-offset-5">
-                                            <button type="reset" class="btn btn-effect-ripple btn-danger"
-                                                style="overflow: hidden; position: relative; height:30px; margin-right:240px">Submit</button>
+                                    <form action="{{ route('update.category') }}" method="post" class="form-horizontal form-bordered">
+                                        <br>
+                                        @csrf
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h3 class="modal-title text-center"><strong>Edit Category</strong></h3>
                                         </div>
-                                    </div>
+                                        <div class="modal-body text-center">
+                                            <div class="form-group">
+                                                <div style="margin-top: 10px;">
+                                                    <input type="text" required name="updated_name" autocomplete="updated_name" value="{{ $category->name }}" autofocus class="form-control form-field-margin @error('updated_name') is-invalid @enderror" placeholder="Enter Category Name">
+                                                    @error('updated_name')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="colo-md-4 col-md-offset-5">
+                                                <button type="submit" name="id" value="{{ $category->id }}" class="btn btn-effect-ripple btn-primary" style="overflow: hidden; position: relative; height:30px; margin-right:240px">Update</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-
-
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -172,8 +158,9 @@
 
 @section('scripts')
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script>
-        $('#example').DataTable();
+        $('#example').DataTable({
+            responsive: true
+        });
     </script>
 @endsection
