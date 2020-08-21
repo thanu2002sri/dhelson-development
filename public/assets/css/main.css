@@ -1852,7 +1852,7 @@ input[type="email"].form-control.input-lg {
 .input-group .form-control {
     margin-top: 0;
 }
-
+-
 .form-control:focus {
     border-color: #00adef;
 }
