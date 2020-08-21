@@ -15,6 +15,7 @@ use DataTables;
 use App\Branch;
 use App\Categories;
 use App\Subcategories;
+use App\GpsTracking;
 
 class AdminController extends Controller
 {

@@ -95,8 +95,8 @@ class GpsTrackingController extends Controller
         $newGpsTracking->latitude = $request->latitude;
         $newGpsTracking->longtitude = $request->longtitude;
         $newGpsTracking->save();
-        $data = $request->latitude.",".$request->longtitude.",".$request->gps_status;
-        putLogData('gpsData', date('d-m-Y').'.txt',$data);
+        // $data = $request->latitude.",".$request->longtitude.",".$request->gps_status;
+        // putLogData('gpsData', date('d-m-Y').'.txt',$data);
         return response()->json([
             'success' =>'TRUE',
             'message' => 'Gps Tracking Updated Successfully!'
@@ -123,8 +123,8 @@ class GpsTrackingController extends Controller
         {
             $newGpsTracking->latitude = $request->latitude;
             $newGpsTracking->longtitude = $request->longtitude;
-            $data = $request->latitude.",".$request->longtitude.",".$request->gps_status;
-            putLogData('gpsData', date('d-m-Y').'.txt',$data);
+            // $data = $request->latitude.",".$request->longtitude.",".$request->gps_status;
+            // putLogData('gpsData', date('d-m-Y').'.txt',$data);
         }
         else
         {

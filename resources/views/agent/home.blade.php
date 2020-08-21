@@ -128,6 +128,7 @@
                 </div>
                 <hr>
                 <br> --}}
+                
                 <div class="col-sm-12">
                     <br>
                     <h3 class="text-center">Live Vehicle Tracking <span></span>...........<i class="fas fa-truck text-light-op" style="color:yellowgreen !important;" aria-hidden="true"></i></h3>
@@ -300,21 +301,25 @@ function initialize()
     
     google.maps.event.addListenerOnce(map, 'idle', function()
     {
-        // animateMarker(marker, [
-        //     // The coordinates of each point you want the marker to go to.
-        //     // You don't need to specify the starting position again.
-        //     [16.525144, 80.611482],
-        //     [16.525684, 80.611392],
-        //     [16.526373, 80.611247],
-        //     [16.527252, 80.611140],
-        //     [16.528044, 80.611172],
-        //     [16.529160, 80.611548],
-        //     [16.530081, 80.612090],
-        //     [16.530821, 80.612734],
-        //     [16.531654, 80.613228],
-        //     [16.531901, 80.614044]
-        // ], speed);
-        animateMarker(marker, latiAndLong(), speed);
+        animateMarker(marker, [
+            // The coordinates of each point you want the marker to go to.
+            // You don't need to specify the starting position again.
+            // [16.525144, 80.611482],
+            // [16.525684, 80.611392],
+            // [16.526373, 80.611247],
+            // [16.527252, 80.611140],
+            // [16.528044, 80.611172],
+            // [16.529160, 80.611548],
+            // [16.530081, 80.612090],
+            // [16.530821, 80.612734],
+            // [16.531654, 80.613228],
+            // [16.531901, 80.614044]
+            
+            @foreach($gps_data as $item)
+                print_r();
+            @endforeach  
+        ], speed);
+        //animateMarker(marker, latiAndLong(), speed);
         
     });
 }

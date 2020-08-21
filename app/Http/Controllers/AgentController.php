@@ -11,6 +11,7 @@ use File;
 use Validator;
 use Response;
 use Illuminate\Support\Facades\DB;
+use App\GpsTracking;
 class AgentController extends Controller
 {
     public function __construct()
@@ -24,6 +25,7 @@ class AgentController extends Controller
         // print_r($file);
         // exit;
         $data['title'] = 'Agent Dashboard';
+        $data['gps_data'] = GpsTracking::where('created_at', '>=', date('Y-m-d').' 00:00:00')->get();
         return view('agent.home', $data);
     }
 
