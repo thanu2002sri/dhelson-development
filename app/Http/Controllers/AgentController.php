@@ -25,6 +25,7 @@ class AgentController extends Controller
         // print_r($file);
         // exit;
         $data['title'] = 'Agent Dashboard';
+        $data['start_pins'] = GpsTracking::where('created_at', '>=', date('Y-m-d').' 00:00:00')->orderBy('id', 'desc')->first();
         $data['gps_data'] = GpsTracking::where('created_at', '>=', date('Y-m-d').' 00:00:00')->get();
         return view('agent.home', $data);
     }

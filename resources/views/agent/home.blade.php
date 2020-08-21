@@ -203,36 +203,32 @@ async defer></script>    --}}
 
 <script>
     var map, marker;
-var startPos = [16.525144, 80.611482];
+var startPos = [<?php echo $start_pins->latitude.','.$start_pins->longtitude; ?>];
 var speed = 50; // km/h
 
 var delay = 100;
-data = {};
-var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
-$.get(file, function(txt) { 
-    var lines = txt.split("\n");
-    //console.log(lines.length-5);
-    var count = 0;
-    for (var i=(lines.length-1);i<lines.length;i++){
-        //console.log(lines[i]);
-        var words=lines[i].split(",");
-        if ((words[0]!="")&&(words[1]!=""))
-        {
-            data[count] = words[0];
-            //$('#data').val(words[0]+','+words[1]);
-            //console.log(data);
-            //data[count] = words;
-            // data['long'] = words[1];
-            return data;
-        }   
-        count++;                         
-    }
-    return data;
-});
-
-console.log(data[0]);
-
-
+// data = {};
+// var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
+// $.get(file, function(txt) { 
+//     var lines = txt.split("\n");
+//     //console.log(lines.length-5);
+//     var count = 0;
+//     for (var i=(lines.length-1);i<lines.length;i++){
+//         //console.log(lines[i]);
+//         var words=lines[i].split(",");
+//         if ((words[0]!="")&&(words[1]!=""))
+//         {
+//             data[count] = words[0];
+//             //$('#data').val(words[0]+','+words[1]);
+//             //console.log(data);
+//             //data[count] = words;
+//             // data['long'] = words[1];
+//             return data;
+//         }   
+//         count++;                         
+//     }
+//     return data;
+// });
     function animateMarker(marker, coords, km_h)
     {
         var target = 0;
@@ -286,7 +282,7 @@ function initialize()
     //console.log(startPins().values());
     var myOptions = {
         zoom: 15,
-        center: new google.maps.LatLng(16.525144, 80.611482),
+        center: new google.maps.LatLng(<?php echo $start_pins->latitude.','.$start_pins->longtitude; ?>),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -314,10 +310,18 @@ function initialize()
             // [16.530821, 80.612734],
             // [16.531654, 80.613228],
             // [16.531901, 80.614044]
-            
-            @foreach($gps_data as $item)
-                print_r();
-            @endforeach  
+            <?php
+                $data = '';
+                foreach($gps_data as $item)
+                {
+                    if(!empty($data))
+                    {
+                        $data .= ',';
+                    }
+                    $data .= '['.$item->latitude.','.$item->longtitude.']';
+                }
+                echo $data;
+            ?>
         ], speed);
         //animateMarker(marker, latiAndLong(), speed);
         
@@ -326,28 +330,28 @@ function initialize()
 initialize();
 
 
-function latiAndLong()
-{
-    data = [];
-    var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
-    $.get(file, function(txt) { 
-        var lines = txt.split("\n");
-        //console.log(lines.length-5);
-        var count = 0;
-        for (var i=(lines.length-3);i<lines.length;i++){
-            //console.log(lines[i]);
-            var words=lines[i].split(",");
-            if ((words[0]!="")&&(words[1]!=""))
-            {
-                //console.log(words[0]+','+words[1]);
-                data[count] = [words[0],words[1]];
-            }   
-            count++;                         
-        }
-        return data;
-    });
-    return data;
-}
+// function latiAndLong()
+// {
+//     data = [];
+//     var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
+//     $.get(file, function(txt) { 
+//         var lines = txt.split("\n");
+//         //console.log(lines.length-5);
+//         var count = 0;
+//         for (var i=(lines.length-3);i<lines.length;i++){
+//             //console.log(lines[i]);
+//             var words=lines[i].split(",");
+//             if ((words[0]!="")&&(words[1]!=""))
+//             {
+//                 //console.log(words[0]+','+words[1]);
+//                 data[count] = [words[0],words[1]];
+//             }   
+//             count++;                         
+//         }
+//         return data;
+//     });
+//     return data;
+// }
 </script>
 
 
