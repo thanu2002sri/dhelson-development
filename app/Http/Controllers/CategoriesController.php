@@ -20,7 +20,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $data['title'] = "Categories";
-        $data['categories'] = Categories::where('status', '0')->get();
+        $data['categories'] = Categories::all();
         return view('admin.settings.categories', $data);
     }
 
@@ -82,13 +82,22 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, Categories $categories)
     {
-        $this->validate($request, [
-            'updated_name' => 'required|unique:categories,name'
-        ]);
         $category = Categories::find($request->id);
-        if(!empty($category))
+        if(!empty($request->updated_name) && $request->updated_name==$category->name)
         {
             $category->name = $request->updated_name; 
+        }
+        else
+        {
+            $this->validate($request, [
+                'updated_name' => 'required|unique:categories,name',
+            ]);
+            $category->name = $request->updated_name; 
+        }
+        
+        if(!empty($category))
+        {
+            $category->status = $request->status; 
             $category->save();
             return redirect('/admin/categories')->with('success', 'Category Successfully Updated!');
         }

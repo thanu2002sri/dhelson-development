@@ -21,8 +21,8 @@ class SubcategoriesController extends Controller
     public function index()
     {
         $data['title'] = "Subategories";
-        $data['categories'] = Categories::where('status', '0')->get();
-        $data['subcategories'] = Subcategories::where('status', '0')->get();
+        $data['categories'] = Categories::all();
+        $data['subcategories'] = Subcategories::select('c.name as category', 'subcategories.name', 'subcategories.id')->join('categories as c', 'c.id', '=', 'subcategories.category')->where('subcategories.status', '0')->get();
         return view('admin.settings.subCategories', $data);
     }
 

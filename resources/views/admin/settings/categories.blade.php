@@ -11,7 +11,9 @@
        div#example_wrapper {
             width: 100% !important;
         }
-
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            padding-left: 0px !important;
+        }
     </style>
 @endsection
 @section('content')
@@ -77,7 +79,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $category->name }}</td>
-                            @if ($category->name!=0)
+                            @if ($category->status!=0)
                                 <td>Deactive</td>
                             @else
                                 <td>Active</td>
@@ -116,18 +118,35 @@
                         <div id="edit-category-{{ $loop->iteration }}" data-id='1' class="modal" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog modal-md">
                                 <div class="modal-content">
-                                    <form action="{{ route('update.category') }}" method="post" class="form-horizontal form-bordered">
-                                        <br>
+                                    <form action="{{ route('update.category') }}" method="post">
                                         @csrf
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                             <h3 class="modal-title text-center"><strong>Edit Category</strong></h3>
                                         </div>
                                         <div class="modal-body text-center">
-                                            <div class="form-group">
-                                                <div style="margin-top: 10px;">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-sm-offset-3" style="margin-top: 10px;">
                                                     <input type="text" required name="updated_name" autocomplete="updated_name" value="{{ $category->name }}" autofocus class="form-control form-field-margin @error('updated_name') is-invalid @enderror" placeholder="Enter Category Name">
                                                     @error('updated_name')
+                                                    <span class="text-danger" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-sm-6 col-sm-offset-3" style="margin-top: 10px;">
+                                                    <select id="distr-security-question" name="status" autocomplete="status" autofocus class="form-control select-select2 @error('status') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Status">
+                                                        @if ($category->status!=0)
+                                                            <option selected value="{{ $category->status }}">Deactive</option>
+                                                            <option value="0">Active</option>
+                                                        @else
+                                                            <option selected value="{{ $category->status }}">Active</option>
+                                                            <option value="1">Deactive</option>
+                                                        @endif
+                                                        
+                                                        <!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                    </select>
+                                                    @error('status')
                                                     <span class="text-danger" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>

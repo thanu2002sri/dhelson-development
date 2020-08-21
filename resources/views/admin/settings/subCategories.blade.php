@@ -78,18 +78,16 @@
                             @foreach ($subcategories as $key => $subcategy)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>Active</td>
+                                    <td>{{ $subcategy->category }}</td>
+                                    <td>{{ $subcategy->name }}</td>
+                                    @if ($subcategy->status!=0)
+                                        <td>Deactive</td>
+                                    @else
+                                        <td>Active</td>
+                                    @endif
                                     <td class="text-center">
-                                        <a href="#edit-customercare-1" data-toggle="modal" title=""
-                                            class="btn btn-effect-ripple btn-xs btn-success"
-                                            style="overflow: hidden; position: relative;" data-original-title="Edit User"><i
-                                                class="fa fa-pencil"></i></a>
-                                        <a href="#remove-customercare-1" data-toggle="modal" title=""
-                                            class="btn btn-effect-ripple btn-xs btn-danger"
-                                            style="overflow: hidden; position: relative;"
-                                            data-original-title="Delete User"><i class="fa fa-times"></i></a>
+                                        <a href="#edit-customercare-1" data-toggle="modal" title="" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;" data-original-title="Edit User"><i class="fa fa-pencil"></i></a>
+                                        <a href="#remove-customercare-1" data-toggle="modal" title="" class="btn btn-effect-ripple btn-xs btn-danger"style="overflow: hidden; position: relative;" data-original-title="Delete User"><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -105,7 +103,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="colo-md-4 col-md-offset-5">
-                                                <a href="{{ route('delete.customercare', ['id' => 1]) }}" class="btn btn-effect-ripple btn-primary pull-left">YES</a>
+                                                <a href="{{ route('delete.sub.category', ['id' => 1]) }}" class="btn btn-effect-ripple btn-primary pull-left">YES</a>
                                                 <button type="button" class="btn btn-effect-ripple btn-danger pull-left" data-dismiss="modal">NO</button>
                                             </div>
                                         </div>
