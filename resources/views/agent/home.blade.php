@@ -203,7 +203,7 @@ async defer></script>    --}}
 
 <script>
     var map, marker;
-var startPos = [<?php echo $start_pins->latitude.','.$start_pins->longtitude; ?>];
+var startPos = [ <?php echo $start_pins->latitude.','.$start_pins->longtitude; ?> ];
 var speed = 50; // km/h
 
 var delay = 100;
@@ -310,18 +310,19 @@ function initialize()
             // [16.530821, 80.612734],
             // [16.531654, 80.613228],
             // [16.531901, 80.614044]
-            <?php
-                $data = '';
-                foreach($gps_data as $item)
-                {
-                    if(!empty($data))
-                    {
-                        $data .= ',';
-                    }
-                    $data .= '['.$item->latitude.','.$item->longtitude.']';
-                }
-                echo $data;
-            ?>
+            // <?php
+            //     $data = '';
+            //     foreach($gps_data as $item)
+            //     {
+            //         if(!empty($data))
+            //         {
+            //             $data .= ',';
+            //         }
+            //         $data .= '['.$item->latitude.','.$item->longtitude.']';
+            //     }
+            //     echo $data;
+            // ?>
+            <?php echo '['.$start_pins->latitude.','.$start_pins->longtitude.']'; ?>
         ], speed);
         //animateMarker(marker, latiAndLong(), speed);
         
