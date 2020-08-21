@@ -26,8 +26,9 @@
                 <form action="{{ route('add.branch') }}" method="post" class="form-horizontal form-bordered" enctype="multipart/form-data">
                         @csrf
                             <div class="form-group">
-                                <div class="col-sm-3 col-sm-offset-2" style=" margin-top: 12px;" >
-                                         <select  id="distr-security-question" name="category" value="category" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Category" required>
+                                <label class="col-sm-1" style="margin-top: 12px;">Category:</label>
+                                <div class="col-sm-3" style=" margin-top: 12px;" >
+                                         <select  id="distr-security-question" name="category" value="category" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%; height: 5px;" data-placeholder="Select Category" required>
                                                 <option value="">Gold</option>
                                                 <option value="">Silver</option>
                                                 <option value="">Platinum</option>
@@ -38,6 +39,7 @@
                                             </span>
                                         @enderror
                                 </div>
+                                <label class="col-sm-1" style="margin-top: 12px;">Subcategory:</label>
                                 <div class="col-sm-3" style=" margin-top: 12px; ">
                                          <select id="distr-security-question" name="subcategory" value="subcategory" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%;" data-placeholder="Select SubCategory" required>
                                                 <option value="">Select subcategory</option>
@@ -48,6 +50,7 @@
                                             </span>
                                         @enderror
                                  </div>
+                                 <label class="col-sm-1" style="margin-top: 12px;">Quantity:</label>
                                  <div class="col-sm-3" style=" margin-top: 12px; ">
                                          <select id="distr-security-question" name="quantity" value="quantity" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Quantity" required>
                                                 <option value="">Select Quantity</option>
@@ -60,7 +63,8 @@
                                 </div>
                             </div>
                 <div class="form-group">
-                                <div class="col-sm-3 col-sm-offset-2" style=" margin-top: 12px; ">
+                               <label class="col-sm-1" style="margin-top: 12px;">Price:</label>
+                                <div class="col-sm-3" style=" margin-top: 12px; ">
                                                 <input type="number" name="price" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Price" required>
                                         @error('name')
                                             <span class="text-danger" role="alert">
@@ -68,6 +72,7 @@
                                             </span>
                                         @enderror
                                 </div>
+                                <label class="col-sm-1" style="margin-top: 12px;">Weight:</label>
                                 <div class="col-sm-3" style=" margin-top: 12px; ">
                                                 <input type="number" name="distance" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Weight" required>
                                         @error('name')
@@ -76,6 +81,7 @@
                                             </span>
                                         @enderror
                                 </div>
+                                <label class="col-sm-1" style="margin-top: 12px;">Transit Amount:</label>
                                  <div class="col-sm-3" style=" margin-top: 12px; ">
                                                 <input type="number" name="transitamount" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Transit Amount" required>
                                         @error('name')
@@ -86,7 +92,8 @@
                                  </div>
                 </div>
                  <div class="form-group">
-                                <div class="col-sm-4" style=" margin-top: 12px; ">
+                                <label class="col-sm-1" style="margin-top: 12px;">From Agency:</label>
+                                <div class="col-sm-3" style=" margin-top: 12px; ">
                                                 <input type="number" name="price" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="From Agency" required>
                                         @error('name')
                                             <span class="text-danger" role="alert">
@@ -94,7 +101,8 @@
                                             </span>
                                         @enderror
                                 </div>
-                                <div class="col-sm-4" style=" margin-top: 12px; ">
+                                <label class="col-sm-1" style="margin-top: 12px;">To Agency:</label>
+                                <div class="col-sm-3" style=" margin-top: 12px; ">
                                                 <input type="number" name="distance" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="To Agency" required>
                                         @error('name')
                                             <span class="text-danger" role="alert">
@@ -102,7 +110,8 @@
                                             </span>
                                         @enderror
                                 </div>
-                                 <div class="col-sm-4" style=" margin-top: 12px; ">
+                                <label class="col-sm-1" style="margin-top: 12px;">Distance:</label>
+                                 <div class="col-sm-3" style=" margin-top: 12px; ">
                                                 <input type="number" name="transitamount" value="number" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Distance" required>
                                         @error('name')
                                             <span class="text-danger" role="alert">
@@ -110,7 +119,7 @@
                                             </span>
                                         @enderror
                                 </div>
-                                        <div class="col-sm-3 col-sm-offset-7" style=" margin-top: 12px; margin-left:550px; form-field-margin control-label">
+                                        <div class="col-sm-3 col-sm-offset-4" style=" margin-top: 12px; form-field-margin control-label">
                                            <button type="submit" class="btn btn-effect-ripple btn-primary">Submit</button required>
                                        </div>
                                     

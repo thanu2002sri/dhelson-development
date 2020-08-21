@@ -203,7 +203,7 @@
                             <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width: 1%"></div>
                         </div> -->
                         <div class="text-center">
-                            V 0.9.0 &copy; <a style="text-decoration: none;" href="#" target="_blank">Zo Pay</a></small>
+                            V 0.9.0 &copy; <a style="text-decoration: none;" href="#" target="_blank">Dhelson Express</a></small>
                         </div>
                     </div>
                     <!-- END Sidebar Extra Info -->
@@ -259,9 +259,15 @@
                     <li class="hidden-xs animation-fadeInQuick">
                         
                             <a href="">
-                                <strong>
-                                <i class="fa fa-bell" aria-hidden="true"></i>
-                                </strong>
+                            <div class="notification-box">
+                              <span class="notification-count">6</span>
+                            <div class="notification-bell">
+                              <span class="bell-top"></span>
+                              <span class="bell-middle"></span>
+                              <span class="bell-bottom"></span>
+                              <span class="bell-rad"></span>
+                            </div>
+                            </div>
                             </a>
                         </li>
                         <li class="hidden-xs animation-fadeInQuick">
