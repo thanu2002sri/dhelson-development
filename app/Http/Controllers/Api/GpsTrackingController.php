@@ -118,24 +118,21 @@ class GpsTrackingController extends Controller
 
     public function gpsTrackingDevice(Request $request)
     {
-
-        $validator = Validator::make($request->all(), [
-            'latitude' => 'required',
-            'longtitude' => 'required'
-        ]);
-        if ($validator->fails()) {
-            return response()->json([
-                'success' =>'FALSE',
-                'message' => $validator->errors()->first()
-            ], 401);
-        }
         $newGpsTracking = new GpsTracking;
+        if(!empty($request->latitude) && !empty($request->longtitude))
+        {
+            $newGpsTracking->latitude = $request->latitude;
+            $newGpsTracking->longtitude = $request->longtitude;
+            $data = $request->latitude.",".$request->longtitude.",".$request->gps_status;
+            putLogData('gpsData', date('d-m-Y').'.txt',$data);
+        }
+        else
+        {
+            $newGpsTracking->latitude = 0;
+            $newGpsTracking->longtitude = 0;
+        }
         $newGpsTracking->gps_status = $request->gps_status;
-        $newGpsTracking->latitude = $request->latitude;
-        $newGpsTracking->longtitude = $request->longtitude;
         $newGpsTracking->save();
-        $data = $request->latitude.",".$request->longtitude.",".$request->gps_status;
-        putLogData('gpsData', date('d-m-Y').'.txt',$data);
         return response()->json([
             'success' =>'TRUE',
             'message' => 'Gps Tracking Updated Successfully!'
