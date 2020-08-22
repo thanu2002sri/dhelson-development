@@ -131,8 +131,6 @@
                 
                 <div class="col-sm-12">
                     <br>
-                    <input type="text" name="latandlon" id="latandlon">
-                    <button class="btn btn-primary" id="test">Test</button>
                     <h3 class="text-center">Live Vehicle Tracking <span></span>...........<i class="fas fa-truck text-light-op" style="color:yellowgreen !important;" aria-hidden="true"></i></h3>
                     <hr>
                     <div class="border-white">
@@ -244,7 +242,7 @@ function add_new_markers(locations) {
         $('#long').val(loc.longitude);
     });
 }
-window.setInterval(initialize, 10*1000);
+window.setInterval(initialize, 10*500);
 </script>
 
 
