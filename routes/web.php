@@ -169,6 +169,7 @@ Route::group(['middleware' => 'agent'], function()
     
     // Settings Routing
     Route::get('/agent/edit-profile', 'AgentController@editProfile');
+    Route::get('/agent/get-latitude', 'AgentController@getLatitude');
     Route::post('/agent/reset-password', 'AgentController@resetPassword')->name('agent-reset-password');
     
 }); 

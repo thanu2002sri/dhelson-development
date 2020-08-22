@@ -131,6 +131,8 @@
                 
                 <div class="col-sm-12">
                     <br>
+                    <input type="text" name="latandlon" id="latandlon">
+                    <button class="btn btn-primary" id="test">Test</button>
                     <h3 class="text-center">Live Vehicle Tracking <span></span>...........<i class="fas fa-truck text-light-op" style="color:yellowgreen !important;" aria-hidden="true"></i></h3>
                     <hr>
                     <div class="border-white">
@@ -143,12 +145,14 @@
             <!-- END First Row -->
         </div>
         <!-- Page content -->
+        <input type="hidden" name="lati" id="lati" class="lati" value="<?php echo $start_pins->latitude; ?>">
+        <input type="hidden" name="long" id="long" class="long" value="<?php echo $start_pins->longtitude; ?>">
 @endsection
 
 
 @section('scripts')
 {{-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&sensor=false"></script> --}}
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&sensor=true&libraries=geometry"></script>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&sensor=false&libraries=geometry"></script>
 
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&libraries=places&callback=initAutocomplete"
 async defer></script>    --}}
@@ -202,156 +206,45 @@ async defer></script>    --}}
 </script> --}}
 
 <script>
-    var map, marker;
-var startPos = [<?php echo $start_pins->latitude.','.$start_pins->longtitude; ?>];
-var speed = 50; // km/h
-
-var delay = 100;
-// data = {};
-// var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
-// $.get(file, function(txt) { 
-//     var lines = txt.split("\n");
-//     //console.log(lines.length-5);
-//     var count = 0;
-//     for (var i=(lines.length-1);i<lines.length;i++){
-//         //console.log(lines[i]);
-//         var words=lines[i].split(",");
-//         if ((words[0]!="")&&(words[1]!=""))
-//         {
-//             data[count] = words[0];
-//             //$('#data').val(words[0]+','+words[1]);
-//             //console.log(data);
-//             //data[count] = words;
-//             // data['long'] = words[1];
-//             return data;
-//         }   
-//         count++;                         
-//     }
-//     return data;
-// });
-    function animateMarker(marker, coords, km_h)
-    {
-        var target = 0;
-        var km_h = km_h || 50;
-        coords.push([startPos[0], startPos[1]]);
-        
-        function goToPoint()
-        {
-            var lat = marker.position.lat();
-            var lng = marker.position.lng();
-            var step = (km_h * 1000 * delay) / 3600000; // in meters
-            
-            var dest = new google.maps.LatLng(
-            coords[target][0], coords[target][1]);                                 
-            
-            var distance =
-            google.maps.geometry.spherical.computeDistanceBetween(
-            dest, marker.position); // in meters
-            
-            var numStep = distance / step;
-            var i = 0;
-            var deltaLat = (coords[target][0] - lat) / numStep;
-            var deltaLng = (coords[target][1] - lng) / numStep;
-            
-            function moveMarker()
-            {
-                lat += deltaLat;
-                lng += deltaLng;
-                i += step;
-                
-                if (i < distance)
-                {
-                    marker.setPosition(new google.maps.LatLng(lat, lng));
-                    setTimeout(moveMarker, delay);
-                }
-                else
-                {   marker.setPosition(dest);
-                    target++;
-                    if (target == coords.length){ target = 0; }
-                    
-                    setTimeout(goToPoint, delay);
-                }
-            }
-            moveMarker();
-        }
-        goToPoint();
-    }
-
+var map, marker;
+//var startPos = [$('.lati').val()+','+$('.long').val()];
+//alert(startPos);
 function initialize()
 {
-    //console.log(startPins().values());
-    var myOptions = {
+    marker = [];
+    var 
+    myOptions = {
         zoom: 15,
-        center: new google.maps.LatLng(<?php echo $start_pins->latitude.','.$start_pins->longtitude; ?>),
+        center: {lat: +$('.lati').val(), lng: +$('.long').val()},
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     
     marker = new google.maps.Marker({
-        position: new google.maps.LatLng(startPos[0], startPos[1]),
+        position: new google.maps.LatLng($('.lati').val(), $('.long').val()),
         map: map,
+        center: {lat: +$('.lati').val(), lng: +$('.long').val()},
         strokeColor: "#FF0000",
         strokeOpacity: 1,
         strokeWeight: 2
     });
-    
-    google.maps.event.addListenerOnce(map, 'idle', function()
-    {
-        animateMarker(marker, [
-            // The coordinates of each point you want the marker to go to.
-            // You don't need to specify the starting position again.
-            // [16.525144, 80.611482],
-            // [16.525684, 80.611392],
-            // [16.526373, 80.611247],
-            // [16.527252, 80.611140],
-            // [16.528044, 80.611172],
-            // [16.529160, 80.611548],
-            // [16.530081, 80.612090],
-            // [16.530821, 80.612734],
-            // [16.531654, 80.613228],
-            // [16.531901, 80.614044]
-            <?php
-                $data = '';
-                foreach($gps_data as $item)
-                {
-                    if(!empty($data))
-                    {
-                        $data .= ',';
-                    }
-                    $data .= '['.$item->latitude.','.$item->longtitude.']';
-                }
-                echo $data;
-            ?>
-        ], speed);
-        //animateMarker(marker, latiAndLong(), speed);
-        
+    fetch_markers();
+    //window.setInterval(fetch_markers, 10*1000);
+}
+
+function fetch_markers() {
+    $.getJSON("{{ url('/agent/get-latitude') }}", {}, function(res) {
+        if (res.locations) add_new_markers(res.locations);
     });
 }
-<?php if(!empty($start_pins->latitude) && !empty($start_pins->longtitude)){?>
-initialize();
-<?php }?>
-// function latiAndLong()
-// {
-//     data = [];
-//     var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
-//     $.get(file, function(txt) { 
-//         var lines = txt.split("\n");
-//         //console.log(lines.length-5);
-//         var count = 0;
-//         for (var i=(lines.length-3);i<lines.length;i++){
-//             //console.log(lines[i]);
-//             var words=lines[i].split(",");
-//             if ((words[0]!="")&&(words[1]!=""))
-//             {
-//                 //console.log(words[0]+','+words[1]);
-//                 data[count] = [words[0],words[1]];
-//             }   
-//             count++;                         
-//         }
-//         return data;
-//     });
-//     return data;
-// }
+
+function add_new_markers(locations) {
+    locations.forEach(function(loc, i) {
+        $('#lati').val(loc.latitude);
+        $('#long').val(loc.longitude);
+    });
+}
+window.setInterval(initialize, 10*1000);
 </script>
 
 

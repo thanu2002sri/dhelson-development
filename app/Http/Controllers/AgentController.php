@@ -30,6 +30,13 @@ class AgentController extends Controller
         return view('agent.home', $data);
     }
 
+    public function getLatitude()
+    {
+        $data = GpsTracking::where('created_at', '>=', date('Y-m-d').' 00:00:00')->orderBy('id', 'desc')->first();
+        $locations = array('locations' => [array('latitude' => $data->latitude, 'longitude' => $data->longtitude)]);
+        return json_encode($locations);
+    }
+
     // Users Views
     public function addUser()
     {
