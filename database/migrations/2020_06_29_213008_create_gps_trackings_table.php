@@ -18,6 +18,7 @@ class CreateGpsTrackingsTable extends Migration
             $table->string('gps_status', 20)->nullable();
             $table->string('latitude', 20)->nullable();
             $table->string('longtitude', 20)->nullable();
+            $table->string('deviceID', 30)->nullable();
             $table->timestamps();
         });
     }

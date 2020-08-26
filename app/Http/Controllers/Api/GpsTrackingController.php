@@ -119,7 +119,7 @@ class GpsTrackingController extends Controller
     public function gpsTrackingDevice(Request $request)
     {
         $newGpsTracking = new GpsTracking;
-        if(!empty($request->latitude) && !empty($request->longtitude))
+        if(!empty($request->latitude) && !empty($request->longtitude) && $request->gps_status=='YES')
         {
             $newGpsTracking->latitude = $request->latitude;
             $newGpsTracking->longtitude = $request->longtitude;
@@ -131,6 +131,7 @@ class GpsTrackingController extends Controller
             $newGpsTracking->latitude = 0;
             $newGpsTracking->longtitude = 0;
         }
+        $newGpsTracking->deviceID = $request->deviceID;
         $newGpsTracking->gps_status = $request->gps_status;
         $newGpsTracking->save();
         return response()->json([
