@@ -544,7 +544,7 @@
     {{-- <script src="{{ asset('assets/js/toastr.min.js') }}" type="text/javascript"></script> --}}
 
     <script src="{{ asset('assets/js/formsWizard.js') }}" type="text/javascript"></script>
-        
+ 
     @yield('scripts')
 
 

@@ -28,8 +28,5 @@ class AuthServiceProvider extends ServiceProvider
         Passport::personalAccessTokensExpireIn(Carbon::now()->addDays(24));
         Passport::refreshTokensExpireIn(Carbon::now()->addDays(30));
         //
-        Gate::define('viewWebSocketsDashboard', function ($user = null) {
-            return $user != null;
-        });
     }
 }

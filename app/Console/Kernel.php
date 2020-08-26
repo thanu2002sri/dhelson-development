@@ -26,7 +26,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('websockets:clean')->daily();
          $schedule->command('pending:transactions')
                   ->timezone('Asia/Dubai')
                   ->everyMinute();
