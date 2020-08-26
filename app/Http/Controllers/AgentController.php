@@ -26,14 +26,14 @@ class AgentController extends Controller
         // exit;
         $data['title'] = 'Agent Dashboard';
         $data['start_pins'] = GpsTracking::where('created_at', '>=', date('Y-m-d').' 00:00:00')->orderBy('id', 'desc')->first();
-        $data['gps_data'] = GpsTracking::where('created_at', '>=', date('Y-m-d').' 00:00:00')->limit(1)->orderBy('id', 'desc')->get();
+        //$data['gps_data'] = GpsTracking::where('created_at', '>=', date('Y-m-d').' 00:00:00')->limit(1)->orderBy('id', 'desc')->get();
         return view('agent.home', $data);
     }
 
     public function getLatitude()
     {
         $data = GpsTracking::where('created_at', '>=', date('Y-m-d').' 00:00:00')->orderBy('id', 'desc')->first();
-        $locations = array('locations' => [array('latitude' => $data->latitude, 'longitude' => $data->longtitude)]);
+        $locations = array('locations' => [array('latitude' => $data->latitude, 'longitude' => $data->longtitude, 'status' => $data->gps_status)]);
         return json_encode($locations);
     }
 

@@ -14,11 +14,7 @@
         "bootstrap": "^4.1.0",
         "cross-env": "^5.1",
         "jquery": "^3.2",
-<<<<<<< HEAD
         "laravel-mix": "^4.0.7",
-=======
-        "laravel-mix": "^4.1.4",
->>>>>>> 17b8941aa909b46bb74c7c7985185e20c5399a96
         "lodash": "^4.17.13",
         "popper.js": "^1.12",
         "resolve-url-loader": "^2.3.1",
@@ -26,5 +22,10 @@
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "laravel-echo": "^1.8.1",
+        "pusher-js": "^7.0.0",
+        "socket.io-client": "^2.3.0"
     }
 }

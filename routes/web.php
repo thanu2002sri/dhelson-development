@@ -224,3 +224,4 @@ Route::group(['middleware' => 'customercare'], function()
     Route::post('/customercare/reset-password', 'CustomerCareController@resetPassword')->name('customercare-reset-password');
     Route::post('/customercare/reset-pin', 'CustomerCareController@resetPin')->name('customercare-reset-pin');
 }); 
+

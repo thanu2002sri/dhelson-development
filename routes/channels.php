@@ -11,6 +11,8 @@
 |
 */
 
-Broadcast::channel('App.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+Broadcast::channel('home', 'users', function ($user) {
+    return $user->id;
 });
+
+//Broadcast::routes();
