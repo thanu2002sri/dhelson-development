@@ -132,6 +132,7 @@ class GpsTrackingController extends Controller
             $newGpsTracking->longtitude = 0;
         }
         $newGpsTracking->deviceID = $request->deviceID;
+        $newGpsTracking->Speed = $request->Speed;
         $newGpsTracking->gps_status = $request->gps_status;
         $newGpsTracking->save();
         return response()->json([
