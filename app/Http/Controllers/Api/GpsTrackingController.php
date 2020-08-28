@@ -135,9 +135,10 @@ class GpsTrackingController extends Controller
         $newGpsTracking->Speed = $request->Speed;
         $newGpsTracking->gps_status = $request->gps_status;
         $newGpsTracking->save();
-        return response()->json([
+        /* return response()->json([
             'success' =>'TRUE',
             'message' => 'Gps Tracking Updated Successfully!'
-        ], 200);
+        ], 200); */
+        return 1;
     }
 }
