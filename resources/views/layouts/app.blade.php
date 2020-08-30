@@ -71,11 +71,12 @@
              margin: 0;
              padding: 0;
             }
+           
          .notification-box {
          position: fixed;
          z-index: 99;
          top: 10px;
-         right: 181px;
+         right: 172px;
          width: 50px;
           height: 130px;
          text-align: center;
@@ -95,15 +96,15 @@
          border-radius: 3px 3px 0 0;
         }
         .bell-middle {
-         width: 22px;
-         height: 15px;
-          margin-top: 1px;
-          border-radius: 12.5px 12.5px 0 0;
+            width: 14px;
+            height: 12px;
+            margin-top: 1px;
+            border-radius: 12.5px 12.5px 0 0;
         }
         .bell-bottom {
          position: relative;
          z-index: 0;
-          width: 32px;
+          width: 20px;
          height: 2px;
         }
         .bell-bottom::before,
@@ -131,20 +132,20 @@
         border-radius: 0 0 4px 4px;
         animation: rad 1s 2s both infinite;
        }
-      .notification-count {
-        position: absolute;
-         z-index: 1;
+       .notification-count {
+         position: absolute;
+        z-index: 1;
         top: -6px;
-        right: -1px;
-        width: 23px;
-        height: 22px;
-        line-height: 23px;
+        right: 2px;
+        width: 18px;
+        height: 20px;
+        line-height: 19px;
         font-size: 16px;
-        border-radius: 50%;
+         border-radius: 50%;
         background-color: #ff4927;
         color: #fff;
         animation: zoom 3s 3s both infinite;
-        }
+      }
       @keyframes bell {
       0% { transform: rotate(0); }
      10% { transform: rotate(30deg); }
