@@ -9,6 +9,7 @@
 		<meta name="author" content="Jaomweb">
 		<meta name="description" content="">
         <!-- favicon -->
+        
         <!-- Bootstrap -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
@@ -20,7 +21,7 @@
         <div class="container">
             <!-- Logo container-->
             <div>
-               <a class="logo" href="index.php"><img src="images/dhelson-logo (1).png" alt="DEPRIXA PRO" width="210" height="94" style="margin-right: 10px;"></a>
+               <a class="logo" href="index.php"><img src="images/dhelson-logo (1).png" alt="" width="210" height="94" style="margin-right: 10px;"></a>
             </div>                 
             <div class="buy-button">
             </div><!--end login button-->
@@ -66,7 +67,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group position-relative">
-                                                <label>Tracking DEPRIXA PRO<span class="text-primary">.</span></label>
+                                                <label>Tracking<span class="text-primary">.</span></label>
                                                 <i class="mdi mdi-cube-send ml-3 icons"></i>
                                                 <textarea name="order_inv" placeholder="Enter your Shipping / Tracking / Guide number Ex: (DHEL-100000001)" id="comments" rows="4" class="form-control pl-5" required=""></textarea>
                                             </div>
