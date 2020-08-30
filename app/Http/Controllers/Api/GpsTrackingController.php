@@ -67,14 +67,15 @@ class GpsTrackingController extends Controller
 
     public function gps()
     {
-        $filePath = public_path("co-ordinates/".date('d-m-Y').".txt");
-        if(File::exists($filePath)){
-            $file = File::get($filePath);
-            return $file;
-        } else 
-        {  
-            return "Data not exists!";   
-        }
+        // $filePath = public_path("co-ordinates/".date('d-m-Y').".txt");
+        // if(File::exists($filePath)){
+        //     $file = File::get($filePath);
+        //     return $file;
+        // } else 
+        // {  
+        //     return "Data not exists!";   
+        // }
+        return GpsTracking::all();
     }
 
     public function gpsTracking(Request $request)
@@ -89,8 +90,13 @@ class GpsTrackingController extends Controller
                 'message' => $validator->errors()->first()
             ], 401);
         }
-        $data = $request->latitude.",".$request->longtitude;
-        putLogData('gpsData', date('d-m-Y').'.txt',$data);
+        $newGpsTracking = new GpsTracking;
+        $newGpsTracking->gps_status = $request->gps_status;
+        $newGpsTracking->latitude = $request->latitude;
+        $newGpsTracking->longtitude = $request->longtitude;
+        $newGpsTracking->save();
+        // $data = $request->latitude.",".$request->longtitude.",".$request->gps_status;
+        // putLogData('gpsData', date('d-m-Y').'.txt',$data);
         return response()->json([
             'success' =>'TRUE',
             'message' => 'Gps Tracking Updated Successfully!'
@@ -112,21 +118,27 @@ class GpsTrackingController extends Controller
 
     public function gpsTrackingDevice(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'latitude' => 'required',
-            'longtitude' => 'required'
-        ]);
-        if ($validator->fails()) {
-            return response()->json([
-                'success' =>'FALSE',
-                'message' => $validator->errors()->first()
-            ], 401);
+        $newGpsTracking = new GpsTracking;
+        if(!empty($request->latitude) && !empty($request->longtitude) && $request->gps_status=='YES')
+        {
+            $newGpsTracking->latitude = $request->latitude;
+            $newGpsTracking->longtitude = $request->longtitude;
+            // $data = $request->latitude.",".$request->longtitude.",".$request->gps_status;
+            // putLogData('gpsData', date('d-m-Y').'.txt',$data);
         }
-        $data = $request->latitude.",".$request->longtitude;
-        putLogData('gpsData', date('d-m-Y').'.txt',$data);
-        return response()->json([
+        else
+        {
+            $newGpsTracking->latitude = 0;
+            $newGpsTracking->longtitude = 0;
+        }
+        $newGpsTracking->deviceID = $request->deviceID;
+        $newGpsTracking->Speed = $request->Speed;
+        $newGpsTracking->gps_status = $request->gps_status;
+        $newGpsTracking->save();
+        /* return response()->json([
             'success' =>'TRUE',
             'message' => 'Gps Tracking Updated Successfully!'
-        ], 200); 
+        ], 200); */
+        return 1;
     }
 }

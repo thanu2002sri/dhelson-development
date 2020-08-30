@@ -26,20 +26,23 @@
                 <form action="{{ route('add.branch') }}" method="post" class="form-horizontal form-bordered" enctype="multipart/form-data">
                         @csrf
                             <div class="form-group">
-                                <label class="col-sm-1" style="margin-top: 12px;">Category:</label>
+                                
+                                <label class="col-sm-1" style="margin-top: 17px;">Category</label>
                                 <div class="col-sm-3" style=" margin-top: 12px;" >
-                                         <select  id="distr-security-question" name="category" value="category" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%; height: 5px;" data-placeholder="Select Category" required>
-                                                <option value="">Gold</option>
-                                                <option value="">Silver</option>
-                                                <option value="">Platinum</option>
-                                            </select>
-                                        @error('name')
-                                            <span class="text-danger" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                    <select id="category" name="category" value="{{ old('category') }}" autocomplete="category" autofocus class="form-control select-select2 @error('category') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Category" required>
+                                        <option value="">Select Category</option>
+                                        @foreach ($categories as $key => $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                        <!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                    </select>
+                                    @error('category')
+                                        <span class="text-danger" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-                                <label class="col-sm-1" style="margin-top: 12px;">Subcategory:</label>
+                                <label class="col-sm-1" style="margin-top: 17px;">Subcategory:</label>
                                 <div class="col-sm-3" style=" margin-top: 12px; ">
                                          <select id="distr-security-question" name="subcategory" value="subcategory" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%;" data-placeholder="Select SubCategory" required>
                                                 <option value="">Select subcategory</option>
@@ -50,7 +53,7 @@
                                             </span>
                                         @enderror
                                  </div>
-                                 <label class="col-sm-1" style="margin-top: 12px;">Quantity:</label>
+                                 <label class="col-sm-1" style="margin-top: 17px;">Quantity:</label>
                                  <div class="col-sm-3" style=" margin-top: 12px; ">
                                          <select id="distr-security-question" name="quantity" value="quantity" autocomplete="agent_id" autofocus class="form-control select-select2 @error('agent_id') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Quantity" required>
                                                 <option value="">Select Quantity</option>
@@ -348,5 +351,15 @@
 
 <script>
     $('#example').DataTable();
+    $('#category').change(function(){
+        $.ajax({
+            type:"POST",
+            url:'{{ route("admin.get.subcategories") }}',
+            data:{category:category},
+            success:function (result) {
+                alert(result);
+            }
+        });
+    });
 </script>
 @endsection 

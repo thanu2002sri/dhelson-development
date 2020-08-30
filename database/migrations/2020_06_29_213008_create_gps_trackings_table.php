@@ -15,13 +15,11 @@ class CreateGpsTrackingsTable extends Migration
     {
         Schema::create('gps_trackings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('pincode')->unsigned()->nullable();
-            $table->string('city', 20)->nullable();
-            $table->string('state', 20)->nullable();
-            $table->string('country', 20)->nullable();
-            $table->string('lattitude', 20)->nullable();
-            $table->string('logtitude', 20)->nullable();
+            $table->string('gps_status', 20)->nullable();
+            $table->string('latitude', 20)->nullable();
+            $table->string('longtitude', 20)->nullable();
+            $table->string('deviceID', 30)->nullable();
+            $table->string('Speed', 30)->nullable();
             $table->timestamps();
         });
     }

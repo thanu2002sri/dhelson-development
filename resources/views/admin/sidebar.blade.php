@@ -130,33 +130,26 @@
                         </a>
                         <ul>
                             <li>
-                    
                                 <a href="{{ url('/admin/categories') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Category</span></a>
                             </li>
                             <li>
-                    
                                  <a href="{{ url('/admin/sub-categories') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Subcategory</span></a>
                             </li>
-
                             <li>
-                    
                                  <a href="{{ url('/admin/transit-settings') }}"><i class="fas fa-tasks sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Transit Settings</span></a>
                             </li>
-
-                            
+                            <li>
+                                <a href="{{ url('/admin/vehicle') }}"><i class="fa fa-truck sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Vehicle</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/admin/vehicle-assign') }}"><i class="fa fa-truck sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Vehicle Assign</span></a>
+                            </li>
                             <li>
                                 <a href="{{ url('/admin/') }}"><i class="fas fa-user-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Edit Profile</span></a>
                             </li>
                             <li>
                                 <a href="{{ url('/admin/other-settings') }}"><i class="fa fa-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Other</span></a>
                             </li>
-                            <li>
-                                <a href="{{ url('/admin/vehicle') }}"><i class="fa fa-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Vehicle</span></a>
-                            </li>
-                            <li>
-                                <a href="{{ url('/admin/vehicle-assign') }}"><i class="fa fa-cog sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Vehicle Assign</span></a>
-                            </li>
-                            
                         </ul>
                     </li>
 

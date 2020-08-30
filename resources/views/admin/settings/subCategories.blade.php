@@ -47,6 +47,11 @@
                                 @endforeach
                                 <!-- Required for data-placeholder attribute to work with Select2 plugin -->
                             </select>
+                            @error('category')
+                                <span class="text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="col-sm-3" style=" margin-top: 12px; form-field-margin control-label">
                             <input type="text" name="name" value="{{ old('name') }}" autocomplete="name" autofocus class="form-control @error('name') is-invalid @enderror" placeholder="Enter Subcategory" required>
@@ -78,34 +83,32 @@
                             @foreach ($subcategories as $key => $subcategy)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>Active</td>
+                                    <td>{{ $subcategy->category }}</td>
+                                    <td>{{ $subcategy->name }}</td>
+                                    @if ($subcategy->status!=0)
+                                        <td>Deactive</td>
+                                    @else
+                                        <td>Active</td>
+                                    @endif
                                     <td class="text-center">
-                                        <a href="#edit-customercare-1" data-toggle="modal" title=""
-                                            class="btn btn-effect-ripple btn-xs btn-success"
-                                            style="overflow: hidden; position: relative;" data-original-title="Edit User"><i
-                                                class="fa fa-pencil"></i></a>
-                                        <a href="#remove-customercare-1" data-toggle="modal" title=""
-                                            class="btn btn-effect-ripple btn-xs btn-danger"
-                                            style="overflow: hidden; position: relative;"
-                                            data-original-title="Delete User"><i class="fa fa-times"></i></a>
+                                        <a href="#edit-subcategory-{{ $loop->iteration }}" data-toggle="modal" title="" class="btn btn-effect-ripple btn-xs btn-success" style="overflow: hidden; position: relative;" data-original-title="Edit User"><i class="fa fa-pencil"></i></a>
+                                        <a href="#remove-subcategory-{{ $loop->iteration }}" data-toggle="modal" title="" class="btn btn-effect-ripple btn-xs btn-danger"style="overflow: hidden; position: relative;" data-original-title="Delete User"><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
-                            @endforeach
-                            <div id="remove-customercare-1" data-id='1' class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+                            
+                            <div id="remove-subcategory-{{ $loop->iteration }}" data-id='1' class="modal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-md">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h3 class="modal-title" style="text-align:center;"><strong>Delete Support</strong></h3>
+                                            <h3 class="modal-title" style="text-align:center;"><strong>Delete Subcategory</strong></h3>
                                         </div>
                                         <div class="modal-body text-center">
-                                            Are you sure you want to delete the Support?
+                                            Are you sure you want to delete the <b style="color: red;">{{ $subcategy->name }}</b> Subcategory?
                                         </div>
                                         <div class="modal-footer">
                                             <div class="colo-md-4 col-md-offset-5">
-                                                <a href="{{ route('delete.customercare', ['id' => 1]) }}" class="btn btn-effect-ripple btn-primary pull-left">YES</a>
+                                                <a href="{{ route('delete.sub.category', ['id' => $subcategy->id]) }}" class="btn btn-effect-ripple btn-primary pull-left">YES</a>
                                                 <button type="button" class="btn btn-effect-ripple btn-danger pull-left" data-dismiss="modal">NO</button>
                                             </div>
                                         </div>
@@ -113,26 +116,72 @@
                                 </div>
                             </div>
 
-                            <div id="edit-customercare-1" data-id='1' class="modal" tabindex="-1" role="dialog"
+                            <div id="edit-subcategory-{{ $loop->iteration }}" data-id='1' class="modal" tabindex="-1" role="dialog"
                                 aria-hidden="true">
                                 <div class="modal-dialog modal-md">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h3 class="modal-title"><strong>Edit Category</strong></h3>
+                                            <h3 class="modal-title text-center"><strong>Edit Subcategory</strong></h3>
                                         </div>
                                         <div class="modal-body text-center">
-                                            <label for="fname"></label>
-                                            <input type="text" id="fname" name="fname" placeholder="enter category" style="margin-left:20px; padding-left:20px; text-align: start; padding-left:1px">
+                                            <form action="{{ route('update.sub.category') }}" method="post">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-sm-offset-3" style="margin-top: 10px;">
+                                                        <select id="distr-security-question" name="updated_category" autocomplete="updated_category" autofocus class="form-control select-select2 @error('updated_category') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Category" required>
+                                                            @foreach ($categories as $key => $category)
+                                                                @if (!empty($subcategy->category))
+                                                                    <option selected value="{{ $category->id }}">{{ $category->name }}</option>
+                                                                @else
+                                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                            @error('updated_category')
+                                                                <span class="text-danger" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                            <!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6 col-sm-offset-3" style="margin-top: 10px;">
+                                                        <input type="text" name="updated_name" value="{{ $subcategy->name }}" autocomplete="updated_name" autofocus class="form-control @error('updated_name') is-invalid @enderror" placeholder="Enter Subcategory" required>
+                                                        @error('updated_name')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-sm-6 col-sm-offset-3" style="margin-top: 10px;">
+                                                        <select id="distr-security-question" name="status" autocomplete="status" autofocus class="form-control select-select2 @error('status') is-invalid @enderror" style="width: 100%;" data-placeholder="Select Status">
+                                                            @if ($subcategy->status!=0)
+                                                                <option selected value="{{ $subcategy->status }}">Deactive</option>
+                                                                <option value="0">Active</option>
+                                                            @else
+                                                                <option selected value="{{ $subcategy->status }}">Active</option>
+                                                                <option value="1">Deactive</option>
+                                                            @endif
+                                                            <!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                        </select>
+                                                        @error('status')
+                                                        <span class="text-danger" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
                                         </div>
                                         <div class="modal-footer">
                                             <div class="colo-md-4 col-md-offset-5">
-                                                <button type="reset" class="btn btn-effect-ripple btn-danger" style="overflow: hidden; position: relative; height:30px; margin-right:240px">Submit</button>
+                                                <button type="submit" name="id" value="{{ $subcategy->id }}" class="btn btn-effect-ripple btn-primary" style="overflow: hidden; position: relative; height:30px; margin-right:240px">Update</button>
                                             </div>
                                         </div>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

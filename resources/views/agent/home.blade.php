@@ -128,6 +128,7 @@
                 </div>
                 <hr>
                 <br> --}}
+                
                 <div class="col-sm-12">
                     <br>
                     <h3 class="text-center">Live Vehicle Tracking <span></span>...........<i class="fas fa-truck text-light-op" style="color:yellowgreen !important;" aria-hidden="true"></i></h3>
@@ -147,59 +148,10 @@
 
 @section('scripts')
 {{-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&sensor=false"></script> --}}
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&sensor=true&libraries=geometry"></script>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&sensor=false&libraries=geometry"></script>
 
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvuspZieDAMlpAVAe2qwlvkk8oQU34dtg&libraries=places&callback=initAutocomplete"
 async defer></script>    --}}
-{{-- 
-<script type="text/javascript">
-    var myCenter =  new google.maps.LatLng(11.279432, 76.239785);
-    var marker;
-    var map;
-    var mapProp;
-
-    function initialize()
-    {
-        mapProp = {
-          center:myCenter,
-          zoom:15,
-          mapTypeId:google.maps.MapTypeId.ROADMAP
-          };
-        setInterval('mark()',5000);
-    }
-
-    function mark()
-    {
-        map=new google.maps.Map(document.getElementById("map"),mapProp);
-        var file = "{{ asset('co-ordinates/2020-08-16.txt') }}";
-        $.get(file, function(txt) { 
-            var lines = txt.split("\n");
-            for (var i=0;i<lines.length;i++){
-                console.log(lines[i]);
-                var words=lines[i].split(",");
-                if ((words[0]!="")&&(words[1]!=""))
-                {
-                    marker=new google.maps.Marker({
-                          position:new google.maps.LatLng(words[0],words[1]),
-                          //map: map
-                    });
-                    marker.setMap(map);
-                    map.setCenter(new google.maps.LatLng(words[0],words[1]));
-                    document.getElementById('sat').innerHTML=words[3];
-                    document.getElementById('speed').innerHTML=words[4];
-                    document.getElementById('course').innerHTML=words[5];
-                }
-            }
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-        });
-
-    }
-
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-    
-</script> --}}
-
 <script>
     var map, marker;
 var startPos = [16.525144, 80.611482];
@@ -254,17 +206,6 @@ var delay = 100;
         goToPoint();
     }
 
-function startingPoints()
-{
-    var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
-    $.get(file, function(txt) { 
-        var line = txt.split("\n");
-        var word = line[1].split(",");
-        //console.log(word[0]+','+word[1]);
-        return ""+word[0]+", "+word[1]+"";
-    });
-}
-
 function initialize()
 {
     var myOptions = {
@@ -284,45 +225,25 @@ function initialize()
     
     google.maps.event.addListenerOnce(map, 'idle', function()
     {
-        // animateMarker(marker, [
-        //     // The coordinates of each point you want the marker to go to.
-        //     // You don't need to specify the starting position again.
-        //     [16.525144, 80.611482],
-        //     [16.525684, 80.611392],
-        //     [16.526373, 80.611247],
-        //     [16.527252, 80.611140],
-        //     [16.528044, 80.611172],
-        //     [16.529160, 80.611548],
-        //     [16.530081, 80.612090],
-        //     [16.530821, 80.612734],
-        //     [16.531654, 80.613228],
-        //     [16.531901, 80.614044]
-        // ], speed);
-        animateMarker(marker, latiAndLong(), speed);
-        
+        animateMarker(marker, [
+            // The coordinates of each point you want the marker to go to.
+            // You don't need to specify the starting position again.
+            [16.525144, 80.611482],
+            [16.525684, 80.611392],
+            [16.526373, 80.611247],
+            [16.527252, 80.611140],
+            [16.528044, 80.611172],
+            [16.529160, 80.611548],
+            [16.530081, 80.612090],
+            [16.530821, 80.612734],
+            [16.531654, 80.613228],
+            [16.531901, 80.614044]
+        ], speed);
+      
     });
 }
 initialize();
-//console.log(latiAndLong());
-function latiAndLong()
-{
-    data = [];
-    var file = '{{ asset("co-ordinates/".date('d-m-Y').".txt") }}';
-    $.get(file, function(txt) { 
-        var lines = txt.split("\n");
-        for (var i=0;i<lines.length;i++){
-            //console.log(lines[i]);
-            var words=lines[i].split(",");
-            if ((words[0]!="")&&(words[1]!=""))
-            {
-                //console.log(words[0]+','+words[1]);
-                data[i] = [words[0],words[1]];
-            }                            
-        }
-        return data;
-    });
-    return data;
-}
+
 </script>
 
 

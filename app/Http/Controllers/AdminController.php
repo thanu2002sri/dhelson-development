@@ -13,6 +13,9 @@ use Response;
 use Illuminate\Support\Facades\DB;
 use DataTables;
 use App\Branch;
+use App\Categories;
+use App\Subcategories;
+use App\GpsTracking;
 
 class AdminController extends Controller
 {
@@ -831,6 +834,7 @@ class AdminController extends Controller
     public function transitSettings()
     {
         $data['title'] = "Transit Settings";
+        $data['categories'] = Categories::all();
         return view('admin.settings.transitSettings', $data);
     }
     

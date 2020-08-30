@@ -11,6 +11,7 @@ use File;
 use Validator;
 use Response;
 use Illuminate\Support\Facades\DB;
+use App\GpsTracking;
 class AgentController extends Controller
 {
     public function __construct()
@@ -24,7 +25,16 @@ class AgentController extends Controller
         // print_r($file);
         // exit;
         $data['title'] = 'Agent Dashboard';
+        $data['start_pins'] = GpsTracking::where('created_at', '>=', date('Y-m-d').' 00:00:00')->orderBy('id', 'desc')->first();
+        $data['gps_data'] = GpsTracking::where('created_at', '>=', date('Y-m-d').' 00:00:00')->limit(1)->orderBy('id', 'desc')->get();
         return view('agent.home', $data);
+    }
+
+    public function getLatitude()
+    {
+        $data = GpsTracking::where('created_at', '>=', date('Y-m-d').' 00:00:00')->orderBy('id', 'desc')->first();
+        $locations = array('locations' => [array('latitude' => $data->latitude, 'longitude' => $data->longtitude)]);
+        return json_encode($locations);
     }
 
     // Users Views
